@@ -104,6 +104,23 @@ export default {
                 color: $--main-gray;
             }
         }
+
+        @media screen and (max-width: $--screen-md-min) {
+            padding: 80px 0;
+        }
+        @media screen and (max-width: $--screen-sm-min) {
+            padding: 40px 0;
+            &-container {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                text-align: center;
+                grid-row-gap: 20px;
+            }
+            &__contact-description {
+                margin: auto;
+            }
+        }
     }
     &-col {
         &-1 {
@@ -115,6 +132,25 @@ export default {
         &-3 {
             grid-column: 8/10;
         }
+        @media screen and (max-width: $--screen-md-min) {
+            &-1 {
+                grid-column: 2/5;
+            }
+            &-3 {
+                grid-column: 8/11;
+            }
+        }
+        @media screen and (max-width: $--screen-md-min) {
+            &-1, &-2, &-3 {
+                width: 100%;
+            }
+            &-1 {
+                order: 5;
+                &:first-of-type {
+                    margin-top: 10px;
+                }
+            }
+        }
     }
     &-bottom {
         border-top: 2px solid $--main-gray-light;
@@ -122,15 +158,41 @@ export default {
         &-layout {
             align-items: center;
         }
+        @media screen and (max-width: $--screen-md-min) {
+            &-layout {
+                grid-column-gap: 30px;
+                grid-template-columns: 100px auto 134px;
+            }
+        }
+        @media screen and (max-width: $--screen-sm-min) {
+            padding-top: 20px;
+            padding-bottom: 30px;
+            &-layout {
+                grid-row-gap: 20px;
+                grid-column-gap: 0px;
+            }
+        }
     }
     &-disclaimer {
         grid-column: 3/9;
+
+        @media screen and (max-width: $--screen-md-min) {
+            grid-column: 2/3;
+        }
+        @media screen and (max-width: $--screen-sm-min) {
+            grid-column: 1/4;
+            grid-row: 2/3;
+            text-align: center;
+        }
     }
     &-socials {
         grid-column: 10/11;
         display: flex;
         align-items: center;
         justify-content: space-between;
+        @media screen and (max-width: $--screen-md-min) {
+            grid-column: 3/4;
+        }
     }
 }
 

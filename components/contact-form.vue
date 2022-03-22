@@ -54,6 +54,16 @@ export default {
         grid-column: 3/9;
         display: flex;
         justify-content: space-between;
+        
+        @media screen and (max-width: $--screen-md-min) {
+            grid-column: 2/10;
+        }
+        @media screen and (max-width: $--screen-sm-min) {
+            grid-column: 1/6;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
     }
 
     &__text {
@@ -66,6 +76,11 @@ export default {
             display: block;
             margin-top: 10px;
         }
+
+        @media screen and (max-width: $--screen-sm-min) {
+            max-width: 61.1%;
+            margin-bottom: 30px;
+        }
     }
 
     &__form {
@@ -75,11 +90,26 @@ export default {
         &-group {
             margin-bottom: 10px;
         }
+
+        @media screen and (max-width: $--screen-md-min) {
+            max-width: 37.5%;
+        }
+
+        @media screen and (max-width: $--screen-sm-min) {
+            max-width: 78%;
+            .btn {
+                margin: auto;
+            }
+        }
     }
 
     &__label {
         display: block;
         margin-bottom: 5px;
+
+        @media screen and (max-width: $--screen-sm-min) {
+            text-align: left;
+        }
     }
 
     &.theme-light {
@@ -90,6 +120,13 @@ export default {
     &.theme-dark {
         background-color: $--main-black;
         color: $--main-white;
+    }
+
+    @media screen and (max-width: $--screen-md-min) {
+        padding: 58px 0;
+    }
+    @media screen and (max-width: $--screen-sm-min) {
+        padding: 53px 0;
     }
 }
 </style>

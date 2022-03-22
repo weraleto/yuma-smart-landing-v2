@@ -39,6 +39,16 @@ export default {
         background-size: cover;
         transform: translate(-90%, 4px);
     }
+
+    @media screen and (max-width: $--screen-md-min) {
+      grid-column: 2/6;
+    }
+
+    @media screen and (max-width: $--screen-sm-min) {
+        &::before {
+            transform: translate(-30%, 8px);
+        }
+    }
 }
 
 
@@ -48,5 +58,10 @@ export default {
     width: max-content;
     padding: 0 36px;
     margin-top: 30px;
+
+    @media screen and (max-width: $--screen-sm-min) {
+        max-width: 205px;
+        width: 75%;
+    }
 }
 </style>

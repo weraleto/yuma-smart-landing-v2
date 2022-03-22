@@ -7,7 +7,7 @@
         </div>
         <div class="header__title title1">
           <div class="header__title--line">
-            <span>Ваши </span> <span>микромаркеты</span>
+            <span>Ваши&nbsp;</span> <span>микромаркеты</span>
           </div>
           <div class="grid-layout">
             <span>с&nbsp;</span> <span class="header__title--personal">персональным</span>
@@ -17,7 +17,7 @@
               мобильным 
               <span class="only-desktop">приложением</span>
             </span>
-            <!-- <span class="hidden-desktop">приложением</span> -->
+            <span class="hidden-desktop">приложением</span>
           </div>
         </div>
 
@@ -37,7 +37,7 @@
             </div>
         </div>
 
-        <div class="block-offset grid-layout">
+        <!-- <div class="block-offset grid-layout">
             <h2 class="title2 block-offset__title">оптимальные решения 
                 <span class="no-word-break">yuma-smart</span></h2>
 
@@ -69,7 +69,7 @@
                     </div>
                 </div>
 
-        </div>
+        </div> -->
 
         <div class="block-offset grid-layout">
             <h2 class="title2 block-offset__title">сервис <span class="no-word-break">yuma-smart.</span>
@@ -301,6 +301,13 @@ export default {
     width: 100%;
     height: auto;
   }
+
+  @media screen and (max-width: $--screen-md-min) {
+      margin-bottom: 30px;
+  }
+  @media screen and (max-width: $--screen-xxs-min) {
+      margin-bottom: 20px;
+  }
 }
 
 .header__title {
@@ -315,12 +322,58 @@ export default {
   &--personal {
     grid-column: 3/11;
   }
+
+  @media screen and (max-width: $--screen-md-min) {
+    margin-bottom: 30px;
+
+    &--line {
+      text-align-last: left;
+
+      &.end-separated {
+        flex-direction: column;
+
+        span:last-of-type {
+          align-self: flex-end;
+        }
+      }
+    }
+  }
+  @media screen and (max-width: $--screen-sm-min) {
+
+    &--line {
+      
+      &:first-of-type {
+        flex-direction: column;
+
+        span:first-of-type {
+          padding-left: 25%;
+        }
+      }
+
+      &.end-separated {
+        span:first-of-type {
+          align-self: flex-end;
+        }
+        span:last-of-type {
+          align-self: flex-start;
+        }
+      }
+    }
+
+    .grid-layout {
+        display: flex;
+    }
+  }
 }
 
 .flip-card__items {
   display: grid;
   grid-auto-flow: column;
   grid-template-columns: repeat(8, 1fr);
+
+  @media screen and (max-width: $--screen-md-min) {
+    grid-template-columns: repeat(9, 1fr);
+  }
 }
 
 .card-item {
@@ -333,12 +386,44 @@ export default {
 
   cursor: pointer;
 
+  @media screen and (max-width: $--screen-md-min) {
+    height: 25vw;
+  }
+  @media screen and (max-width: $--screen-sm-min) {
+    height: 35vw;
+  }
+  @media screen and (max-width: $--screen-xs-min) {
+    position: static;
+    margin-bottom: 10px;
+    height: calc(91.4vw * 0.55);
+  }
+
   &:nth-child(2n-1) {
     grid-column: 1/5;
+
+    @media screen and (max-width: $--screen-md-min) {
+      grid-column: 1/6;
+    }
+    @media screen and (max-width: $--screen-sm-min) {
+      grid-column: 1/7;
+    }
+    @media screen and (max-width: $--screen-xs-min) {
+      grid-column: 1/10;
+    }
   }
 
   &:nth-child(2n) {
     grid-column: 4/8;
+
+    @media screen and (max-width: $--screen-md-min) {
+      grid-column: 5/10;
+    }
+    @media screen and (max-width: $--screen-sm-min) {
+      grid-column: 4/10;
+    }
+    @media screen and (max-width: $--screen-xs-min) {
+      grid-column: 1/10;
+    }
   }
 
   &__inner {
@@ -380,6 +465,10 @@ export default {
     right: 10px;
     text-align: center;
     font-size: inherit;
+
+    @media screen and (max-width: $--screen-md-min) {
+      font-size: .875rem;
+    }
   }
 
   &:hover {

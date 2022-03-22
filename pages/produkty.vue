@@ -51,8 +51,10 @@
               </div>
             </div>
           </div>
-          <!-- <div class="block-offset__content text-blocks plain only-mobile">
-            <div style="margin-bottom: 30px;"><img src="{% static 'img/equipment-m.svg' %}" alt="Оборудование"></div>
+          <div class="block-offset__content text-blocks plain only-mobile">
+            <div style="margin-bottom: 30px;">
+              <img src="../assets/img/equipment-m.svg" alt="Оборудование">
+            </div>
             <div class="text-blocks__col">
               <div class="text-blocks__item">
                 <h3 class="subtitle text-blocks__item-subtitle">Холодильники</h3>
@@ -79,15 +81,15 @@
                 <a class="btn large primary">Заказать</a>
               </div>
             </div>
-          </div> -->
+          </div>
         </div>
         <div class="block-offset grid-layout">
           <h2 class="title2 block-offset__title">Модуль управления
             <span class="no-word-break">yuma-smart</span></h2>
-          <!-- <div class="block-offset__content offset-sm text-blocks only-mobile plain">
+          <div class="block-offset__content offset-sm text-blocks only-mobile plain">
 
             <div class="text-blocks__item text-blocks__icon" style="margin: 0 auto 30px;">
-              <img src="{% static 'img/magic-module.svg' %}" alt="Модуль">
+              <img src="../assets/img/magic-module.svg" alt="Модуль">
             </div>
 
             <div class="text-blocks__col">
@@ -112,7 +114,7 @@
                 <a class="btn large primary">Заказать</a>
               </div>
             </div>
-          </div> -->
+          </div>
           <div class="block-offset__content offset-sm text-blocks hidden-mobile">
             <div class="text-blocks__col">
               <div class="text-blocks__item text-blocks__icon">
@@ -205,6 +207,19 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+
+@import '@/assets/scss/_variables.scss';
+
+.text-blocks__item.call-to-action {
+  @media screen and (max-width: $--screen-xs-min) {
+    text-align: center;
+
+    .btn {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+}
 
 </style>

@@ -76,6 +76,8 @@ export default {
 
 <style lang="scss">
 
+@import '@/assets/scss/_variables.scss';
+
 .collapsible__item {
     border-bottom: 2px solid;
 
@@ -88,6 +90,10 @@ export default {
         &__inner {
             max-width: 78.75%;
         }
+
+        @media screen and (max-width: $--screen-md-min) {
+            padding: 10px 0;
+        }
     }
 
     &--content {
@@ -97,6 +103,12 @@ export default {
 
         &__text {
             max-width: 62.5%;
+            @media screen and (max-width: $--screen-md-min) {
+                max-width: 77.777%;
+            }
+            @media screen and (max-width: $--screen-sm-min) {
+                max-width: 80%;
+            }
         }
 
         &__inner {
@@ -107,6 +119,14 @@ export default {
             display: flex;
             justify-content: space-between;
             margin-top: 30px;
+
+            @media screen and (max-width: $--screen-md-min) {
+                margin-top: 23px;
+            }
+            @media screen and (max-width: $--screen-sm-min) {
+                flex-direction: column;
+                margin-top: 20px;
+            }
         }
 
         &__step {
@@ -121,12 +141,29 @@ export default {
                 font-variation-settings: 'wght' 900;
                 margin-right: 20px;
             }
+
+            @media screen and (max-width: $--screen-md-min) {
+                max-width: 33.333%;
+                padding-right: 10px;
+
+                &:not(:last-child) {
+                    margin-bottom: 20px;
+                }
+            }
+            @media screen and (max-width: $--screen-sm-min) {
+                max-width: 100%;
+                padding: 0 10vw;
+            }
         }
 
     }
 
     &--arrow {
         transition: transform .5s ease-in-out;
+        @media screen and (max-width: $--screen-md-min) {
+            width: 19px;
+            height: 19px;
+        }
     }
 
     &.opened {
