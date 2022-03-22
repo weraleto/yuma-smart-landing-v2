@@ -13,8 +13,11 @@
             <span>с&nbsp;</span> <span class="header__title--personal">персональным</span>
           </div>
           <div class="header__title--line end-separated">
-            <!-- <span>мобильным <span class="only-desktop">приложением</span></span> -->
-            <span class="hidden-desktop">приложением</span>
+            <span>
+              мобильным 
+              <span class="only-desktop">приложением</span>
+            </span>
+            <!-- <span class="hidden-desktop">приложением</span> -->
           </div>
         </div>
 
