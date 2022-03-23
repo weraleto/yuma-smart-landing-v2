@@ -37,39 +37,13 @@
             </div>
         </div>
 
-        <!-- <div class="block-offset grid-layout">
-            <h2 class="title2 block-offset__title">оптимальные решения 
-                <span class="no-word-break">yuma-smart</span></h2>
+        <div class="block-offset grid-layout">
+          <h2 class="title2 block-offset__title">оптимальные решения
+            <span class="no-word-break">yuma-smart</span></h2>
 
-                <div class="translated-cards">
-                    <div v-for="(i, idx) in descisions" :key="idx" class="card translated-card__item {% if forloop.counter == 15 %} active {% else %} inactive {% endif %}">
-                        <div class="translated-card__item--front">
-                            <h5 class="subtitle">{{i.title}}</h5>
-                            <div class="translated-card__item--icon">
-                              <img :src="require('../assets/img/'+i.img+'.svg')" :alt="i.title">
-                            </div>
-                            <div class="translated-card__item--bottom">
-                                <small>Вам подойдет</small>
-                                <p class="subtitle">{{i.name}}<br>{{i.price}}</p>
+            <CardsTranslated :data="descisions" />
 
-                                <small>{{i.subtext}}</small>
-                            </div>
-                        </div>
-                       <div class="translated-card__item--overlay">
-                            <div class="translated-card__item--description">
-                              <div v-for="d in i.description" :key="d.title" class="translated-card__item--description-group">
-                                  <h4 class="subtitle">
-                                      {{d.title}}
-                                  </h4>
-                                  <p>{{d.text}}</p>
-                              </div>
-                            </div>
-                            <a href="#" class="btn large primary">Заказать</a>
-                        </div>
-                    </div>
-                </div>
-
-        </div> -->
+        </div>
 
         <div class="block-offset grid-layout">
             <h2 class="title2 block-offset__title">сервис <span class="no-word-break">yuma-smart.</span>
@@ -155,6 +129,7 @@
 import Infoblock from '@/components/infoblock'
 import LeadForm from '@/components/contact-form'
 import Collapse from '@/components/collapse'
+import CardsTranslated from '@/components/tranlsared-cards'
 import Partners from '@/components/partners'
 import YumaSmart from '@/components/svg/yuma-smart'
 export default {
@@ -164,7 +139,8 @@ export default {
     YumaSmart,
     LeadForm,
     Collapse,
-    Partners
+    Partners,
+    CardsTranslated
   },
   data: () => {
     return {
