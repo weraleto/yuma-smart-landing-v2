@@ -292,7 +292,9 @@ export default {
 }
 </script>
 
-<style lang="scss">@import '@/assets/scss/_variables.scss';
+<style lang="scss">
+
+@import '@/assets/scss/_variables.scss';
 
 .yuma-smart {
   margin-bottom: 70px;
