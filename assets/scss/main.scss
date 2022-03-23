@@ -41,14 +41,14 @@ body {
 }
 
 .hidden-tablet {
-    @media screen and (min-width: 428px) and (max-width: 1024px) {
+    @media screen and (min-width: $--screen-xxs-min) and (max-width: $--screen-md-min) {
         display: none;
     }
 }
 .only-tablet {
     display: none;
 
-    @media screen and (min-width: 428px) and (max-width: 1024px) {
+    @media screen and (min-width: $--screen-xxs-min) and (max-width: $--screen-md-min) {
         display: inherit;
     }
 }
@@ -122,7 +122,7 @@ body {
     font-variation-settings: 'wght'600;
 
     @media screen and (max-width: $--screen-lg-min) {
-        font-size: 6.04vw;
+        font-size: 5.84vw;
     }
     @media screen and (max-width: $--screen-md-min) {
         font-size: 6.25vw;
