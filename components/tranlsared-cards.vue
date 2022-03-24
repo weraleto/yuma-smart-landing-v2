@@ -1,9 +1,10 @@
 <template>
-    <div class="translated-cards" @mouseleave="activeCard = activeCardDefault">
-        <div v-for="(i, idx) in data" :key="idx"
-            class="card translated-card__item" :class="activeCard == idx ? 'active' : 'inactive'"
-            @mouseenter="debounce(idx)"
-            >
+    <div class="translated-cards">
+        <div v-for="(i, idx) in data" :key="idx" class="card translated-card__item" :class="{
+                'active': activeCard == idx, 
+                'hovered': hoveredCard == idx, 
+                'inactive': ![activeCard, hoveredCard].includes(idx)
+            }" @mouseenter="debounce(idx)" @mouseleave="cardLeave(idx)">
             <div class="translated-card__item--front">
                 <h5 class="subtitle">{{i.title}}</h5>
                 <div class="translated-card__item--icon">
@@ -41,7 +42,8 @@ export default {
     },
     data: () => {
         return {
-            activeCard: 0,
+            activeCard: null,
+            hoveredCard: 0,
             activeCardDefault: 0,
             timer: null
         }
@@ -52,8 +54,13 @@ export default {
                 clearInterval(this.timer)
             }
             this.timer = setTimeout(() => {
-                this.activeCard = idx
+                this.activeCard = idx;
+                this.hoveredCard = null
             }, 100)
+        },
+        cardLeave(idx) {
+            this.activeCard = null;
+            this.hoveredCard = idx;
         }
     }
 }
@@ -62,10 +69,6 @@ export default {
 <style lang="scss">
 
 @import '@/assets/scss/_variables.scss';
-
-
-/* card items */
-
 
 .translated-cards {
     display: flex;
@@ -97,34 +100,54 @@ export default {
     }
 }
 
-.translated-card__item.active {
-    flex-grow: 1;
-    max-width: calc(36% - 28px);
-    border-color: $--main-black;
-    min-height: 114%;
-    align-items: center;
-    
-    .translated-card__item--front {
-       opacity: 0; 
+.translated-card__item {
+
+    &.active,
+    &.hovered {
+        flex-grow: 1;
+        max-width: calc(36% - 28px);
+        border-color: $--main-black;
+        min-height: 114%;
+        align-items: center;
     }
-}
 
-.translated-card__item.inactive {
-    max-width: calc(33.333% - 28px);
+    &.active {
+        .translated-card__item--front {
+            opacity: 0;
+        }
+    }
 
-    .translated-card__item--overlay {
-        opacity: 0;
+    &.hovered {
+        .translated-card__item--overlay {
+            opacity: 0;
+        }
+    }
+
+    &.inactive {
+        max-width: calc(33.333% - 28px);
+    }
+
+    @media screen and (max-width: $--screen-md-min) {
+
+        &.active,
+        &.hovered {
+            max-width: calc(36% - 14px);
+        }
+
+        &.inactive {
+            max-width: calc(33.333% - 14px);
+        }
     }
 }
 
 .translated-card__item--front {
-    opacity: 0;
     max-width: 340px;
 }
 
 .translated-card__item--icon {
     width: 78%;
     margin: 50px auto 45px;
+
     @media screen and (max-width: $--screen-md-min) {
         margin: 20px auto;
     }
@@ -149,7 +172,7 @@ export default {
 
     @media screen and (max-width: $--screen-md-min) {
         padding: 30px 22px;
-        
+
         .btn.large {
             min-height: 40px;
         }
@@ -166,11 +189,13 @@ export default {
     @media screen and (max-width: $--screen-lg-min) {
         margin-bottom: 20px;
     }
+
     @media screen and (min-width: $--screen-md-min) and (max-width: $--screen-lg-min) {
         .subtitle {
             font-size: 22px;
         }
     }
+
     @media screen and (max-width: $--screen-md-min) {
         p {
             font-size: 14px;
@@ -187,6 +212,7 @@ export default {
     flex-direction: column;
     justify-content: center;
 }
+
 .translated-card__item--description-group:not(:last-child) {
     margin-bottom: 10px;
 }
@@ -196,19 +222,19 @@ export default {
         animation: fadein ease-in .4s forwards .4s;
         z-index: 2;
     }
+
     .translated-card__item--front {
         animation: fadeout ease-out .35s forwards;
     }
 }
-.translated-card__item.inactive {
+
+.translated-card__item.hovered {
     .translated-card__item--overlay {
-        animation: fadeout ease-out .35s forwards ;
+        animation: fadeout ease-out .35s forwards;
     }
+
     .translated-card__item--front {
-        animation: fadein ease-in .4s forwards .4s;
+        animation: fadein ease-in .4s forwards;
     }
 }
-
-
-
 </style>
