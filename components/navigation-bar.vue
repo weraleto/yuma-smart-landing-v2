@@ -256,6 +256,8 @@ export default {
         padding: 8px 25px 25px;
     }
     @media screen and (max-width: $--screen-md-min) {
+        display: flex;
+        flex-direction: column;
         position: static;
         max-height: 0;
         overflow: hidden;
