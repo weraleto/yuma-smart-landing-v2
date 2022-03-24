@@ -204,8 +204,11 @@ export default {
     }
 
     &-btn {
+        width: 100%;
+        @media screen and (min-width: $--screen-md-min) {
+            max-width: 180px;
+        }
         @media screen and (max-width: $--screen-md-min) {
-            width: 100%;
             flex-grow: 1;
             display: flex;
             align-items: flex-end;
