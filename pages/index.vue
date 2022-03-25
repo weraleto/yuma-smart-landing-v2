@@ -22,6 +22,9 @@
         </div>
 
         <Infoblock button_type="primary" button_text="Начать" text="Продавайте свежую еду и напитки без персонала. Запускайте акции и программы лояльности через приложение." />
+        <div>
+          <img src="~assets/img/main.svg" alt="" srcset="">
+        </div>
       </div>
 
     </header>
