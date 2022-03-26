@@ -124,6 +124,7 @@
             в россии</h2>
         <Partners />
     </div>
+    <LeadForm theme="light" title="начнем? это легко" subtitle="Расскажем. Подключим. Обучим." />
 </main>
   </div>
 </template>

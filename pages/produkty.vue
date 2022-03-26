@@ -195,15 +195,18 @@
         <Infoblock
           text="Мы продумали простой процесс подключения, включающий всего 5 шагов к вашей прибыли." />
       </div>
-
+      <LeadForm theme="light" title="Понравился наш продукт?" subtitle="Расскажем. Подключим. Обучим." />
 
     </main>
   </div>
 </template>
 
 <script>
+import LeadForm from '@/components/contact-form'
 export default {
-
+components: {
+    LeadForm
+  },
 }
 </script>
 
