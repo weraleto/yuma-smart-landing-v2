@@ -23,7 +23,11 @@
                     </div>
                     <a :href="`tel:${citySelected.phone}`"
                         class="text5 text-bold navigation-link__tel">{{citySelected.phone}}</a>
-                    <div class="navigation-btn"><a href="#" class="btn medium outlined">связаться с нами</a></div>
+                    <div class="navigation-btn">
+                        <a href="#" 
+                            @click.prevent="mobileMenuOpened=false; $store.commit('setShowModal', {key: 'showContactForm', val: true})"
+                        class="btn medium outlined">связаться с нами</a>
+                    </div>
                 </div>
                 <div class="navigation-burger hidden-desktop" @click="mobileMenuOpened=!mobileMenuOpened">
                     <img v-if="mobileMenuOpened" src="../assets/img/cross.svg" alt="Закрыть меню">

@@ -22,7 +22,9 @@
                         Я согласен с политикой обработки персональных данных.
                     </label>
                 </div>
-                <button type="submit" class="btn large {% if theme == 'dark' %} primary {% else %} outlined {% endif %}">отправить</button>
+                <button type="submit" class="btn large" 
+                    :class="theme == 'dark' ? 'primary' : 'outlined'"
+                >отправить</button>
             </form>
         </div>
     </div>
@@ -43,7 +45,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss" >
 
 @import '@/assets/scss/_variables.scss';
 

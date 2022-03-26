@@ -121,6 +121,8 @@ body {
 
 .body-scroll-lock {
     overflow: hidden;
+    max-width: 100vw;
+    max-height: 100vh;
 }
 
 .title1 {
@@ -298,6 +300,11 @@ input, textarea {
         }
     }
 
+}
+
+textarea {
+    resize: none;
+    min-height: 130px;
 }
 
 input[type=checkbox] {
