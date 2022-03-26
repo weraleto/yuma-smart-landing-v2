@@ -6,33 +6,39 @@
                 <img src="~assets/img/cross.svg" alt="Закрыть форму">
             </div>
             <div class="form-modal__content">
-                <div class="contact-form__form-group">
-                    <label class="contact-form__label text6" for="">Ваше Имя</label>
-                    <input class="light" type="text" placeholder="Иван Иванов">
-                </div>
-                <div class="contact-form__form-group">
-                    <label class="contact-form__label text6" for="">Ваш телефон</label>
-                    <input class="light" type="text" placeholder="+7 (ХХХ) ХХХ ХХ ХХ">
-                </div>
-                <div class="contact-form__form-group" v-if="showTextarea">
-                    <label class="contact-form__label text6" for="">Сообщение (по желанию)</label>
-                    <textarea class="light" type="text" placeholder="Напишите что-нибудь" />
-                </div>
-                <div class="contact-form__form-group">
-                    <label class="label_checkbox text6" :for="`policy_${formAction}`">
-                        <input type="checkbox" :name="`policy_${formAction}`" :id="`policy_${formAction}`">
-                        Я согласен с политикой обработки персональных данных.
-                    </label>
-                </div>
-                <button type="submit" class="btn large primary">отправить</button>
-                <div class="form-modal__contacts" v-if="showContactQr">
-                    <p class="text6">
-                        Или свяжитесь с нами через любой удобный месседжер
-                    </p>
-                    <div class="form-modal__contacts--qrs">
-                        <div><img src="~assets/img/telegram-qr.svg" alt="Контакт telegram"></div>
-                        <div><img src="~assets/img/QR-wa.svg" alt="Контакт whatsapp"></div>
+                <form action="" v-if="!formSubmitted">
+                    <div class="contact-form__form-group">
+                        <label class="contact-form__label text6" for="">Ваше Имя</label>
+                        <input class="light" type="text" placeholder="Иван Иванов">
                     </div>
+                    <div class="contact-form__form-group">
+                        <label class="contact-form__label text6" for="">Ваш телефон</label>
+                        <input class="light" type="text" placeholder="+7 (ХХХ) ХХХ ХХ ХХ">
+                    </div>
+                    <div class="contact-form__form-group" v-if="showTextarea">
+                        <label class="contact-form__label text6" for="">Сообщение (по желанию)</label>
+                        <textarea class="light" type="text" placeholder="Напишите что-нибудь" />
+                    </div>
+                    <div class="contact-form__form-group">
+                        <label class="label_checkbox text6" :for="`policy_${formAction}`">
+                            <input type="checkbox" :name="`policy_${formAction}`" :id="`policy_${formAction}`">
+                            Я согласен с политикой обработки персональных данных.
+                        </label>
+                    </div>
+                    <button type="submit" @click="formSubmitted=true" class="btn large primary">отправить</button>
+                    <div class="form-modal__contacts" v-if="showContactQr">
+                        <p class="text6">
+                            Или свяжитесь с нами через любой удобный месседжер
+                        </p>
+                        <div class="form-modal__contacts--qrs">
+                            <div><img src="~assets/img/telegram-qr.svg" alt="Контакт telegram"></div>
+                            <div><img src="~assets/img/QR-wa.svg" alt="Контакт whatsapp"></div>
+                        </div>
+                    </div>
+                </form>
+                <div class="form-modal__thankyou" v-else>
+                    <div class="subtitle">Отправлено!</div>
+                    <p class="text6">Наш менеджер свяжется с вами в ближайшее время</p>
                 </div>
             </div>
             
@@ -56,6 +62,11 @@ export default {
             type: Boolean,
             default: false
         },
+    },
+    data: () => {
+        return {
+            formSubmitted: false
+        }
     }
 
 }
@@ -130,9 +141,19 @@ export default {
         }
     }
 
+    &__thankyou {
+        text-align: center;
+        position: relative;
+        transform: translate(0, -100%);
+
+        .subtitle {
+            margin-bottom: 20px;
+        }
+    }
+
     @media screen and (max-width: $--screen-sm-min) {
         padding: 54px 38px 50px;
-        min-height: unset;
+        min-height: 95vh;
         &.small, &.medium {
             max-width: calc(100% - 60px);
         }
@@ -142,6 +163,11 @@ export default {
         }
         &__contacts {
             margin-top: 30px;
+        }
+        &__thankyou {
+            .subtitle {
+                margin-bottom: 10px;
+            }
         }
     }
     @media screen and (max-width: $--screen-xxs-min) {
