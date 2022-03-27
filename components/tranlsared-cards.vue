@@ -26,14 +26,18 @@
                         <p>{{d.text}}</p>
                     </div>
                 </div>
-                <a href="#" class="btn large primary">Заказать</a>
+                <ApplicationFormTrigger />
             </div>
         </div>
     </div>
 </template>
 
 <script>
+import ApplicationFormTrigger from '@/components/call-to-action-btn'
 export default {
+    components: {
+        ApplicationFormTrigger
+    },
     props: {
         data: {
             default: Array,

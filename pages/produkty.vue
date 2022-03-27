@@ -32,7 +32,7 @@
               </div>
               <div class="text-blocks__item">
                 <h3 class="subtitle text-blocks__item-subtitle">Стоимость<br>от 90 тыс. ₽</h3>
-                <a class="btn large primary">Заказать</a>
+                <ApplicationFormTrigger />
               </div>
             </div>
             <div class="text-blocks__col">
@@ -78,7 +78,7 @@
               </div>
               <div class="text-blocks__item call-to-action">
                 <h3 class="subtitle text-blocks__item-subtitle">Стоимость<br>от 90 тыс. ₽</h3>
-                <a class="btn large primary">Заказать</a>
+                <ApplicationFormTrigger />
               </div>
             </div>
           </div>
@@ -111,7 +111,7 @@
             <div class="text-blocks__col">
               <div class="text-blocks__item call-to-action">
                 <h3 class="subtitle text-blocks__item-subtitle">Стоимость<br>от 20 тыс. ₽</h3>
-                <a class="btn large primary">Заказать</a>
+                <ApplicationFormTrigger />
               </div>
             </div>
           </div>
@@ -138,7 +138,7 @@
               </div>
               <div class="text-blocks__item">
                 <h3 class="subtitle text-blocks__item-subtitle">Стоимость<br>от 20 тыс. ₽</h3>
-                <a class="btn large primary">Заказать</a>
+                <ApplicationFormTrigger />
               </div>
             </div>
           </div>
@@ -161,7 +161,7 @@
               </div>
               <div class="text-blocks__item hidden-mobile">
                 <h3 class="subtitle text-blocks__item-subtitle">Стоимость<br>7% от оборота</h3>
-                <a class="btn large primary">Заказать</a>
+                <ApplicationFormTrigger />
               </div>
             </div>
             <div class="text-blocks__col">
@@ -181,7 +181,10 @@
               </div>
               <div class="text-blocks__item call-to-action only-mobile">
                 <h3 class="subtitle text-blocks__item-subtitle">Стоимость<br>7% от оборота</h3>
-                <a class="btn large primary">Заказать</a>
+                <a 
+                  class="btn large primary"
+                  @click.prevent="$store.commit('setShowModal', {key: 'showApplyForm', val: true})"
+                >Заказать</a>
               </div>
             </div>
           </div>
@@ -203,9 +206,11 @@
 
 <script>
 import LeadForm from '@/components/contact-form'
+import ApplicationFormTrigger from '@/components/call-to-action-btn'
 export default {
-components: {
-    LeadForm
+  components: {
+    LeadForm,
+    ApplicationFormTrigger
   },
 }
 </script>
