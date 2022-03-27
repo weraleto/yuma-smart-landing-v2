@@ -1,7 +1,5 @@
 <template>
-  <div class="app"
-    :class="{'body-scroll-lock': isModalOpened}"
-  >
+  <div class="app">
     <Navbar />
     <nuxt />
     <Footer />
@@ -35,6 +33,15 @@ export default {
         ]),
         isModalOpened() {
             return this.showContactForm || this.showApplyForm
+        }
+    },
+    watch: {
+        isModalOpened(val) {
+            if (val) {
+                document.body.classList.add('body-scroll-lock')
+            } else {
+                document.body.classList.remove('body-scroll-lock')
+            }
         }
     }
 
