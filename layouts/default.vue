@@ -6,12 +6,14 @@
 
     <FormModal 
         form-action="contact"
+        action-button-text="Заказать звонок"
         :show-contact-qr="true"
         v-if="$store.state.showContactForm"
         @close="$store.commit('setShowModal', {key: 'showContactForm', val: false})" />
     <FormModal 
         form-action="application"
         form-size="medium"
+        action-button-text="Отправить заявку"
         :show-textarea="true"
         v-if="$store.state.showApplyForm"
         @close="$store.commit('setShowModal', {key: 'showApplyForm', val: false})" />

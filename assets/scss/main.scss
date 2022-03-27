@@ -266,6 +266,18 @@ body {
             border-color: #E4E4E4;
         }
     }
+
+    &.arrowed {
+        &::after {
+            content: '';
+            display: block;
+            width: 15px;
+            height: 15px;
+            background: url('~assets/img/arrow-right-up.svg');
+            background-size: cover;
+            margin-left: 21.5px;
+        }
+    }
 }
 
 input, textarea {

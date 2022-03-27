@@ -25,7 +25,9 @@
                             Я согласен с политикой обработки персональных данных.
                         </label>
                     </div>
-                    <button type="submit" @click="formSubmitted=true" class="btn large primary">отправить</button>
+                    <button type="submit" @click="formSubmitted=true" class="btn large primary arrowed">
+                        {{actionButtonText}}
+                    </button>
                     <div class="form-modal__contacts" v-if="showContactQr">
                         <p class="text6">
                             Или свяжитесь с нами через любой удобный месседжер
@@ -62,6 +64,10 @@ export default {
             type: Boolean,
             default: false
         },
+        actionButtonText: {
+            type: String,
+            default: 'Отправить'
+        }
     },
     data: () => {
         return {
