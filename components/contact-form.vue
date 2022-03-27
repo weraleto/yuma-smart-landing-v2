@@ -41,6 +41,10 @@ export default {
         title: String,
         subtitle: String,
         small: String,
+        actionButtonText: {
+            type: String,
+            default: 'Отправить'
+        },
     }
 }
 </script>

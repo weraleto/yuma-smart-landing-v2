@@ -84,7 +84,13 @@
         </div>
 
     </div>    
-    <LeadForm theme="dark" title="Получите скидку 5%" subtitle="на любое торговое оборудование" small="Акция действует до 01/05/2022" />
+    <LeadForm 
+      theme="dark" 
+      title="Получите скидку 5%" 
+      subtitle="на любое торговое оборудование" 
+      small="Акция действует до 01/05/2022" 
+      action-button-text="Получить скидку"
+    />
         
 
     <div class="container pb-small">
