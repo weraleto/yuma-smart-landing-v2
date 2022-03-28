@@ -569,3 +569,20 @@ input[type=checkbox] {
         }
     }
 } 
+
+.text-page-block {
+    &:not(:last-child) {
+        margin-bottom: 70px;
+    }
+    h2 {
+        margin-bottom: 20px;
+    }
+    p, ul {
+        margin: 1em 0;
+    }
+}
+
+li {
+    list-style-position: inside;
+    margin: .5em 0 .5em 1em;
+}

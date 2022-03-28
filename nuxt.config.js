@@ -3,7 +3,7 @@ export default {
   head: {
     title: 'yuma-smart-v2',
     htmlAttrs: {
-      lang: 'en'
+      lang: 'ru'
     },
     meta: [
       { charset: 'utf-8' },

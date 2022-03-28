@@ -11,7 +11,7 @@
                 <p class="text6 footer-top__contact-description">Москва, Нововладыкинский проезд, 2с1, метро Владыкино</p>
             </div>
             <div class="footer-col-2">
-                <a href="#" class="footer-top__link text6">Наши продукты</a>
+                <NuxtLink to="/produkty" class="footer-top__link text6">Наши продукты</NuxtLink>
                 <a href="#" class="footer-top__link text6">Как заказать</a>
             </div>
             <div class="footer-col-2">
@@ -23,8 +23,8 @@
                 <a href="mailto:sales@yuma.biz" class="footer-top__link text6">sales@yuma.biz</a>
             </div>
             <div class="footer-col-3">
-                <a href="#" class="footer-top__link text6">Пользовательское соглашение</a>
-                <a href="#" class="footer-top__link text6">Политика конфиденциальности</a>
+                <NuxtLink to="/polzovatelskoe-soglashenie" class="footer-top__link text6">Пользовательское соглашение</NuxtLink>
+                <NuxtLink to="/politika" class="footer-top__link text6">Политика конфиденциальности</NuxtLink>
             </div>
         </div>
     </div>
