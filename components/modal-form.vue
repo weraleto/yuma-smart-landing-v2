@@ -9,23 +9,46 @@
                 <form action="" v-if="!formSubmitted">
                     <div class="contact-form__form-group">
                         <label class="contact-form__label text6" for="">Ваше Имя</label>
-                        <input class="light" type="text" placeholder="Иван Иванов">
+                        <input v-model="form.name" class="light"
+                            :class="{'invalid': !formValidation.name.result}"
+                            type="text" placeholder="Иван Иванов">
+                        <small v-show="!formValidation.name.result" class="invalid-message">
+                            {{formValidation.name.errorMessage}}
+                        </small>
                     </div>
                     <div class="contact-form__form-group">
                         <label class="contact-form__label text6" for="">Ваш телефон</label>
-                        <input class="light" type="text" placeholder="+7 (ХХХ) ХХХ ХХ ХХ">
+                        <MaskedInput 
+                            v-model="form.phone" 
+                            class="light" 
+                            :class="{'invalid': !formValidation.phone.result}"
+                            type="text" 
+                            :mask="['+', '7', ' ', '(', /\d/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, ' ', /\d/, /\d/, ' ', /\d/, /\d/]"
+                            placeholder="+7 (ХХХ) ХХХ ХХ ХХ"
+                            placeholderChar="Х"
+                        />
+                        <small v-show="!formValidation.phone.result" class="invalid-message">
+                            {{formValidation.phone.errorMessage}}
+                        </small>
                     </div>
                     <div class="contact-form__form-group" v-if="showTextarea">
                         <label class="contact-form__label text6" for="">Сообщение (по желанию)</label>
-                        <textarea class="light" type="text" placeholder="Напишите что-нибудь" />
+                        <textarea v-model="form.message" class="light" type="text" placeholder="Напишите что-нибудь" />
                     </div>
                     <div class="contact-form__form-group">
                         <label class="label_checkbox text6" :for="`policy_${formAction}`">
-                            <input type="checkbox" :name="`policy_${formAction}`" :id="`policy_${formAction}`">
-                            Я согласен с политикой обработки персональных данных.
+                            <input v-model="policyAgree" type="checkbox" :name="`policy_${formAction}`" :id="`policy_${formAction}`">
+                            <div>
+                                Я согласен с политикой обработки персональных данных.
+                               <div>
+                                    <small v-show="!formValidation.policy.result" class="invalid-message">
+                                    {{formValidation.policy.errorMessage}}
+                                </small>
+                               </div>
+                            </div>
                         </label>
                     </div>
-                    <button type="submit" @click="formSubmitted=true" class="btn large primary arrowed">
+                    <button type="submit" @click.prevent="submitForm" class="btn large primary arrowed">
                         {{actionButtonText}}
                     </button>
                     <div class="form-modal__contacts" v-if="showContactQr">
@@ -49,7 +72,12 @@
 </template>
 
 <script>
+import MaskedInput from 'vue-text-mask'
+import {formMixin} from '@/mixins/mixins'
+
 export default {
+    mixins: [formMixin],
+    components: {MaskedInput},
     props: {
         formSize: {
             type: String,
@@ -69,12 +97,6 @@ export default {
             default: 'Отправить'
         }
     },
-    data: () => {
-        return {
-            formSubmitted: false
-        }
-    }
-
 }
 </script>
 

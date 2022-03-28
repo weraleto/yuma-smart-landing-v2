@@ -311,7 +311,13 @@ input, textarea {
             background-color: #E4E4E4;
         }
     }
+    &.invalid {
+        border-color: $--color-error !important;
+    }
+}
 
+.invalid-message {
+    color: $--color-error;
 }
 
 textarea {

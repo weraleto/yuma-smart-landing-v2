@@ -10,29 +10,69 @@
             <form action="#" class="contact-form__form">
                 <div class="contact-form__form-group">
                     <label class="contact-form__label text6" for="">Ваше Имя</label>
-                    <input type="text" placeholder="Иван Иванов">
+                    <input v-model="form.name" 
+                        :class="{'invalid': !formValidation.name.result}" 
+                        type="text" 
+                        placeholder="Иван Иванов"
+                    >
+                    <small v-show="!formValidation.name.result" class="invalid-message">
+                        {{formValidation.name.errorMessage}}
+                    </small>
                 </div>
                 <div class="contact-form__form-group">
                     <label class="contact-form__label text6" for="">Ваш телефон</label>
-                    <input type="text" placeholder="+7 (ХХХ) ХХХ ХХ ХХ">
+                    <MaskedInput 
+                        v-model="form.phone" 
+                        class="light" 
+                        type="text" 
+                        :class="{'invalid': !formValidation.phone.result}"
+                        :mask="['+', '7', ' ', '(', /\d/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, ' ', /\d/, /\d/, ' ', /\d/, /\d/]"
+                        placeholder="+7 (ХХХ) ХХХ ХХ ХХ"
+                        placeholderChar="Х"
+                    />
+                    <small v-show="!formValidation.phone.result" class="invalid-message">
+                        {{formValidation.phone.errorMessage}}
+                    </small>
                 </div>
                 <div class="contact-form__form-group">
                     <label class="label_checkbox text6" :for="`policy_${theme}`">
-                        <input type="checkbox" name="policy" :id="`policy_${theme}`">
-                        Я согласен с политикой обработки персональных данных.
+                        <input v-model="policyAgree" type="checkbox" name="policy" :id="`policy_${theme}`">
+                        <div>
+                            Я согласен с политикой обработки персональных данных.
+                            <div>
+                                <small v-show="!formValidation.policy.result" class="invalid-message">
+                                {{formValidation.policy.errorMessage}}
+                            </small>
+                            </div>
+                        </div>
                     </label>
                 </div>
                 <button type="submit" class="btn large" 
                     :class="theme == 'dark' ? 'primary' : 'outlined'"
-                >отправить</button>
+                    @click.prevent="submitForm"
+                >{{actionButtonText}}</button>
             </form>
+            <div v-if="formSubmitted" class="contact-form__thankyou">
+                <div class="contact-form__thankyou--close"
+                    @click="formSubmitted=false"
+                >
+                    <img src="~assets/img/cross.svg" alt="Закрыть форму">
+                </div>
+                <div class="subtitle">Отправлено!</div>
+                <p class="text6">Наш менеджер свяжется с вами в ближайшее время</p>
+            </div>
         </div>
     </div>
 </div>
 </template>
 
 <script>
+import MaskedInput from 'vue-text-mask'
+import {formMixin} from '@/mixins/mixins'
+
 export default {
+    mixins: [formMixin],
+    components: {MaskedInput},
     props: {
         theme: {
             type: String,
@@ -45,7 +85,7 @@ export default {
             type: String,
             default: 'Отправить'
         },
-    }
+    },
 }
 </script>
 
@@ -56,12 +96,18 @@ export default {
 .contact-form {
     padding: 100px 0;
 
+    &.submitted {
+        padding: 89px 0;
+    }
+
     &__container {
+        position: relative;
         grid-column: 3/9;
         display: flex;
         justify-content: space-between;
+        align-items: center;
         
-        @media screen and (max-width: $--screen-md-min) {
+        @media screen and (max-width: 1180px) {
             grid-column: 2/10;
         }
         @media screen and (max-width: $--screen-sm-min) {
@@ -116,6 +162,56 @@ export default {
         @media screen and (max-width: $--screen-sm-min) {
             text-align: left;
         }
+    }
+
+    &__thankyou {
+        position: absolute;
+        background-color: $--main-white;
+        width: 360px;
+        height: 322px;
+        border-radius: 30px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 30px 69px;
+        right: 0;
+        color: $--main-black;
+        transform: translate(3.20vw, 0);
+
+
+        &--close {
+            position: absolute;
+            width: 24px;
+            top: 30px;
+            right: 30px;
+            cursor: pointer;
+        }
+
+        .subtitle {
+            margin-bottom: 20px;
+            @media screen and (max-width: $--screen-sm-min) {
+                margin-bottom: 10px;
+            }
+        }
+        @media screen and (max-width: $--screen-md-min) {
+            height: 100%;
+            width: 35vw;
+        }
+        @media screen and (max-width: $--screen-sm-min) {
+            height: 279.391px;
+            width: 100%;
+            bottom: 0;
+            transform: none;
+        }
+        @media screen and (max-width: 595px) {
+            height: 296.188px;
+        }
+        @media screen and (max-width: 355px) {
+            height: 312.984px;
+        }
+        
     }
 
     &.theme-light {
