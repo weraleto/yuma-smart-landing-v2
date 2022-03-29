@@ -141,6 +141,10 @@ export default {
         &.inactive {
             max-width: calc(33.333% - 14px);
         }
+
+        .subtitle {
+            font-size: 18px;
+        }
     }
 }
 
@@ -192,12 +196,6 @@ export default {
 
     @media screen and (max-width: $--screen-lg-min) {
         margin-bottom: 20px;
-    }
-
-    @media screen and (min-width: $--screen-md-min) and (max-width: $--screen-lg-min) {
-        .subtitle {
-            font-size: 22px;
-        }
     }
 
     @media screen and (max-width: $--screen-md-min) {
