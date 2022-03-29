@@ -5,7 +5,12 @@
             {{text}}
         </div>
 
-        <a href="" @click.prevent v-if="button_type" class="infoblock__button btn large" :class="button_type">{{button_text}}</a>
+        <a href="" 
+            v-if="button_type" 
+            @click.prevent="$store.commit('setShowModal', {key: 'showApplyForm', val: true})" 
+            class="infoblock__button btn large" 
+            :class="button_type"
+        >{{button_text}}</a>
     </div>
 </div>
 </template>

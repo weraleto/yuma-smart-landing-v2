@@ -5,7 +5,7 @@
             class="collapsible__item"
             :class="{
                 'opened': activeItem > -1 && activeItem == idx,
-                extra_class
+                extra_class: extra_class && extra_class.length
             }"
             @click="handleTabChange(idx)"
             >
