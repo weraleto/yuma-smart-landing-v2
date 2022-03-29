@@ -15,7 +15,9 @@
                         type="text" 
                         placeholder="Иван Иванов"
                     >
-                    <small v-show="!formValidation.name.result" class="invalid-message">
+                    <small class="invalid-message"
+                        :class="{'opened': !formValidation.name.result}"
+                    >
                         {{formValidation.name.errorMessage}}
                     </small>
                 </div>
@@ -26,11 +28,13 @@
                         class="light" 
                         type="text" 
                         :class="{'invalid': !formValidation.phone.result}"
-                        :mask="['+', '7', ' ', '(', /\d/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, ' ', /\d/, /\d/, ' ', /\d/, /\d/]"
+                        :mask="phoneMask"
                         placeholder="+7 (ХХХ) ХХХ ХХ ХХ"
-                        placeholderChar="Х"
+                        placeholderChar="_"
                     />
-                    <small v-show="!formValidation.phone.result" class="invalid-message">
+                    <small class="invalid-message"
+                        :class="{'opened': !formValidation.phone.result}"
+                    >
                         {{formValidation.phone.errorMessage}}
                     </small>
                 </div>
@@ -40,7 +44,9 @@
                         <div>
                             Я согласен с политикой обработки персональных данных.
                             <div>
-                                <small v-show="!formValidation.policy.result" class="invalid-message">
+                                <small class="invalid-message"
+                                    :class="{'opened': !formValidation.policy.result}"
+                                >
                                 {{formValidation.policy.errorMessage}}
                             </small>
                             </div>
@@ -114,7 +120,6 @@ export default {
             grid-column: 1/6;
             flex-direction: column;
             align-items: center;
-            text-align: center;
         }
     }
 
@@ -132,6 +137,7 @@ export default {
         @media screen and (max-width: $--screen-sm-min) {
             max-width: 61.1%;
             margin-bottom: 30px;
+            text-align: center;
         }
     }
 

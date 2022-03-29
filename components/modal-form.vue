@@ -12,7 +12,7 @@
                         <input v-model="form.name" class="light"
                             :class="{'invalid': !formValidation.name.result}"
                             type="text" placeholder="Иван Иванов">
-                        <small v-show="!formValidation.name.result" class="invalid-message">
+                        <small class="invalid-message" :class="{'opened': !formValidation.name.result}">
                             {{formValidation.name.errorMessage}}
                         </small>
                     </div>
@@ -23,11 +23,12 @@
                             class="light" 
                             :class="{'invalid': !formValidation.phone.result}"
                             type="text" 
-                            :mask="['+', '7', ' ', '(', /\d/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, ' ', /\d/, /\d/, ' ', /\d/, /\d/]"
+                            :mask="phoneMask"
                             placeholder="+7 (ХХХ) ХХХ ХХ ХХ"
-                            placeholderChar="Х"
+                            placeholderChar="_"
                         />
-                        <small v-show="!formValidation.phone.result" class="invalid-message">
+                        <!-- v-show="!formValidation.phone.result" -->
+                        <small class="invalid-message" :class="{'opened': !formValidation.phone.result}">
                             {{formValidation.phone.errorMessage}}
                         </small>
                     </div>
@@ -41,9 +42,11 @@
                             <div>
                                 Я согласен с политикой обработки персональных данных.
                                <div>
-                                    <small v-show="!formValidation.policy.result" class="invalid-message">
+                                    <small class="invalid-message" 
+                                        :class="{'opened': !formValidation.policy.result}"
+                                    >
                                     {{formValidation.policy.errorMessage}}
-                                </small>
+                                    </small>
                                </div>
                             </div>
                         </label>

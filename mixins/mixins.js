@@ -12,7 +12,8 @@ export const formMixin = {
                 name: {result: true, errorMessage: ''},
                 phone: {result: true, errorMessage: ''},
                 policy: {result: true, errorMessage: ''},
-            }
+            },
+            phoneMask: ['+', '7', ' ', '(', /\d/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, ' ', '-', ' ', /\d/, /\d/, ' ', '-', ' ', /\d/, /\d/]
         }
     },
     computed: {
@@ -22,7 +23,7 @@ export const formMixin = {
                 resultObject.result = false
                 resultObject.errorMessage = 'Поле должно быть заполнено'
             }
-            else if (!(this.form.name).match(/[\a-zа-я]+/ig)) {
+            else if (!(this.form.name).match(/^[\a-zа-я]+$/ig)) {
                 resultObject.result = false
                 resultObject.errorMessage = 'Поле должно содержать только символы букв'
             }
@@ -30,7 +31,7 @@ export const formMixin = {
         },
         phoneValid() {
             let resultObject = {result: true, errorMessage: ''}
-            if (!this.form.phone || !this.form.phone.length || !(this.form.phone).match(/\+7 \(\d{3}\) \d{3} \d{2} \d{2}/)) {
+            if (!this.form.phone || !this.form.phone.length || !(this.form.phone).match(/\+7 \(\d{3}\) \d{3} - \d{2} - \d{2}/)) {
                 resultObject.result = false
                 resultObject.errorMessage = 'Поле должно быть заполнено'
             }
@@ -49,8 +50,12 @@ export const formMixin = {
         checkForm() {
             let checks = []
             for (let fieldName in this.formValidation) {
-                this.formValidation[fieldName] = this[`${fieldName}Valid`]
+                this.formValidation[fieldName].result = this[`${fieldName}Valid`].result
                 checks.push(this.formValidation[fieldName].result)
+
+                setTimeout(()=> {
+                    this.formValidation[fieldName].errorMessage = this[`${fieldName}Valid`].errorMessage
+                }, 200)
             }
             return checks.every(function(it){return it === true})
                         
