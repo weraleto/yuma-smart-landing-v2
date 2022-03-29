@@ -20,9 +20,9 @@ export const formMixin = {
             let resultObject = {result: true, errorMessage: ''}
             if (!this.form.name || !this.form.name.length) {
                 resultObject.result = false
-                resultObject.errorMessage = 'Поле не может быть пустым'
+                resultObject.errorMessage = 'Поле должно быть заполнено'
             }
-            else if (!(this.form.name).match(/[\wа-я]+/ig)) {
+            else if (!(this.form.name).match(/[\a-zа-я]+/ig)) {
                 resultObject.result = false
                 resultObject.errorMessage = 'Поле должно содержать только символы букв'
             }
@@ -30,13 +30,9 @@ export const formMixin = {
         },
         phoneValid() {
             let resultObject = {result: true, errorMessage: ''}
-            if (!this.form.phone || !this.form.phone.length) {
+            if (!this.form.phone || !this.form.phone.length || !(this.form.phone).match(/\+7 \(\d{3}\) \d{3} \d{2} \d{2}/)) {
                 resultObject.result = false
-                resultObject.errorMessage = 'Поле не может быть пустым'
-            }
-            else if (!(this.form.phone).match(/\+7 \(\d{3}\) \d{3} \d{2} \d{2}/)) {
-                resultObject.result = false
-                resultObject.errorMessage = 'Номер введен некорректно или не полностью'
+                resultObject.errorMessage = 'Поле должно быть заполнено'
             }
             return resultObject
         },
@@ -44,7 +40,7 @@ export const formMixin = {
             let resultObject = {result: true, errorMessage: ''}
             if (!this.policyAgree) {
                 resultObject.result = false
-                resultObject.errorMessage = 'Необходимо согласиться с политикой обработки персональных данных'
+                resultObject.errorMessage = 'Необходимо дать согласие.'
             }
             return resultObject
         }
