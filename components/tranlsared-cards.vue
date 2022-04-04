@@ -156,10 +156,6 @@ export default {
     position: relative;
     padding: 50px 31px 40px;
 
-    @media screen and (max-width: $--screen-lg-min) {
-        padding: 30px 22px;
-    }
-
     &.active,
     &.hovered {
         flex-grow: 1;
@@ -187,7 +183,11 @@ export default {
         min-width: calc(33.333% - 28px);
     }
 
-    @media screen and (max-width: $--screen-md-min) {
+    @media screen and (max-width: $--screen-lg-min) {
+        padding: 30px 22px;
+    }
+
+    @media screen and (min-width: $--screen-sm-min) and (max-width: $--screen-md-min) {
 
         &.active,
         &.hovered {
@@ -209,7 +209,6 @@ export default {
         &.active,
         &.hovered {
             min-height: 100%;
-            flex-shrink: 0;
         }
 
         &.active,
@@ -218,9 +217,6 @@ export default {
             flex-shrink: 0;
             min-width: unset;
             max-width: unset;
-        }
-        .subtitle {
-            font-size: 18px;
         }
     }
 }
@@ -244,7 +240,6 @@ export default {
     }
     @media screen and (max-width: $--screen-sm-min) {
         width: 100%;
-        margin: 20px auto;
     }
 }
 
@@ -293,6 +288,19 @@ export default {
     justify-content: center;
     margin-bottom: 50px;
 
+    &-group {
+        width: 100%;
+        max-width: 380px;
+        flex: 0.2 1 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        &:not(:last-child) {
+            margin-bottom: 10px;
+        }
+    }
+
     @media screen and (max-width: $--screen-lg-min) {
         margin-bottom: 20px;
     }
@@ -306,18 +314,6 @@ export default {
     }
 }
 
-.translated-card__item--description-group {
-    width: 100%;
-    max-width: 380px;
-    flex: 0.2 1 auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.translated-card__item--description-group:not(:last-child) {
-    margin-bottom: 10px;
-}
 
 .translated-card__item.active {
     .translated-card__item--overlay {
