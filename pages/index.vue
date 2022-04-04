@@ -43,8 +43,9 @@
         <div class="block-offset grid-layout">
           <h2 class="title2 block-offset__title">оптимальные решения
             <span class="no-word-break">yuma-smart</span></h2>
-
-            <CardsTranslated :data="descisions" />
+            <client-only>
+              <CardsTranslated :data="descisions" />
+            </client-only>
 
         </div>
 

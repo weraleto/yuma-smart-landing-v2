@@ -1,42 +1,59 @@
 <template>
-    <div class="translated-cards">
-        <div v-for="(i, idx) in data" :key="idx" class="card translated-card__item" :class="{
+    <swiper ref="cardsSwiper" class="translated-cards swiper" :options="swiperOptions">
+        <swiper-slide v-for="(i, idx) in data" :key="idx" 
+            class="card translated-card__item swiper-slide" 
+            :class="{
                 'active': activeCard == idx, 
                 'hovered': hoveredCard == idx, 
                 'inactive': ![activeCard, hoveredCard].includes(idx)
-            }" @mouseenter="debounce(idx)" @mouseleave="cardLeave(idx)">
-            <div class="translated-card__item--front">
-                <h5 class="subtitle">{{i.title}}</h5>
-                <div class="translated-card__item--icon">
-                    <img :src="require('../assets/img/'+i.img+'.svg')" :alt="i.title">
-                </div>
-                <div class="translated-card__item--bottom">
-                    <small>Вам подойдет</small>
-                    <p class="subtitle">{{i.name}}<br>{{i.price}}</p>
+            }"
+            :style="{
+                'margin-right: 50px': idx == 2
+            }"
+        >
+            <div @mouseenter="debounce(idx)" @mouseleave="cardLeave(idx)">
+                <div class="translated-card__item--front">
+                    <h5 class="subtitle">{{i.title}}</h5>
+                    <div class="translated-card__item--icon">
+                        <img :src="require('../assets/img/'+i.img+'.svg')" :alt="i.title">
+                    </div>
+                    <div class="translated-card__item--bottom">
+                        <small>Вам подойдет</small>
+                        <p class="subtitle">{{i.name}}<br>{{i.price}}</p>
 
-                    <small>{{i.subtext}}</small>
-                </div>
-            </div>
-            <div class="translated-card__item--overlay">
-                <div class="translated-card__item--description">
-                    <div v-for="d in i.description" :key="d.title" class="translated-card__item--description-group">
-                        <h4 class="subtitle">
-                            {{d.title}}
-                        </h4>
-                        <p>{{d.text}}</p>
+                        <small>{{i.subtext}}</small>
                     </div>
                 </div>
-                <ApplicationFormTrigger />
+                <div class="translated-card__item--overlay">
+                    <div class="translated-card__item--description">
+                        <div v-for="d in i.description" :key="d.title" class="translated-card__item--description-group">
+                            <h4 class="subtitle">
+                                {{d.title}}
+                            </h4>
+                            <p>{{d.text}}</p>
+                        </div>
+                    </div>
+                    <ApplicationFormTrigger />
+                </div>
             </div>
-        </div>
-    </div>
+        </swiper-slide>
+    </swiper>
 </template>
 
 <script>
+
 import ApplicationFormTrigger from '@/components/call-to-action-btn'
+import { Swiper, SwiperSlide, directive } from 'vue-awesome-swiper'
+import 'swiper/css/swiper.css'
+
 export default {
     components: {
-        ApplicationFormTrigger
+        ApplicationFormTrigger,
+         Swiper,
+        SwiperSlide
+    },
+    directives: {
+        swiper: directive
     },
     props: {
         data: {
@@ -44,12 +61,39 @@ export default {
             default: () => []
         }
     },
-    data: () => {
+    data() {
         return {
             activeCard: null,
             hoveredCard: 0,
             activeCardDefault: 0,
-            timer: null
+            timer: null,
+            swiper: null,
+            swiperOptions: {
+                spaceBetween: 16,
+                breakpoints: {
+                    0: {
+                        slidesPerView: 1.1,  
+                        slideToClickedSlide: true,
+                        centeredSlides: true
+                    },
+                    600: {
+                        slidesPerView: 2,
+                        slideToClickedSlide: true
+                    },
+                    768: {
+                        slidesPerView: 3,
+                        enabled: false,
+                        allowTouchMove: false,
+                        allowSlideChange: false
+                    },
+                    1024: {
+                        slidesPerView: 3,
+                        spaceBetween: 28,
+                        allowTouchMove: false,
+                        allowSlideChange: false
+                    }
+                }
+            }
         }
     },
     methods: {
@@ -65,7 +109,7 @@ export default {
         cardLeave(idx) {
             this.activeCard = null;
             this.hoveredCard = idx;
-        }
+        },
     }
 }
 </script>
@@ -75,14 +119,27 @@ export default {
 @import '@/assets/scss/_variables.scss';
 
 .translated-cards {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     grid-column: 1/11;
-    min-height: 570px;
+    min-height: 40vh;
+    overflow: visible !important;
+    width: 100%;
+
+    .swiper-wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
 
     @media screen and (max-width: $--screen-lg-min) {
         min-height: 40.42vw;
+    }
+    @media screen and (max-width: $--screen-sm-min) {
+        margin: 0;
+        grid-column: 1/6;
+        min-height: 460px;
+    }
+    @media screen and (max-width: 320px) {
+        min-height: 185vw;
     }
 }
 
@@ -91,25 +148,23 @@ export default {
     flex-grow: 1;
     flex-shrink: 1;
     text-align: center;
-    padding: 50px 31px 40px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
     transition: all .25s ease .2s;
     position: relative;
+    padding: 50px 31px 40px;
 
     @media screen and (max-width: $--screen-lg-min) {
         padding: 30px 22px;
     }
-}
-
-.translated-card__item {
 
     &.active,
     &.hovered {
         flex-grow: 1;
         max-width: calc(36% - 28px);
+        min-width: calc(36% - 28px);
         border-color: $--main-black;
         min-height: 114%;
         align-items: center;
@@ -129,19 +184,41 @@ export default {
 
     &.inactive {
         max-width: calc(33.333% - 28px);
+        min-width: calc(33.333% - 28px);
     }
 
     @media screen and (max-width: $--screen-md-min) {
 
         &.active,
         &.hovered {
+            min-width: calc(36% - 14px);
             max-width: calc(36% - 14px);
         }
 
         &.inactive {
+            min-width: calc(33.333% - 14px);
             max-width: calc(33.333% - 14px);
         }
 
+        .subtitle {
+            font-size: 16px;
+        }
+    }
+    @media screen and (max-width: $--screen-sm-min) {
+
+        &.active,
+        &.hovered {
+            min-height: 100%;
+            flex-shrink: 0;
+        }
+
+        &.active,
+        &.hovered,
+        &.inactive {
+            flex-shrink: 0;
+            min-width: unset;
+            max-width: unset;
+        }
         .subtitle {
             font-size: 18px;
         }
@@ -150,6 +227,12 @@ export default {
 
 .translated-card__item--front {
     max-width: 340px;
+    @media screen and (max-width: $--screen-sm-min) {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
 }
 
 .translated-card__item--icon {
@@ -158,6 +241,16 @@ export default {
 
     @media screen and (max-width: $--screen-md-min) {
         margin: 20px auto;
+    }
+    @media screen and (max-width: $--screen-sm-min) {
+        width: 100%;
+        margin: 20px auto;
+    }
+}
+
+.translated-card__item--bottom { 
+    .subtitle {
+        margin: 10px 0;
     }
 }
 
@@ -178,12 +271,18 @@ export default {
     flex-direction: column;
     align-items: center;
 
+    @media screen and (max-width: $--screen-lg-min) {
+        padding: 30px 25px;
+    }
     @media screen and (max-width: $--screen-md-min) {
-        padding: 30px 22px;
+        padding: 10px;
 
         .btn.large {
             min-height: 40px;
         }
+    }
+    @media screen and (max-width: $--screen-sm-min) {
+        padding: 20px;
     }
 }
 
@@ -198,9 +297,10 @@ export default {
         margin-bottom: 20px;
     }
 
-    @media screen and (max-width: $--screen-md-min) {
+    @media screen and (min-width: $--screen-sm-min) and (max-width: $--screen-md-min) {
+        margin-bottom: 10px;
         p {
-            font-size: 14px;
+            font-size: 12px;
             margin-top: 5px;
         }
     }
@@ -209,7 +309,7 @@ export default {
 .translated-card__item--description-group {
     width: 100%;
     max-width: 380px;
-    flex: 1 1 auto;
+    flex: 0.2 1 auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
