@@ -42,12 +42,20 @@
             </div>
         </div>
 
-        <div class="block-offset grid-layout">
-          <h2 class="title2 block-offset__title">оптимальные решения
-            <span class="no-word-break">yuma-smart</span></h2>
+        <div class="block-offset grid-layout block-offset-products">
+           <div class="grid-layout block-offset__title--double">
+              <h2 class="title2 block-offset__title">оптимальные решения
+              <span class="no-word-break">yuma-smart</span></h2>
+              <NuxtLink to="/produkty" class="hidden-mobile btn large outlined arrowed block-offset__title--btn">перейти к продуктам</NuxtLink>
+            </div>
+          
             <client-only>
               <CardsTranslated :data="descisions" />
             </client-only>
+
+            <div class="only-mobile" style="grid-column: 1/11">
+              <NuxtLink to="/produkty" class="btn large outlined arrowed block-offset__title--btn">перейти к продуктам</NuxtLink>
+            </div>
 
         </div>
 
