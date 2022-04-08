@@ -1,36 +1,38 @@
 <template>
   <div>
-    <header class="header">
-      <div class="container">
+    <header class="header-main">
+      <div class="container grid-layout">
         <div class="yuma-smart">
           <YumaSmart />
         </div>
-        <div class="header__title title1">
-          <div class="header__title--line">
-            <span>Ваши&nbsp;</span> <span>микромаркеты</span>
-          </div>
-          <div class="grid-layout">
-            <span>с&nbsp;</span> <span class="header__title--personal">персональным</span>
-          </div>
-          <div class="header__title--line end-separated">
-            <span>
-              мобильным 
-              <span class="only-desktop">приложением</span>
-            </span>
-            <span class="hidden-desktop">приложением</span>
-          </div>
+        <div class="hidden-desktop header-main__title">
+          <h1 class="subtitle ">Микромаркеты с вашим мобильным приложением для покупателей</h1>
         </div>
-
-        <Infoblock button_type="primary" button_text="Начать" text="Продавайте свежую еду и напитки без персонала. Запускайте акции и программы лояльности через приложение." />
-        <div>
-          <img src="~assets/img/main.svg" alt="" srcset="">
+        <div class="header-main__container">
+          <div class="header-main__text hidden-mobile">
+            <h1 class="subtitle only-desktop">Микромаркеты с вашим мобильным приложением для покупателей</h1>
+            <p class="text4">Начните продавать свежую еду и напитки без персонала.
+              Комфорт для посетителей.
+              Прибыль для вас.
+            </p>
+            <a href="" 
+                  @click.prevent="$store.commit('setShowModal', {key: 'showApplyForm', val: true})" 
+                  class="infoblock__button btn large primary" 
+              >Начать</a>
+          </div>
+          <div class="header-main__text only-mobile">
+            <Infoblock text="Начните продавать свежую еду и напитки без персонала.</br>Комфорт для посетителей.</br>Прибыль для вас." button_type="primary" button_text="Начать" />
+          </div>
+          <div class="header-main__pic">
+            <img src="~assets/img/main.svg" alt="Product picture" >
+          </div>
         </div>
       </div>
 
     </header>
     
     
-    <main class="main">
+<main class="main">
     <div class="container pb">
         <div class="block-offset grid-layout">
             <h2 class="title2 block-offset__title">кому подходит
@@ -284,7 +286,8 @@ export default {
 @import '@/assets/scss/_variables.scss';
 
 .yuma-smart {
-  margin-bottom: 70px;
+  grid-column: 1/7;
+  margin-bottom: 30px;
 
   svg {
     width: 100%;
@@ -292,68 +295,73 @@ export default {
   }
 
   @media screen and (max-width: $--screen-md-min) {
-      margin-bottom: 30px;
+    grid-column: 1/11;
+      margin-bottom: 16px;
   }
   @media screen and (max-width: $--screen-xxs-min) {
       margin-bottom: 20px;
   }
 }
 
-.header__title {
-  margin-bottom: 69px;
+.header-main {
+  padding-top: 120px;
 
-  &--line {
-    display: flex;
-    justify-content: space-between;
-    text-align-last: right;
+  .subtitle {
+    font-size: 1.875rem;
   }
 
-  &--personal {
-    grid-column: 3/11;
+  &__container {
+    grid-column: 1/11;
+    display: flex;
+  }
+  &__text {
+    width: 40%;
+
+    p {
+      margin: 20px 0 40px;
+    }
+    .btn {
+      max-width: 134px;
+    }
+  }
+  &__pic {
+    padding-left: 43px;
   }
 
   @media screen and (max-width: $--screen-md-min) {
-    margin-bottom: 30px;
+    padding-top: 90px;
 
-    &--line {
-      text-align-last: left;
-
-      &.end-separated {
-        flex-direction: column;
-
-        span:last-of-type {
-          align-self: flex-end;
-        }
-      }
+    &__title {
+      grid-column: 1/7;
+      margin-bottom: 10px;
     }
   }
+
   @media screen and (max-width: $--screen-sm-min) {
-
-    &--line {
-      
-      &:first-of-type {
-        flex-direction: column;
-
-        span:first-of-type {
-          padding-left: 25%;
-        }
-      }
-
-      &.end-separated {
-        span:first-of-type {
-          align-self: flex-end;
-        }
-        span:last-of-type {
-          align-self: flex-start;
-        }
-      }
+    padding-top: 80px;
+    &__container {
+      flex-direction: column-reverse;
     }
-
-    .grid-layout {
-        display: flex;
+    &__title {
+      grid-column: 1/5;
+      margin-bottom: 20px;
+    }
+    &__text {
+      width: 100%;
+      margin-top: 30px;
+    }
+    &__pic {
+      padding-left: 0px;
+    }
+  }
+  @media screen and (max-width: $--screen-xs-min) {
+    &__title {
+      grid-column: 1/6;
     }
   }
 }
+
+
 
 .flip-card__items {
   display: grid;
