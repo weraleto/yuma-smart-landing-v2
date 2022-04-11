@@ -99,7 +99,7 @@ export default {
     &--content {
         max-height: 0;
         overflow: hidden;
-        transition: all .5s ease-in-out;
+        transition: all .5s ease-out;
 
         &__text {
             max-width: 62.5%;
@@ -159,7 +159,7 @@ export default {
     }
 
     &--arrow {
-        transition: transform .5s ease-in-out;
+        transition: transform .5s ease-in ;
         @media screen and (max-width: $--screen-md-min) {
             width: 19px;
             height: 19px;
