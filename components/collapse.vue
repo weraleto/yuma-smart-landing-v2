@@ -99,7 +99,7 @@ export default {
     &--content {
         max-height: 0;
         overflow: hidden;
-        transition: all 1s ease-in-out;
+        transition: all .5s ease-in-out;
 
         &__text {
             max-width: 62.5%;
