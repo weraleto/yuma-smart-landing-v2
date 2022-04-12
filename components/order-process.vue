@@ -10,7 +10,7 @@
             <div class="separator separator-horizontal separator-1"></div>
         </div>
         <div 
-            class="grid-layout order-process__container border-right"
+            class="grid-layout order-process__container border-top-right"
         >
           <div class="step step-1">
               <h4 class="subtitle">
@@ -23,7 +23,7 @@
         </div>
         </template>
         <div 
-            class="grid-layout order-process__container border-right"
+            class="grid-layout order-process__container border-bottom-right"
         >
             <div class="step__number step-2">
                 2
@@ -32,7 +32,7 @@
         </div>
 
         <div 
-            class="grid-layout order-process__container border-left"
+            class="grid-layout order-process__container border-top-left"
         >
           <div class="step step-2">
              <h4 class="subtitle">
@@ -50,10 +50,10 @@
             <div class="step__number step-3">
                 3
             </div>
-            <div class="separator separator-horizontal separator-2"></div>
+            <div class="separator separator-horizontal separator-3"></div>
         </div>
         <div 
-            class="grid-layout order-process__container border-right"
+            class="grid-layout order-process__container border-top-right"
         >
           <div class="step step-3">
               <h4 class="subtitle">
@@ -65,15 +65,15 @@
           </div>
         </div>
         <div 
-            class="grid-layout order-process__container"
+            class="grid-layout order-process__container border-bottom-right"
         >
             <div class="step__number step-4">
                 4
             </div>
-            <!-- <div class="separator separator-horizontal separator-2"></div> -->
+            <div class="separator separator-horizontal separator-4"></div>
         </div>
         <div 
-            class="grid-layout order-process__container"
+            class="grid-layout order-process__container border-top-left-offset"
         >
           <div class="step step-4">
               <h4 class="subtitle">
@@ -91,7 +91,6 @@
             <div class="step__number step-5">
                 5
             </div>
-            <!-- <div class="separator separator-horizontal separator-2"></div> -->
         </div>
         <div 
             class="grid-layout order-process__container"
@@ -128,7 +127,10 @@ export default {
 
     &-horizontal {
         height: 2px;
-        width: 100%;
+        &.w-100 {
+            width: calc(100% - 30px);
+        }
+        // margin: auto;
     }
 
 
@@ -142,10 +144,28 @@ export default {
         right: 0;
     }
     &-1 {
-        grid-column: 3/11;
+        grid-column: 3/10;
+        width: calc(100% - 30px);
     }
     &-2 {
-        grid-column: 2/11;
+        grid-column: 2/10;
+        width: calc(100% - 60px);
+        margin: auto;
+    }
+    &-3 {
+        grid-column: 2/10;
+        width: calc(100% - 30px);
+    }
+    &-4 {
+        grid-column: 3/10;
+        width: calc(100% - 60px);
+        margin: auto;
+    }
+
+    @media screen and (max-width: $--screen-sm-min) {
+        &-1, &-2, &-3, &-4 {
+            grid-column: 1/6;
+        }
     }
 }
 
@@ -155,10 +175,81 @@ export default {
     &__container {
         grid-auto-flow: column;
         position: relative;
-        // border-radius: 20px;
 
-        &.border-right {
-            border-right: 2px solid $--main-gray;
+        &.border-top-right {
+            &::before {
+                content: '';
+                position: absolute;
+                top: -2px;
+                border-radius: 0 20px 0 0;
+                bottom: 0;
+                right: 10%;
+                width: 30px;
+                border-top: 2px solid $--main-gray;
+                border-right: 2px solid $--main-gray;
+                @media screen and (max-width: $--screen-sm-min) {
+                    right: 0;
+                }
+            }
+        }
+        &.border-bottom-right {
+            &::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                border-radius: 0 0 20px 0;
+                bottom: -20x;
+                right: 10%;
+                width: 30px;
+                height: 100%;
+                border-bottom: 2px solid $--main-gray;
+                border-right: 2px solid $--main-gray;
+                @media screen and (max-width: $--screen-sm-min) {
+                    right: 0;
+                }
+            }
+        }
+
+        &.border-top-left, &.border-top-left-offset {
+            &::before {
+                content: '';
+                position: absolute;
+                top: -2px;
+                border-radius: 20px 0 0 0;
+                bottom: 0;
+                left: 10%;
+                width: 30px;
+                border-top: 2px solid $--main-gray;
+                border-left: 2px solid $--main-gray;
+                @media screen and (max-width: $--screen-sm-min) {
+                    left: 0;
+                }
+            }
+        }
+        &.border-top-left-offset {
+            &::before {
+                left: 20%;
+                @media screen and (max-width: $--screen-sm-min) {
+                    left: 0;
+                }
+            }
+        }
+        &.border-bottom-left {
+            &::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                border-radius: 0 0 20px 0;
+                bottom: -20x;
+                left: 10%;
+                width: 30px;
+                height: 100%;
+                border-bottom: 2px solid $--main-gray;
+                border-left: 2px solid $--main-gray;
+                @media screen and (max-width: $--screen-sm-min) {
+                    left: 0;
+                }
+            }
         }
     }
 }
@@ -184,6 +275,30 @@ export default {
 
     .subtitle {
         margin-bottom: 20px;
+    }
+
+    @media screen and (max-width: $--screen-sm-min) {
+        &-1, &-3, &-5 {
+            grid-column: 1/6;
+            padding-right: 30px;
+        }
+        &-2, &-4 {
+            grid-column: 2/6;
+            padding-right: 5px;
+
+            &.step__number {
+                padding-top: 38px;
+            }
+        }
+        &-2.step {
+            padding-bottom: 64px;
+        }
+        &-4.step {
+            padding-bottom: 19px;
+        }
+        .subtitle {
+            font-size: 1.125rem;
+        }
     }
 }
 
