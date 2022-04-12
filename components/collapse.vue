@@ -1,24 +1,11 @@
 <template>
-    <div class="collapsible__blocks js-collapsible">
-        <div
+    <el-collapse v-model="activeItem" class="collapsible__blocks" accordion>
+        <el-collapse-item
             v-for="(item, idx) in data" :key="idx"
             class="collapsible__item"
-            :class="{
-                'opened': activeItem > -1 && activeItem == idx,
-                extra_class: extra_class && extra_class.length
-            }"
-            @click="handleTabChange(idx)"
+            :name="idx"
+            :title="item.title"
             >
-            <div class="collapsible__item--header">
-                <div class="collapsible__item--header__inner">
-                    <h4 class="subtitle">
-                        {{item.title}}
-                    </h4>
-                </div>
-                <div class="collapsible__item--arrow">
-                    <img src="../assets/img/arrow.svg">
-                </div>
-            </div>
             <div class="collapsible__item--content">
                 <div class="collapsible__item--content__inner">
                     <div class="collapsible__item--content__text">
@@ -29,15 +16,15 @@
                             <div class="collapsible__item--content__step--num">
                                 {{idx1 + 1}}
                             </div>
-                            <p class="collapsible__item--content__step--text">
+                            <p class="collapsible__item--content__step--text text5">
                                 {{step}}
                             </p>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+        </el-collapse-item>
+    </el-collapse>
 </template>
 
 <script>
@@ -47,7 +34,6 @@ export default {
             type: Array,
             default: () => []
         },
-        extra_class: String,
         active_default: {
             type: Number,
             default: undefined
@@ -55,51 +41,67 @@ export default {
     },
     data: () => {
         return {
-            activeItem: undefined
+            activeItem: null
         }
     },
-    beforeMount() {
+    mounted() {
         this.activeItem = this.active_default
     },
-    methods: {
-        handleTabChange(idx) {
-            if (idx === this.activeItem) {
-                this.activeItem = undefined
-                return
-            }
-            this.activeItem = idx
-        }
-    }
 
 }
 </script>
 
 <style lang="scss">
-
+@import "~element-ui/packages/theme-chalk/src/collapse";
+@import "~element-ui/packages/theme-chalk/src/collapse-item";
 @import '@/assets/scss/_variables.scss';
+
+.el-collapse {
+    border: none;
+}
 
 .collapsible__item {
     border-bottom: 2px solid;
 
-    &--header {
+    .el-collapse-item__header {
         display: flex;
         justify-content: space-between;
-        padding: 20px 0;
-        cursor: pointer;
-
-        &__inner {
-            max-width: 78.75%;
+        padding: 20px 21.25% 20px 0;
+        font-size: 1.875rem;
+        font-variation-settings: "wght" 600;
+        height: auto;
+        line-height: 1.2;
+        position: relative;
+        &::after {
+            content: '';
+            position: absolute;
+            width: 19px;
+            height: 19px;
+            background: url('../assets/img/arrow.svg') no-repeat center center;
+            background-size: cover;
+            right: 0;
+            top: 20px;
+            transition: transform .3s ease;
+        }
+        &.is-active {
+            &::after {
+                transform: rotate(45deg) translate(-2px, 2px);
+            }
         }
 
         @media screen and (max-width: $--screen-md-min) {
-            padding: 10px 0;
+            padding: 10px 21.25% 10px 0;
+            font-size: 1.375rem;
+            &::after {
+                top: 10px;
+            }
         }
+    }
+    .el-collapse-item__content {
+        line-height: 1.2;
     }
 
     &--content {
-        max-height: 0;
-        overflow: hidden;
-        transition: all .5s ease-out;
 
         &__text {
             max-width: 62.5%;
@@ -156,23 +158,6 @@ export default {
             }
         }
 
-    }
-
-    &--arrow {
-        transition: transform .5s ease-in ;
-        @media screen and (max-width: $--screen-md-min) {
-            width: 19px;
-            height: 19px;
-        }
-    }
-
-    &.opened {
-        .collapsible__item--arrow {
-            transform: rotate(45deg) translate(-30%, 30%);
-        }
-        .collapsible__item--content {
-            max-height: 1000px;
-        }
     }
 }
 
