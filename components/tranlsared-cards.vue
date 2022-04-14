@@ -67,15 +67,17 @@ export default {
             activeCardDefault: 0,
             timer: null,
             swiper: null,
+            spaceBetween: 0,
             swiperOptions: {
-                spaceBetween: 16,
                 breakpoints: {
                     0: {
+                        spaceBetween: 16,
                         slidesPerView: 1.1,  
                         slideToClickedSlide: true,
                         centeredSlides: true
                     },
                     600: {
+                        spaceBetween: 16,
                         slidesPerView: 2,
                         slideToClickedSlide: true
                     },
@@ -87,7 +89,6 @@ export default {
                     },
                     1024: {
                         slidesPerView: 3,
-                        spaceBetween: 28,
                         allowTouchMove: false,
                         allowSlideChange: false
                     }
@@ -158,8 +159,8 @@ export default {
     &.active,
     &.hovered {
         flex-grow: 1;
-        max-width: calc(38% - 28px);
-        min-width: calc(38% - 28px);
+        max-width: calc(40% - 56px);
+        min-width: calc(40% - 56px);
         border-color: $--main-black;
         min-height: 114%;
         align-items: center;
@@ -178,8 +179,8 @@ export default {
     }
 
     &.inactive {
-        max-width: calc(32.1% - 28px);
-        min-width: calc(32.1% - 28px);
+        max-width: 30%;
+        min-width: 30%;
     }
 
     @media screen and (max-width: $--screen-lg-min) {
@@ -190,13 +191,8 @@ export default {
 
         &.active,
         &.hovered {
-            min-width: calc(36% - 14px);
-            max-width: calc(36% - 14px);
-        }
-
-        &.inactive {
-            min-width: calc(33.333% - 14px);
-            max-width: calc(33.333% - 14px);
+            max-width: calc(40% - 40px);
+            min-width: calc(40% - 40px);
         }
 
         .subtitle {
@@ -275,6 +271,11 @@ export default {
     @media screen and (max-width: $--screen-lg-min) {
         padding: 30px 25px;
     }
+    @media screen and (min-width: $--screen-sm-min) and (max-width: $--screen-md-min) {
+        .subtitle {
+            margin-bottom: 5px;
+        }
+    }
     @media screen and (max-width: $--screen-md-min) {
         padding: 17px;
     }
@@ -312,6 +313,11 @@ export default {
         p {
             font-size: 12px;
             margin-top: 5px;
+        }
+    }
+    @media screen and (max-width: $--screen-sm-min) {
+        p {
+            font-size: 14px;
         }
     }
 }

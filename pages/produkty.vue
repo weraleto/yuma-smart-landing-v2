@@ -88,7 +88,7 @@
             <span class="no-word-break">yuma-smart</span></h2>
           <div class="block-offset__content offset-sm text-blocks only-mobile plain">
 
-            <div class="text-blocks__item text-blocks__icon" style="margin: 0 auto 30px;">
+            <div class="text-blocks__item text-blocks__icon" style="margin: 0 auto 50px;">
               <img src="../assets/img/magic-module.svg" alt="Модуль">
             </div>
 
@@ -159,7 +159,7 @@
                 <p class="text4">Решает все задачи управления ассортиментом ваших микромаркетов. От их автоматической
                   загрузки до полноценного учета.</p>
               </div>
-              <div class="text-blocks__item hidden-mobile">
+              <div class="text-blocks__item desktop">
                 <h3 class="subtitle text-blocks__item-subtitle">Стоимость<br>7% от оборота</h3>
                 <ApplicationFormTrigger />
               </div>
@@ -179,7 +179,7 @@
                   полностью готово к продажам.
                 </p>
               </div>
-              <div class="text-blocks__item call-to-action only-mobile">
+              <div class="text-blocks__item call-to-action mobile">
                 <h3 class="subtitle text-blocks__item-subtitle">Стоимость<br>7% от оборота</h3>
                 <a 
                   class="btn large primary"
@@ -222,13 +222,27 @@ export default {
 
 @import '@/assets/scss/_variables.scss';
 
-.text-blocks__item.call-to-action {
-  @media screen and (max-width: $--screen-xs-min) {
-    text-align: center;
+.text-blocks__item {
+  &.call-to-action {
+    &.mobile {
+      display: none;
+    }
+    @media screen and (max-width: $--screen-xs-min) {
+      text-align: center;
 
-    .btn {
-      margin-left: auto;
-      margin-right: auto;
+      &.mobile {
+        display: block;
+      }
+
+      .btn {
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+  }
+  @media screen and (max-width: $--screen-xs-min) {
+    &.desktop {
+      display: none;
     }
   }
 }

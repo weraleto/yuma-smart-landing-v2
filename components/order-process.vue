@@ -279,11 +279,11 @@ export default {
 
     @media screen and (max-width: $--screen-sm-min) {
         &-1, &-3, &-5 {
-            grid-column: 1/6;
+            grid-column: 1/4;
             padding-right: 30px;
         }
         &-2, &-4 {
-            grid-column: 2/6;
+            grid-column: 3/6;
             padding-right: 5px;
 
             &.step__number {
@@ -298,6 +298,14 @@ export default {
         }
         .subtitle {
             font-size: 1.125rem;
+        }
+    }
+    @media screen and (max-width: $--screen-xs-min) {
+        &-1, &-3, &-5 {
+            grid-column: 1/6;
+        }
+        &-2, &-4 {
+            grid-column: 2/6;
         }
     }
 }

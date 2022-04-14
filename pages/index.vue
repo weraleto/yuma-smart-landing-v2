@@ -336,7 +336,6 @@ export default {
   }
 
   @media screen and (max-width: $--screen-md-min) {
-    padding-top: 90px;
 
     &__title {
       grid-column: 1/7;

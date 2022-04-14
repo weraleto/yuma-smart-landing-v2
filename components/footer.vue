@@ -3,45 +3,51 @@
     <div class="footer-top">
         <div class="container grid-layout footer-top-container">
             <div class="footer-col-1">
-                <a class="subtitle footer-top__link" href="tel:+7 (812) 309 50 32">+7 (812) 309 50 32</a>
+                <a class="footer-top__link footer-top__link--phone" href="tel:+7 (812) 309 50 32">+7 (812) 309 50 32</a>
                 <p class="text6 footer-top__contact-description">Санкт-Петербург, наб. реки Смоленки, 5-7, Технопарк, офис 337, метро Василеостровская</p>
             </div>
             <div class="footer-col-1">
-                <a class="subtitle footer-top__link" href="tel:+7 (495) 108 11 78">+7 (495) 108 11 78</a>
+                <a class="footer-top__link footer-top__link--phone" href="tel:+7 (495) 108 11 78">+7 (495) 108 11 78</a>
                 <p class="text6 footer-top__contact-description">Москва, Нововладыкинский проезд, 2с1, метро Владыкино</p>
             </div>
             <div class="footer-col-2">
+                <NuxtLink to="/" class="footer-top__link text6">Главная</NuxtLink>
                 <NuxtLink to="/produkty" class="footer-top__link text6">Наши продукты</NuxtLink>
                 <NuxtLink to="/produkty#order_process" class="footer-top__link text6">Как заказать</NuxtLink>
             </div>
             <div class="footer-col-2">
-                <a href="#" class="footer-top__link text6">Стать партнером</a>
-                <a href="#" class="footer-top__link text6">О корпорации YUMA</a>
+                <NuxtLink target="_blank" to="/polzovatelskoe-soglashenie" class="footer-top__link text6">Пользовательское соглашение</NuxtLink>
+                <NuxtLink target="_blank" to="/politika" class="footer-top__link text6">Политика конфиденциальности</NuxtLink>
+                <!-- <a href="#" class="footer-top__link text6">Стать партнером</a>
+                <a href="#" class="footer-top__link text6">О корпорации YUMA</a> -->
+            </div>
+            <div class="footer-col-3 only-desktop">
+                <div class="footer-socials">
+                    <a class="social-icon-link" href="#">
+                        <WhLogo />
+                    </a>
+                    <a class="social-icon-link" href="#">
+                        <TGLogo />
+                    </a>
+                </div>
             </div>
             <div class="footer-col-3">
                 <a href="mailto:pr@yuma.biz" class="footer-top__link text6">pr@yuma.biz</a>
                 <a href="mailto:sales@yuma.biz" class="footer-top__link text6">sales@yuma.biz</a>
             </div>
-            <div class="footer-col-3">
-                <NuxtLink target="_blank" to="/polzovatelskoe-soglashenie" class="footer-top__link text6">Пользовательское соглашение</NuxtLink>
-                <NuxtLink target="_blank" to="/politika" class="footer-top__link text6">Политика конфиденциальности</NuxtLink>
-            </div>
         </div>
     </div>
     <div class="footer-bottom bar">
         <div class="container footer-bottom-layout grid-layout">
-            <YumaLogo theme="dark" />
 
             <p class="footer-disclaimer text6">
                 <span>Сайт носит исключительно ознакомительный характер и не является публичной офертой.</span>
             </p>
+            <YumaLogo theme="dark" />
 
-            <div class="footer-socials">
+            <div class="footer-socials mobile">
                 <a class="social-icon-link" href="#">
-                    <YoutubeLogo />
-                </a>
-                <a class="social-icon-link" href="#">
-                    <InstaLogo />
+                    <WhLogo />
                 </a>
                 <a class="social-icon-link" href="#">
                     <TGLogo />
@@ -54,14 +60,14 @@
 
 <script>
 import YumaLogo from '@/components/logo'
-import InstaLogo from '@/components/svg/instagram'
+import WhLogo from '@/components/svg/wh'
 import YoutubeLogo from '@/components/svg/youtube'
 import TGLogo from '@/components/svg/tg'
 
 export default {
     components: {
         YumaLogo, 
-        InstaLogo, 
+        WhLogo, 
         YoutubeLogo, 
         TGLogo
     },
@@ -83,14 +89,14 @@ export default {
 
         &-container {
             grid-auto-flow: column;
-            grid-row-gap: 35px;
+            grid-row-gap: 50px;
         }
 
         &__contact-description {
-            max-width: 250px;
+            max-width: 218px;
         }
         &__link {
-            margin-bottom: 10px;
+            margin-bottom: 12px;
             display: block;
 
             transition: color .3s ease;
@@ -103,22 +109,36 @@ export default {
             &:disabled {
                 color: $--main-gray;
             }
+
+            &--phone {
+                font-size: 20px;
+                font-variation-settings: 'wght' 700;
+            }
         }
 
         @media screen and (max-width: $--screen-md-min) {
             padding: 80px 0;
         }
         @media screen and (max-width: $--screen-sm-min) {
-            padding: 40px 0;
+            padding: 50px 0 40px;
             &-container {
                 display: flex;
                 flex-wrap: wrap;
                 justify-content: space-between;
                 text-align: center;
-                grid-row-gap: 20px;
+                grid-row-gap: 40px;
             }
             &__contact-description {
                 margin: auto;
+            }
+            &__link {
+                margin-bottom: 10px;
+                &--phone {
+                    display: block;
+                    max-width: 218px;
+                    margin-left: auto;
+                    margin-right: auto;
+                }
             }
         }
     }
@@ -132,23 +152,37 @@ export default {
         &-3 {
             grid-column: 8/10;
         }
-        @media screen and (max-width: $--screen-md-min) {
+        @media screen and (max-width: 1250px) {
             &-1 {
                 grid-column: 2/5;
+            }
+            &-2 {
+                grid-column: 5/8;
             }
             &-3 {
                 grid-column: 8/11;
             }
         }
         @media screen and (max-width: $--screen-md-min) {
+            &-1 {
+                grid-column: 2/5;
+            }
+            &-2 {
+                grid-column: 6/9;
+            }
+            &-3 {
+                grid-column: 9/11;
+            }
+        }
+        @media screen and (max-width: $--screen-sm-min) {
             &-1, &-2, &-3 {
                 width: 100%;
+                &:first-of-type {
+                    margin-bottom: 10px;
+                }
             }
             &-1 {
-                order: 5;
-                &:first-of-type {
-                    margin-top: 10px;
-                }
+                text-align: left;
             }
         }
     }
@@ -156,25 +190,29 @@ export default {
         border-top: 2px solid $--main-gray-light;
 
         &-layout {
+            grid-template-columns: auto 100px;
             align-items: center;
         }
         @media screen and (max-width: $--screen-md-min) {
             &-layout {
                 grid-column-gap: 30px;
-                grid-template-columns: 100px auto 134px;
+                grid-template-columns: 73px auto 100px;
             }
         }
         @media screen and (max-width: $--screen-sm-min) {
             padding-top: 20px;
-            padding-bottom: 30px;
+            padding-bottom: 17px;
             &-layout {
-                grid-row-gap: 20px;
+                grid-row-gap: 15px;
                 grid-column-gap: 0px;
+            }
+            .logo {
+                grid-column: 3/4;
             }
         }
     }
     &-disclaimer {
-        grid-column: 3/9;
+        // grid-column: 3/9;
 
         @media screen and (max-width: $--screen-md-min) {
             grid-column: 2/3;
@@ -187,11 +225,25 @@ export default {
     }
     &-socials {
         grid-column: 10/11;
-        display: flex;
-        align-items: center;
+        flex-direction: column;
         justify-content: space-between;
+        height: 100%;
+        &.mobile {
+            display: none;
+        }
         @media screen and (max-width: $--screen-md-min) {
-            grid-column: 3/4;
+            grid-column: 1/2;
+            grid-row: 1/2;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+
+            &.desktop {
+                display: none;
+            }
+            &.mobile {
+                display: flex;
+            }
         }
     }
 }

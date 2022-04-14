@@ -110,6 +110,7 @@ export default {
     }
     .el-collapse-item__content {
         line-height: 1.2;
+        padding-bottom: 0;
     }
 
     &--content {
@@ -132,6 +133,7 @@ export default {
             display: flex;
             justify-content: space-between;
             margin-top: 30px;
+            padding-bottom: 8px;
 
             @media screen and (max-width: $--screen-md-min) {
                 margin-top: 23px;
@@ -158,14 +160,14 @@ export default {
             @media screen and (max-width: $--screen-md-min) {
                 max-width: 33.333%;
                 padding-right: 10px;
-
-                &:not(:last-child) {
-                    margin-bottom: 20px;
-                }
             }
             @media screen and (max-width: $--screen-sm-min) {
                 max-width: 100%;
                 padding: 0 10vw;
+
+                &:not(:last-child) {
+                    margin-bottom: 20px;
+                }
             }
         }
 

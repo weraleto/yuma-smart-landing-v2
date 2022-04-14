@@ -33,10 +33,11 @@ export default {
     position: relative;
     &::before {
         content: '';
+        display: block;
         position: absolute;
         right: 100%;
         top: 0;
-        width: 48.5px;
+        min-width: 48.5px;
         height: 48.5px;
         background: url('@/assets/img/arr-infoblock.svg') no-repeat;
         background-size: cover;
@@ -44,12 +45,20 @@ export default {
     }
 
     @media screen and (max-width: $--screen-md-min) {
-      grid-column: 2/6;
+        grid-column: 3/7;
+        max-width: 300px;
     }
 
     @media screen and (max-width: $--screen-sm-min) {
+        display: flex;
+        align-items: center;
+        grid-column: 1/6;
+        max-width: 390px;
         &::before {
-            transform: translate(-30%, 8px);
+            position: static;
+            margin-right: 19px;
+            // transform: translate(-30%, 8px);
+            transform: none;
         }
     }
 }

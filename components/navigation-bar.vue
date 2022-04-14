@@ -1,6 +1,6 @@
 <template>
     <div>
-        <nav class="navigation bar" :class="{'opened': mobileMenuOpened || dropdownOpened}">
+        <nav class="navigation bar" :class="{'opened': mobileMenuOpened}">
             <div class="container navigation-container grid-layout">
                 <YumaLogo />
                 <div class="navigation-inner" :class="{'opened': mobileMenuOpened}">
@@ -9,27 +9,13 @@
                         <NuxtLink @click.native="mobileMenuOpened=false" to="/produkty" class="navigation-link__item text5"><span>Наши продукты</span></NuxtLink>
                     </div>
                     <div class="navigation-part right">
-
-                        <div class="navigation-link__dropdown text5" :class="{'opened': dropdownOpened}">
-                            <div class="dropdown__header navigation-link__item" @click="dropdownOpened=!dropdownOpened">
-                                <span class="dropdown__selected-title">{{citySelected.name}}
-
-                                    <svg width="12" height="7" viewBox="0 0 12 7" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M10.6667 0.5L5.66666 5.5L0.666656 0.5" stroke="#2A2A2A" />
-                                    </svg>
-                                </span>
-                                
-                            </div>
-                            <div class="dropdown__items">
-                                <a href="" v-for="city in cities" :key="city.name" class="dropdown__item"
-                                    :class="{'active': citySelected.name == city.name}"
-                                    @click.prevent="citySelected=city; dropdownOpened=mobileMenuOpened=false">{{city.name}}</a>
-                            </div>
+                        <div class="navigation-tel__item text5" v-for="p in cities" :key="p.name">
+                            <span class="only-desktop">{{p.name}}</span>
+                            <div class="hidden-desktop">{{p.nameFull}}</div>
+                            <a class="navigation-tel__link text-bold" :href="`tel:${p.phone}`">{{p.phone}}</a>
                         </div>
-                        <a :href="`tel:${citySelected.phone}`"
-                            class="text5 text-bold navigation-link__tel navigation-link__item">
-                            <span>{{citySelected.phone}}</span></a>
+
+
                         <div class="navigation-btn">
                             <a href="#" 
                                 @click.prevent="mobileMenuOpened=false; $store.commit('setShowModal', {key: 'showContactForm', val: true})"
@@ -44,7 +30,7 @@
                 </div>
             </div>
         </nav>
-        <div class="body-overlay" v-if="dropdownOpened || mobileMenuOpened" @click="dropdownOpened=mobileMenuOpened=false"></div>
+        <div class="body-overlay" v-if="mobileMenuOpened" @click="mobileMenuOpened=false"></div>
     </div>
 </template>
 
@@ -55,12 +41,10 @@ export default {
     data: () => {
         return {
             cities: [
-                {name: 'Санкт-Петербург', phone: '+7 (812) 309 50 32'},
-                {name: 'Москва', phone: '+7 (495) 108 11 78'},
+                {name: 'Спб', nameFull: 'Санкт-Петербург', phone: '+7 (812) 309 50 32'},
+                {name: 'Мск', nameFull: 'Москва', phone: '+7 (495) 108 11 78'},
             ],
-            dropdownOpened: false,
-            mobileMenuOpened: false,
-            citySelected: {name: 'Санкт-Петербург', phone: '+7 (812) 309 50 32'}
+            mobileMenuOpened: false
         }
     }
 
@@ -97,41 +81,42 @@ export default {
 
     &-part {
         display: flex;
+        width: 100%;
         align-items: center;
         justify-content: space-between;
+        
         &.left {
-            width: 25%;
-            @media screen and (max-width: $--screen-lg-min) {
-                width: 30%;
-            }
+            grid-column: 1/3;
         }
         &.right {
-            width: 50%;
+            grid-column: 4/9;
+            padding-left: 2.84vw;
 
-            @media screen and (max-width: $--screen-lg-min) {
-                width: 70%;
+            @media screen and (min-width: 1025px) and (max-width: 1180px) {
+                grid-column: 3/9;
             }
         }
         @media screen and (max-width: $--screen-md-min) {
-            &.left, &.right {
-                width: 100%;
-                flex-direction: column;
-                align-items: flex-start;
-            }
+            flex-direction: column;
+            align-items: flex-start;
+            width: 100%;
+
             &.right {
-                flex-grow: 1;
+                padding-left: 0;
+                margin-top: 10px;
             }
         }
     }
 
     &-inner {
         grid-column: 3/11;
-        display: flex;
-        justify-content: space-between;
+        display: grid;
+        grid-template-columns: repeat(8, 1fr);
         align-items: center;
 
         @media screen and (max-width: $--screen-md-min) {
             position: absolute;
+            display: flex;
             flex-wrap: wrap;
             
             flex-direction: column;
@@ -155,14 +140,15 @@ export default {
                 transform: none;
             }
         }
+        @media screen and (min-width: 1025px) and (max-width: 1280px) {
+            .text5 {
+                font-size: 14px;
+            }
+        }
         @media screen and (max-width: $--screen-sm-min) {
-            min-width: unset;
-            // width: 59.2%;
-            max-width: 222px;
             right: 30px;
         }
         @media screen and (max-width: $--screen-xxs-min) {
-            min-height: 45vh;
             transform: translate(100%, 0);
             right: 0;
             border-bottom-right-radius: 0;
@@ -171,7 +157,6 @@ export default {
 
     &-link__item {
         position: relative;
-        // display: inline-block;
         display: flex;
         align-items: center;
         min-height: 70px;
@@ -204,43 +189,11 @@ export default {
             span::after {
                 background-color: $--main-black;
             }
-        }
-        
+        }        
 
         @media screen and (max-width: $--screen-md-min) {
             min-height: unset;
             margin-bottom: 20px;
-        }
-        @media screen and (max-width: $--screen-xxs-min) {
-            margin-bottom: 20px;
-        }
-    }
-
-    &-link__dropdown {
-        cursor: pointer;
-        position: relative;
-        // min-width: 220px;
-        min-width: 180px;
-        
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        background-color: white;
-        // @media screen and (max-width: $--screen-lg-min) {
-        //     min-width: 205px;
-        // }
-        @media screen and (max-width: $--screen-md-min) {
-            min-width: 100%;
-            flex-direction: column;
-        }
-    }
-
-    &-link__tel {
-        min-width: 138px;
-        margin-left: 2.08vw;
-        margin-right: 2.5vw;
-        @media screen and (max-width: $--screen-md-min) {
-            margin: 0 0 20px;
         }
     }
 
@@ -264,111 +217,40 @@ export default {
             flex-grow: 1;
             display: flex;
             align-items: flex-end;
+            margin-top: 37px;
 
             .btn {
                 max-height: 48px;
             }
         }
     }
-}
 
-.dropdown__header {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    position: relative;
-    z-index: 10000;
-    min-height: 68px;
-    background-color: white;
-    width: 100%;
+    &-tel {
+        &__link {
+            display: inline-block;
+            margin-left: 15px;
+            transition: color .3s ease;
+            &:hover {
+                color: $--yellow-hover;
+            }
 
-    @media screen and (max-width: $--screen-md-min) {
-        padding: 0;
-        min-height: unset;
-        justify-content: flex-start;
-    }
-}
-.dropdown__selected-title {
-    display: flex;
-    align-items: center;
-    svg {
-        margin-left: 8px;
-    }
-}
-
-.dropdown__items {
-    position: absolute;
-    top: calc(100% - 1px);
-    right: -30px;
-    background-color: $--main-white;
-    border-radius: 0 0 20px 20px;
-    padding: 8px 30px 25px;
-    min-width: 217px;
-    z-index: -1;
-    visibility: hidden;
-    transform: translate(0, -100px);
-    transition: all .3s ease;
-
-    @media screen and (max-width: $--screen-md-min) {
-        display: flex;
-        flex-direction: column;
-        position: static;
-        max-height: 0;
-        overflow: hidden;
-        transform: none;
-        padding: 0;
-        border: 2px solid;
-        border-radius: 10px;
-        min-width: 100%;
-        margin-bottom: 0;
-    }
-}
-
-.navigation-link__dropdown.opened {
-    .dropdown__header {
-        color: $--main-gray;
-    }
-
-    .dropdown__items {
-        z-index: 9999;
-        visibility: visible;
-        // transform: none;
-        transform: translate(0, 0px);
-
-        @media screen and (max-width: $--screen-md-min) {
-            max-height: 500px;
-            padding: 15px;
-            margin-bottom: 20px;
+            @media screen and (min-width: 1025px) and (max-width: 1280px) {
+                margin-left: 8px;
+            }
+            @media screen and (max-width: $--screen-md-min) {
+                margin-left: 0;
+                margin-top: 5px;
+            }
+        }
+        &__item {
+            @media screen and (max-width: $--screen-md-min) {
+                &:first-child {
+                    margin-bottom: 20px;
+                }
+            }
         }
     }
 }
 
-.dropdown__item {
-    position: relative;
-    display: inline-block;
-
-    &:not(:last-child) {
-        margin-bottom: 18px;
-    }
-
-    &::after {
-        content: '';
-        display: block;
-        height: 3px;
-        left: 0;
-        right: 0;
-        background-color: $--yellow-primary;
-        bottom: 0;
-        transform: translate(0, 8px);
-        opacity: 0;
-        transition: opacity .3s ease;
-    }
-
-    &.active, &:hover {
-        &::after {
-            opacity: 1;
-        }
-    }
-}
 
 </style>
