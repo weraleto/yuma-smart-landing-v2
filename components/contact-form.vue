@@ -25,7 +25,6 @@
                     <label class="contact-form__label text6" for="">Ваш телефон</label>
                     <MaskedInput 
                         v-model="form.phone" 
-                        class="light" 
                         type="text" 
                         :class="{'invalid': !formValidation.phone.result}"
                         :mask="phoneMask"
@@ -42,7 +41,7 @@
                     <label class="label_checkbox text6" :for="`policy_${theme}`">
                         <input v-model="policyAgree" type="checkbox" name="policy" :id="`policy_${theme}`">
                         <div>
-                            Я согласен с политикой обработки персональных данных.
+                            Я согласен с политикой обработки <NuxtLink to="/politika" target="_blank">персональных данных</NuxtLink>.
                             <div>
                                 <small class="invalid-message"
                                     :class="{'opened': !formValidation.policy.result}"

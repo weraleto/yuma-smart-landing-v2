@@ -27,8 +27,7 @@
                 <div class="translated-card__item--overlay">
                     <div class="translated-card__item--description">
                         <div v-for="d in i.description" :key="d.title" class="translated-card__item--description-group">
-                            <h4 class="subtitle">
-                                {{d.title}}
+                            <h4 class="subtitle" v-html="d.title">
                             </h4>
                             <p>{{d.text}}</p>
                         </div>
@@ -159,8 +158,8 @@ export default {
     &.active,
     &.hovered {
         flex-grow: 1;
-        max-width: calc(36% - 28px);
-        min-width: calc(36% - 28px);
+        max-width: calc(38% - 28px);
+        min-width: calc(38% - 28px);
         border-color: $--main-black;
         min-height: 114%;
         align-items: center;
@@ -179,8 +178,8 @@ export default {
     }
 
     &.inactive {
-        max-width: calc(33.333% - 28px);
-        min-width: calc(33.333% - 28px);
+        max-width: calc(32.1% - 28px);
+        min-width: calc(32.1% - 28px);
     }
 
     @media screen and (max-width: $--screen-lg-min) {
@@ -217,6 +216,9 @@ export default {
             flex-shrink: 0;
             min-width: unset;
             max-width: unset;
+        }
+        .subtitle {
+            font-size: 18px;
         }
     }
 }
@@ -261,20 +263,20 @@ export default {
     background-color: $--main-white;
     border-radius: calc($--border-radius-default) * 2;
     text-align: left;
-    padding: 60px 50px;
+    padding: 60px 48px;
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    .subtitle {
+        margin-bottom: 10px;
+    }
 
     @media screen and (max-width: $--screen-lg-min) {
         padding: 30px 25px;
     }
     @media screen and (max-width: $--screen-md-min) {
-        padding: 10px;
-
-        .btn.large {
-            min-height: 40px;
-        }
+        padding: 17px;
     }
     @media screen and (max-width: $--screen-sm-min) {
         padding: 20px;

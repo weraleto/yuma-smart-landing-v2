@@ -1,7 +1,7 @@
 <template>
   <div class="grid-layout">
     <div class="infoblock">
-        <div class="infoblock__text" v-html="text" />
+        <div class="infoblock__text text4" v-html="text" />
 
         <a href="" 
             v-if="button_type" 

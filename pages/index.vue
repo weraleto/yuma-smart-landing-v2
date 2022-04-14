@@ -1,15 +1,15 @@
 <template>
   <div>
-    <header class="header-main">
+    <header class="header">
       <div class="container grid-layout">
         <div class="yuma-smart">
           <YumaSmart />
         </div>
-        <div class="hidden-desktop header-main__title">
+        <div class="hidden-desktop header__title">
           <h1 class="subtitle ">Микромаркеты с вашим мобильным приложением для покупателей</h1>
         </div>
-        <div class="header-main__container">
-          <div class="header-main__text hidden-mobile">
+        <div class="header__container">
+          <div class="header__text hidden-mobile">
             <h1 class="subtitle only-desktop">Микромаркеты с вашим мобильным приложением для покупателей</h1>
             <p class="text4">Начните продавать свежую еду и напитки без персонала.
               Комфорт для посетителей.
@@ -20,10 +20,10 @@
                   class="infoblock__button btn large primary" 
               >Начать</a>
           </div>
-          <div class="header-main__text only-mobile">
+          <div class="header__text only-mobile">
             <Infoblock text="Начните продавать свежую еду и напитки без персонала.</br>Комфорт для посетителей.</br>Прибыль для вас." button_type="primary" button_text="Начать" />
           </div>
-          <div class="header-main__pic">
+          <div class="header__pic">
             <img src="~assets/img/main.svg" alt="Product picture" >
           </div>
         </div>
@@ -38,7 +38,7 @@
             <h2 class="title2 block-offset__title">кому подходит
                 <span class="no-word-break">yuma-smart</span></h2>
             <div class="block-offset__content">
-              <Collapse :data="who_needs_items" :active_default="1" />
+              <Collapse extra_class="small" :data="who_needs_items" :active_default="1" />
             </div>
         </div>
 
@@ -118,7 +118,7 @@
             <div class="block-offset__content">
                 <div class="flip-card__items card-items">
                   <div v-for="(item, idx) in reliability" :key="idx" class="card flip-card card-item" 
-                    :style="`top: ${ -(39 * idx) }px`"
+                    :style="`top: ${ -(41 * idx) }px`"
                   >
                       <div class="flip-card-inner card-item__inner">
                           <div class="flip-card-front card-item__front">
@@ -247,7 +247,7 @@ export default {
               'text': 'Мини-компьютер, который превратит ваше торговое оборудование в умный микромаркет'
             },
             {
-              'title': 'Платформа YUMA-SMART',
+              'title': 'Платформа <span class="no-word-break">YUMA-SMART</span>',
               'text': 'Mобильное приложение для покупателей и полноценная система учета, которыми вы управляете через единый личный кабинет.'
             }
           ]
@@ -263,7 +263,7 @@ export default {
               'text': 'Мини-компьютер, который превратит ваше торговое оборудование в умный микромаркет'
             },
             {
-              'title': 'Платформа YUMA-SMART',
+              'title': 'Платформа <span class="no-word-break">YUMA-SMART</span>',
               'text': 'Mобильное приложение для покупателей и полноценная система учета, которыми вы управляете через единый личный кабинет.'
             }
           ]
@@ -274,7 +274,7 @@ export default {
           'subtext': '7% от оборота',
           'img': 'Program',
           'description': [{
-            'title': 'Платформа YUMA-SMART',
+            'title': 'Платформа <span class="no-word-break">YUMA-SMART</span>',
             'text': 'Mобильное приложение для покупателей и полноценная система учета, которыми вы управляете через единый личный кабинет.'
           }]
         }
@@ -311,8 +311,7 @@ export default {
   }
 }
 
-.header-main {
-  padding-top: 120px;
+.header {
 
   .subtitle {
     font-size: 1.875rem;
@@ -459,8 +458,17 @@ export default {
   }
 
   &__back {
+    top: -2px;
+    bottom: -2px;
+    left: -2px;
+    right: -2px;
     opacity: 0;
     background-color: $--yellow-primary;
+    border: 2px solid $--main-gray;
+    p {
+      max-width: 394px;
+      margin: auto;
+    }
   }
 
   small {

@@ -3,6 +3,7 @@
         <el-collapse-item
             v-for="(item, idx) in data" :key="idx"
             class="collapsible__item"
+            :class="`${extra_class ? extra_class : ''}`"
             :name="idx"
             :title="item.title"
             >
@@ -30,6 +31,10 @@
 <script>
 export default {
     props: {
+        extra_class: {
+            type: String,
+            default: null
+        },
         data: {
             type: Array,
             default: () => []
@@ -62,6 +67,12 @@ export default {
 
 .collapsible__item {
     border-bottom: 2px solid;
+
+    &.small {
+        .el-collapse-item__header {
+            padding: 10px 21.25% 10px 0;
+        }
+    }
 
     .el-collapse-item__header {
         display: flex;

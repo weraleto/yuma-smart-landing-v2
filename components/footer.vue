@@ -12,7 +12,7 @@
             </div>
             <div class="footer-col-2">
                 <NuxtLink to="/produkty" class="footer-top__link text6">Наши продукты</NuxtLink>
-                <a href="#" class="footer-top__link text6">Как заказать</a>
+                <NuxtLink to="/produkty#order_process" class="footer-top__link text6">Как заказать</NuxtLink>
             </div>
             <div class="footer-col-2">
                 <a href="#" class="footer-top__link text6">Стать партнером</a>
@@ -23,8 +23,8 @@
                 <a href="mailto:sales@yuma.biz" class="footer-top__link text6">sales@yuma.biz</a>
             </div>
             <div class="footer-col-3">
-                <NuxtLink to="/polzovatelskoe-soglashenie" class="footer-top__link text6">Пользовательское соглашение</NuxtLink>
-                <NuxtLink to="/politika" class="footer-top__link text6">Политика конфиденциальности</NuxtLink>
+                <NuxtLink target="_blank" to="/polzovatelskoe-soglashenie" class="footer-top__link text6">Пользовательское соглашение</NuxtLink>
+                <NuxtLink target="_blank" to="/politika" class="footer-top__link text6">Политика конфиденциальности</NuxtLink>
             </div>
         </div>
     </div>

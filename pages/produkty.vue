@@ -189,7 +189,7 @@
             </div>
           </div>
         </div>
-        <div class="title-ladder">
+        <div class="title-ladder" id="order_process">
           <h2 class="title1 grid-layout">
             <span>Процесс</span>
             <span>заказа</span>

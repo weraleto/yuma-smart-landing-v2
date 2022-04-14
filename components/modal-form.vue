@@ -40,7 +40,7 @@
                         <label class="label_checkbox text6" :for="`policy_${formAction}`">
                             <input v-model="policyAgree" type="checkbox" :name="`policy_${formAction}`" :id="`policy_${formAction}`">
                             <div>
-                                Я согласен с политикой обработки персональных данных.
+                                Я согласен с <NuxtLink to="/politika" target="_blank">политикой конфиденциальности</NuxtLink>.
                                <div>
                                     <small class="invalid-message" 
                                         :class="{'opened': !formValidation.policy.result}"
