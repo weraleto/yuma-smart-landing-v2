@@ -224,6 +224,7 @@ export default {
         }
     }
     &-socials {
+        display: flex;
         grid-column: 10/11;
         flex-direction: column;
         justify-content: space-between;
@@ -238,9 +239,6 @@ export default {
             align-items: center;
             justify-content: space-between;
 
-            &.desktop {
-                display: none;
-            }
             &.mobile {
                 display: flex;
             }
