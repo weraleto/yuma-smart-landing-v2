@@ -7,7 +7,6 @@
     <FormModal 
         form-action="contact"
         action-button-text="Заказать звонок"
-        :show-contact-qr="true"
         v-if="$store.state.showContactForm"
         @close="$store.commit('setShowModal', {key: 'showContactForm', val: false})" />
     <FormModal 

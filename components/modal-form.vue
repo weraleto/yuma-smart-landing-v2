@@ -7,38 +7,40 @@
             </div>
             <div class="form-modal__content">
                 <form action="" v-if="!formSubmitted">
-                    <div class="contact-form__form-group">
+                    <div class="contact-form__form-group form-modal__form-group">
                         <label class="contact-form__label text6" for="">Ваше Имя</label>
                         <input v-model="form.name" class="light"
                             :class="{'invalid': !formValidation.name.result}"
-                            type="text" placeholder="Иван Иванов">
+                            type="text" placeholder="Иван Иванов"
+                            @change="formValidation.name = nameValid"
+                            >
                         <small class="invalid-message" :class="{'opened': !formValidation.name.result}">
                             {{formValidation.name.errorMessage}}
                         </small>
                     </div>
-                    <div class="contact-form__form-group">
+                    <div class="contact-form__form-group form-modal__form-group">
                         <label class="contact-form__label text6" for="">Ваш телефон</label>
-                        <MaskedInput 
+                        <input 
                             v-model="form.phone" 
-                            class="light" 
-                            :class="{'invalid': !formValidation.phone.result}"
                             type="text" 
-                            :mask="phoneMask"
+                            class="light"
+                            :class="{'invalid': !formValidation.phone.result}"
                             placeholder="+7 (ХХХ) ХХХ ХХ ХХ"
-                            placeholderChar="_"
-                        />
+                            v-maska="phoneMask"
+                            @change="formValidation.phone = phoneValid"
+                        >
                         <!-- v-show="!formValidation.phone.result" -->
                         <small class="invalid-message" :class="{'opened': !formValidation.phone.result}">
                             {{formValidation.phone.errorMessage}}
                         </small>
                     </div>
-                    <div class="contact-form__form-group" v-if="showTextarea">
+                    <div class="contact-form__form-group form-modal__form-group" v-if="showTextarea">
                         <label class="contact-form__label text6" for="">Сообщение (по желанию)</label>
                         <textarea v-model="form.message" class="light" type="text" placeholder="Напишите что-нибудь" />
                     </div>
                     <div class="contact-form__form-group">
+                        <input v-model="policyAgree" type="checkbox" :name="`policy_${formAction}`" :id="`policy_${formAction}`">
                         <label class="label_checkbox text6" :for="`policy_${formAction}`">
-                            <input v-model="policyAgree" type="checkbox" :name="`policy_${formAction}`" :id="`policy_${formAction}`">
                             <div>
                                 Я согласен с <NuxtLink to="/politika" target="_blank">политикой конфиденциальности</NuxtLink>.
                                <div>
@@ -75,12 +77,12 @@
 </template>
 
 <script>
-import MaskedInput from 'vue-text-mask'
+import { maska } from 'maska'
 import {formMixin} from '@/mixins/mixins'
 
 export default {
     mixins: [formMixin],
-    components: {MaskedInput},
+    directives: { maska },
     props: {
         formSize: {
             type: String,
@@ -117,12 +119,23 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
+
+    .invalid-message {
+        min-height: 0;
+        max-height: 0;
+        overflow: hidden;
+        &.opened {
+            min-height: 32px;
+            max-height: 200px;
+        }
+    }
 }
 
 .form-modal {
     background-color: $--main-white;
     border-radius: 30px;
     width: 100%;
+    height: auto;
     z-index: 10013;
     position: relative;
     padding: 20px 134px;
@@ -130,7 +143,6 @@ export default {
     justify-content: center;
     align-items: center;
     min-height: 700px;
-    max-height: 95vh;
 
     &.small {
         max-width: 536px;
@@ -180,6 +192,10 @@ export default {
         .subtitle {
             margin-bottom: 20px;
         }
+    }
+
+    &__form-group {
+        margin-bottom: 10px;
     }
 
     @media screen and (max-width: $--screen-sm-min) {

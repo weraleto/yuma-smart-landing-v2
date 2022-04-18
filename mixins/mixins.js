@@ -13,7 +13,7 @@ export const formMixin = {
                 phone: {result: true, errorMessage: ''},
                 policy: {result: true, errorMessage: ''},
             },
-            phoneMask: ['+', '7', ' ', '(', /\d/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, ' ', '-', ' ', /\d/, /\d/, ' ', '-', ' ', /\d/, /\d/]
+            phoneMask: '+7 (###) ### - ## - ##'
         }
     },
     computed: {

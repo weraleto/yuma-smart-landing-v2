@@ -7,13 +7,14 @@
                 <h4 class="subtitle">{{subtitle}}</h4>
                 <small v-if="small" class="text6">{{small}}</small>
             </div>
-            <form action="#" class="contact-form__form">
+            <form action="#" class="contact-form__form" :class="{'hidden': formSubmitted}">
                 <div class="contact-form__form-group">
                     <label class="contact-form__label text6" for="">Ваше Имя</label>
                     <input v-model="form.name" 
                         :class="{'invalid': !formValidation.name.result}" 
                         type="text" 
                         placeholder="Иван Иванов"
+                        @change="formValidation.name = nameValid"
                     >
                     <small class="invalid-message"
                         :class="{'opened': !formValidation.name.result}"
@@ -23,14 +24,14 @@
                 </div>
                 <div class="contact-form__form-group">
                     <label class="contact-form__label text6" for="">Ваш телефон</label>
-                    <MaskedInput 
+                    <input 
                         v-model="form.phone" 
                         type="text" 
                         :class="{'invalid': !formValidation.phone.result}"
-                        :mask="phoneMask"
                         placeholder="+7 (ХХХ) ХХХ ХХ ХХ"
-                        placeholderChar="_"
-                    />
+                        v-maska="phoneMask"
+                        @change="formValidation.phone = phoneValid"
+                    >
                     <small class="invalid-message"
                         :class="{'opened': !formValidation.phone.result}"
                     >
@@ -38,16 +39,16 @@
                     </small>
                 </div>
                 <div class="contact-form__form-group">
+                    <input v-model="policyAgree" type="checkbox" name="policy" :id="`policy_${theme}`">
                     <label class="label_checkbox text6" :for="`policy_${theme}`">
-                        <input v-model="policyAgree" type="checkbox" name="policy" :id="`policy_${theme}`">
                         <div>
                             Я согласен с политикой обработки <NuxtLink to="/politika" target="_blank">персональных данных</NuxtLink>.
                             <div>
-                                <small class="invalid-message"
+                                <!-- <small class="invalid-message"
                                     :class="{'opened': !formValidation.policy.result}"
                                 >
-                                {{formValidation.policy.errorMessage}}
-                            </small>
+                                    {{formValidation.policy.errorMessage}}
+                                </small> -->
                             </div>
                         </div>
                     </label>
@@ -72,12 +73,12 @@
 </template>
 
 <script>
-import MaskedInput from 'vue-text-mask'
+import { maska } from 'maska'
 import {formMixin} from '@/mixins/mixins'
 
 export default {
     mixins: [formMixin],
-    components: {MaskedInput},
+    directives: { maska },
     props: {
         theme: {
             type: String,
@@ -144,8 +145,8 @@ export default {
         max-width: 33.333%;
         width: 100%;
 
-        &-group {
-            margin-bottom: 10px;
+        &.hidden {
+            opacity: 0;
         }
 
         @media screen and (max-width: $--screen-md-min) {
@@ -153,10 +154,8 @@ export default {
         }
 
         @media screen and (max-width: $--screen-sm-min) {
-            max-width: 78%;
-            .btn {
-                margin: auto;
-            }
+            max-width: 268px;
+            margin: auto;
         }
     }
 
@@ -227,6 +226,10 @@ export default {
     &.theme-dark {
         background-color: $--main-black;
         color: $--main-white;
+    }
+
+    .invalid-message {
+        min-height: 2.5em;
     }
 
     @media screen and (max-width: $--screen-md-min) {

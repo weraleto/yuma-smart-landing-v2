@@ -321,13 +321,8 @@ input, textarea {
     font-size: 14px;
     display: block;
     transition: opacity .3s ease-in-out .2s, all .2s ease-in-out;
-    min-height: 0;
-    max-height: 0;
     opacity: 0;
-    overflow: hidden;
     &.opened {
-        min-height: 32px;
-        max-height: 200px;
         opacity: 1;
     }
 }
@@ -339,13 +334,35 @@ textarea {
 
 input[type=checkbox] {
     width: auto;
-    margin-right: 10px;
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+    // margin-right: 10px;
+}
+
+input[type=checkbox]:checked + .label_checkbox {
+    &::before {
+        background: url('../img/checkbox-tick.svg') no-repeat center center, white;
+        background-size: 6.5px auto;
+    }
 }
 
 .label_checkbox {
     display: flex;
     align-items: baseline;
     margin-bottom: 20px;
+    position: relative;
+
+    &::before {
+        content: '';
+        display: block;
+        min-width: 13px;
+        height: 13px;
+        background-color: $--main-white;
+        border-radius: 1px;
+        margin-right: 10px;
+        border: 1px solid $--main-gray;
+    }
 
     a {
         text-decoration: underline;
