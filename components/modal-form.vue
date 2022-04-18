@@ -129,6 +129,10 @@ export default {
             max-height: 200px;
         }
     }
+
+    @media screen and (max-width: $--screen-sm-min) {
+        padding-top: 60px;
+    }
 }
 
 .form-modal {
@@ -165,6 +169,12 @@ export default {
         .btn {
             margin: auto;
         }
+
+        @media screen and (max-width: $--screen-sm-min) {
+            max-height: calc(100vh - 180px);
+            overflow-y: scroll;
+            height: 100%;
+        }
     }
 
     &__contacts {
@@ -199,10 +209,13 @@ export default {
     }
 
     @media screen and (max-width: $--screen-sm-min) {
-        padding: 54px 38px 50px;
-        min-height: 95vh;
+        padding: 54px 20% 50px;
+        height: auto;
+        min-height: 50vh;
+        max-height: calc(100vh - 100px);
         &.small, &.medium {
-            max-width: calc(100% - 60px);
+            // max-width: calc(80% - 60px);
+            margin: 0 30px;
         }
         &__close {
             top: 22px;
@@ -217,9 +230,13 @@ export default {
             }
         }
     }
+    @media screen and (max-width: $--screen-xs-min) {
+        padding: 54px 38px 50px;
+    }
     @media screen and (max-width: $--screen-xxs-min) {
         &.small, &.medium {
-            max-width: calc(100% - 32px);
+            // max-width: calc(100% - 32px);
+            margin: 0 16px;
         }
     }
     @media screen and (max-width: 330px) {

@@ -88,6 +88,10 @@ body {
     z-index: 9996;
     background-color: $--main-black;
     opacity: 0.9;
+
+    @media screen and (max-width: $--screen-sm-min) {
+        top: 48px;
+    }
 }
 
 .container {
