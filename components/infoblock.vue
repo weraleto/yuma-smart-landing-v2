@@ -3,13 +3,13 @@
     <div class="infoblock">
         <div class="infoblock__text text4" v-html="text" />
 
-        <a href="" 
-            v-if="button_type" 
-            @click.prevent="$store.commit('setShowModal', {key: 'showApplyForm', val: true})" 
-            class="infoblock__button btn large" 
-            :class="button_type"
-        >{{button_text}}</a>
     </div>
+    <a href="" 
+        v-if="button_type" 
+        @click.prevent="$store.commit('setShowModal', {key: 'showApplyForm', val: true})" 
+        class="infoblock__button btn large" 
+        :class="button_type"
+    >{{button_text}}</a>
 </div>
 </template>
 
@@ -72,6 +72,9 @@ export default {
     margin-top: 30px;
 
     @media screen and (max-width: $--screen-sm-min) {
+        margin-left: 67.5px;
+        grid-column: 1/6;
+        width: 100%;
         max-width: 205px;
         width: 75%;
     }
