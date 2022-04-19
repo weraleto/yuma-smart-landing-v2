@@ -40,7 +40,6 @@ export default {
     mounted() {
         let ctx = this
         window.addEventListener('scroll', function(){
-            console.log(window.pageYOffset > 5450)
             ctx.showUpButton = window.pageYOffset > 5450
         })
     },
@@ -93,8 +92,8 @@ export default {
     position: fixed;
     background-color: $--main-white;
     bottom: 60px;
-    left: 50%;
-    transform: translate(-50%, 0);
+    right: 50%;
+    transform: translate(50%, 0);
     cursor: pointer;
     border-radius: 10px;
     display: flex;
@@ -103,8 +102,18 @@ export default {
     border: 2px solid $--main-gray;
 
     img {
-        width: 22px;
+        width: 36%;
         transform: rotate(-135deg);
+    }
+
+    @media screen and (max-width: $--screen-sm-min) {
+        width: 40px;
+        height: 40px;
+        right: 30px;
+        transform: none;
+    }
+    @media screen and (max-width: $--screen-xxs-min) {
+        right: 16px;
     }
 }
 
