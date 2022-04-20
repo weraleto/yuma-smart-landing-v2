@@ -39,19 +39,11 @@
                         <textarea v-model="form.message" class="light" type="text" placeholder="Напишите что-нибудь" />
                     </div>
                     <div class="contact-form__form-group">
-                        <input v-model="policyAgree" type="checkbox" :name="`policy_${formAction}`" :id="`policy_${formAction}`">
-                        <label class="label_checkbox text6" :for="`policy_${formAction}`">
+                        <div class="label_checkbox text6">
                             <div>
-                                Я согласен с <NuxtLink to="/politika" target="_blank">политикой конфиденциальности</NuxtLink>.
-                               <div>
-                                    <small class="invalid-message" 
-                                        :class="{'opened': !formValidation.policy.result}"
-                                    >
-                                    {{formValidation.policy.errorMessage}}
-                                    </small>
-                               </div>
+                                Заполняя форму, я соглашаюсь с <NuxtLink to="/politika" target="_blank">политикой конфиденциальности</NuxtLink>.
                             </div>
-                        </label>
+                        </div>
                     </div>
                     <button type="submit" @click.prevent="submitForm" class="btn large primary arrowed">
                         {{actionButtonText}}
@@ -120,16 +112,6 @@ export default {
     justify-content: center;
     align-items: center;
 
-    .invalid-message {
-        min-height: 0;
-        max-height: 0;
-        overflow: hidden;
-        &.opened {
-            min-height: 32px;
-            max-height: 200px;
-        }
-    }
-
     @media screen and (max-width: $--screen-sm-min) {
         padding-top: 60px;
     }
@@ -146,7 +128,7 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 700px;
+    min-height: 560px;
 
     &.small {
         max-width: 536px;
@@ -202,10 +184,6 @@ export default {
         .subtitle {
             margin-bottom: 20px;
         }
-    }
-
-    &__form-group {
-        margin-bottom: 10px;
     }
 
     @media screen and (max-width: $--screen-sm-min) {

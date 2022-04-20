@@ -39,19 +39,11 @@
                     </small>
                 </div>
                 <div class="contact-form__form-group">
-                    <input v-model="policyAgree" type="checkbox" name="policy" :id="`policy_${theme}`">
-                    <label class="label_checkbox text6" :for="`policy_${theme}`">
+                    <div class="label_checkbox text6">
                         <div>
-                            Я согласен с политикой обработки <NuxtLink to="/politika" target="_blank">персональных данных</NuxtLink>.
-                            <div>
-                                <!-- <small class="invalid-message"
-                                    :class="{'opened': !formValidation.policy.result}"
-                                >
-                                    {{formValidation.policy.errorMessage}}
-                                </small> -->
-                            </div>
+                            Заполняя форму, я соглашаюсь с <NuxtLink to="/politika" target="_blank">политикой конфиденциальности</NuxtLink>.
                         </div>
-                    </label>
+                    </div>
                 </div>
                 <button type="submit" class="btn large" 
                     :class="theme == 'dark' ? 'primary' : 'outlined'"
@@ -226,10 +218,6 @@ export default {
     &.theme-dark {
         background-color: $--main-black;
         color: $--main-white;
-    }
-
-    .invalid-message {
-        min-height: 2.5em;
     }
 
     @media screen and (max-width: $--screen-md-min) {

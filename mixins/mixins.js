@@ -2,7 +2,6 @@ export const formMixin = {
     data: () => {
         return {
             formSubmitted: false,
-            policyAgree: true,
             form: {
                 name: null,
                 phone: null,
@@ -11,7 +10,6 @@ export const formMixin = {
             formValidation: {
                 name: {result: true, errorMessage: ''},
                 phone: {result: true, errorMessage: ''},
-                policy: {result: true, errorMessage: ''},
             },
             phoneMask: '+7 (###) ### - ## - ##'
         }
@@ -34,14 +32,6 @@ export const formMixin = {
             if (!this.form.phone || !this.form.phone.length || !(this.form.phone).match(/\+7 \(\d{3}\) \d{3} - \d{2} - \d{2}/)) {
                 resultObject.result = false
                 resultObject.errorMessage = 'Поле должно быть заполнено'
-            }
-            return resultObject
-        },
-        policyValid() {
-            let resultObject = {result: true, errorMessage: ''}
-            if (!this.policyAgree) {
-                resultObject.result = false
-                resultObject.errorMessage = 'Необходимо дать согласие.'
             }
             return resultObject
         }
@@ -76,7 +66,6 @@ export const formMixin = {
             this.formValidation = {
                 name: {result: true, errorMessage: ''},
                 phone: {result: true, errorMessage: ''},
-                policy: {result: true, errorMessage: ''},
             }
         }
     }
