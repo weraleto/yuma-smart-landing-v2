@@ -24,7 +24,7 @@
             <Infoblock text="Начните продавать свежую еду и напитки без персонала.</br>Комфорт для посетителей.</br>Прибыль для вас." button_type="primary" button_text="Начать" />
           </div>
           <div class="header__pic">
-            <img src="~assets/img/main.svg" alt="Product picture" >
+            <img src="~assets/img/prod_pic.svg" alt="Product picture" >
           </div>
         </div>
       </div>
