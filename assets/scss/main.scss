@@ -605,6 +605,12 @@ input[type=checkbox]:checked + .label_checkbox {
             }
         }
     }
+
+    &--long {
+        min-width: 101.91791%;
+        position: relative;
+        left: -1.91791%;
+    }
 }
 
 
