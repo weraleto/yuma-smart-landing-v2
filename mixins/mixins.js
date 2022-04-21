@@ -21,7 +21,7 @@ export const formMixin = {
                 resultObject.result = false
                 resultObject.errorMessage = 'Поле должно быть заполнено'
             }
-            else if (!(this.form.name).match(/^[\a-zа-я]+$/ig)) {
+            else if (!(this.form.name).match(/^[\a-zа-я\s]+$/ig)) {
                 resultObject.result = false
                 resultObject.errorMessage = 'Поле должно содержать только символы букв'
             }
