@@ -16,8 +16,8 @@
                 <NuxtLink to="/produkty#order_process" class="footer-top__link text6">Как заказать</NuxtLink>
             </div>
             <div class="footer-col-2">
-                <NuxtLink target="_blank" to="/polzovatelskoe-soglashenie" class="footer-top__link text6">Пользовательское соглашение</NuxtLink>
-                <NuxtLink target="_blank" to="/politika" class="footer-top__link text6">Политика конфиденциальности</NuxtLink>
+                <NuxtLink target="_blank" to="/terms" class="footer-top__link text6">Пользовательское соглашение</NuxtLink>
+                <NuxtLink target="_blank" to="/policy" class="footer-top__link text6">Политика конфиденциальности</NuxtLink>
                 <!-- <a href="#" class="footer-top__link text6">Стать партнером</a>
                 <a href="#" class="footer-top__link text6">О корпорации YUMA</a> -->
             </div>

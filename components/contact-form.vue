@@ -41,7 +41,7 @@
                 <div class="contact-form__form-group">
                     <div class="label_checkbox text6">
                         <div>
-                            Заполняя форму, я соглашаюсь с <NuxtLink to="/politika" target="_blank">политикой конфиденциальности</NuxtLink>.
+                            Заполняя форму, я соглашаюсь с <NuxtLink to="/policy" target="_blank">политикой конфиденциальности</NuxtLink>.
                         </div>
                     </div>
                 </div>
