@@ -494,7 +494,12 @@ input[type=checkbox]:checked + .label_checkbox {
 .title-ladder {
     margin-bottom: 50px;
     position: relative;
-    top: -19px;
+    &:first-of-type {
+        top: -19px;
+        @media screen and (max-width: $--screen-md-min) {
+            top: -14px;
+        }
+    }
     
     span:first-of-type {
         grid-column: 2/11;
@@ -504,9 +509,7 @@ input[type=checkbox]:checked + .label_checkbox {
         grid-column: 3/11;
     }
 
-    @media screen and (max-width: $--screen-md-min) {
-        top: -14px;
-    }
+    
     @media screen and (max-width: $--screen-sm-min) {
         margin-bottom: 8vw;
 
