@@ -71,12 +71,16 @@ export default {
 </script>
 
 <style lang="scss" >
-
+@import "~element-ui/packages/theme-chalk/src/message";
 @import '@/assets/scss/_variables.scss';
 
 .app {
     display: flex;
     flex-direction: column;
+}
+
+.el-message.el-message--error {
+    z-index: 20000 !important;
 }
 
 .main {

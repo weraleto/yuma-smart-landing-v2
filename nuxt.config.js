@@ -1,5 +1,7 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
+  ssr: true,
+  target: 'static',
   head: {
     title: 'yuma-smart-v2',
     htmlAttrs: {
@@ -15,6 +17,10 @@ export default {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },
+  serverMiddleware: [
+    '~/api/contact'
+  ],
+
 
   server: {
     port: 8880,

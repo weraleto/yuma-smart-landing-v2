@@ -5,7 +5,7 @@
             <div class="form-modal__close" @click="$emit('close')">
                 <img src="~assets/img/cross.svg" alt="Закрыть форму">
             </div>
-            <div class="form-modal__content">
+            <div class="form-modal__content" :style="formSubmitted ? 'overflow: visible' : ''">
                 <form action="" v-if="!formSubmitted">
                     <div class="contact-form__form-group form-modal__form-group">
                         <label class="contact-form__label text6" for="">Ваше Имя</label>

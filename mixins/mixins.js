@@ -1,11 +1,12 @@
+import { Message } from 'element-ui';
+
 export const formMixin = {
     data: () => {
         return {
             formSubmitted: false,
             form: {
                 name: null,
-                phone: null,
-                message: null
+                phone: null
             },
             formValidation: {
                 name: {result: true, errorMessage: ''},
@@ -50,18 +51,34 @@ export const formMixin = {
             return checks.every(function(it){return it === true})
                         
         },
-        submitForm() {
+        async submitForm() {
             let isFormValid = this.checkForm()
             if (isFormValid) {
-                this.formSubmitted = true
-                this.clearForm()
+                let form_data = new FormData();
+                for ( let key in this.form ) {
+                    form_data.append(key, this.form[key]);
+                }
+                let res = await fetch("/api/call_request/", {
+                    method: "post",
+                    body: form_data
+                })
+                if (res && res.status == 200) {
+                    this.formSubmitted = true
+                    this.clearForm()
+                } else {
+                    Message.error({
+                        type: 'error',
+                        message: 'Во время отправки формы что-то пошло не так. Попробуйте снова позже',
+                        duration: 10000
+                    });
+                }
+                
             }
         },
         clearForm() {
             this.form = {
                 name: null,
-                phone: null,
-                message: null
+                phone: null
             }
             this.formValidation = {
                 name: {result: true, errorMessage: ''},
