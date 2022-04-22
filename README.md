@@ -1,5 +1,18 @@
 # yuma-smart-v2
 
+## Отравка форм
+Для отправки форм необходимо скопировать пример ```.env``` файла в корень проекта и заполнить его. <br>
+```cp .env.example .env```
+
+### Значения переменных в .env:
+
+- **EMAIL_HOST** - хост smtp 
+- **EMAIL_PORT** - порт smtp
+- **EMAIL_HOST_USER** - логин подключения к smtp
+- **EMAIL_HOST_PASSWORD** - пароль подключения к smtp
+- **EMAIL_FROM** - почта "от кого"
+- **EMAIL_TO** - почта, куда отправить письмо
+
 ## Build Setup
 
 ```bash
