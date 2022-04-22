@@ -250,7 +250,11 @@
 
 <script>
 export default {
-
+    head() {
+        return {
+            title: "Политика конфиденциальности - YUMA-SMART"
+        }
+    }
 }
 </script>
 

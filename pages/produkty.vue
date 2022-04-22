@@ -215,6 +215,18 @@ export default {
     ApplicationFormTrigger,
     OrderProcess
   },
+  head() {
+    return {
+      title: 'Купить микромаркет или подключить умный холодильник для бизнеса',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'YUMA-SMART - решения для смарт-ритейла. Брендирование купленного микромаркета, установка, подключение, обучение,  техподдержка 24/7 – бесплатно.'
+        }
+      ]
+    }
+  },
 }
 </script>
 

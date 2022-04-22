@@ -552,6 +552,11 @@
 
 <script>
 export default {
+    head() {
+        return {
+            title: "Пользовательское соглашение - YUMA-SMART"
+        }
+    }
 
 }
 </script>

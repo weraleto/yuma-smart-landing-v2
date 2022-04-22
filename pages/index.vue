@@ -163,6 +163,18 @@ export default {
     Partners,
     CardsTranslated
   },
+  head() {
+    return {
+      title: 'Микромаркеты самообслуживания с мобильным приложением для покупателей',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'YUMA-SMART запустит ваши магазины без кассиров и продавцов для торговли едой и напитками. Включены система учета, программа лояльности и промо-акции.'
+        }
+      ]
+    }
+  },
   data: () => {
     return {
       faq: [{
