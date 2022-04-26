@@ -34,14 +34,17 @@ export default {
     components: {Navbar, Footer, FormModal},
     data: () => {
         return {
-            showUpButton: false
+            showUpButton: false,
+            lastScrollTop: 0
         }
     },
     mounted() {
         let ctx = this
         window.addEventListener('scroll', function(){
-            ctx.showUpButton = window.pageYOffset > 5450
-        })
+            let st = window.pageYOffset; 
+            ctx.showUpButton = window.pageYOffset > 5450 && st < this.lastScrollTop
+            this.lastScrollTop = st <= 0 ? 0 : st;
+        }, false)
     },
     computed: {
         ...mapState([
