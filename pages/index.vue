@@ -54,7 +54,7 @@
             </client-only>
 
             <div class="only-mobile" style="grid-column: 1/11">
-              <NuxtLink to="/produkty" class="btn large outlined arrowed block-offset__title--btn">перейти к продуктам</NuxtLink>
+              <NuxtLink to="/products" class="btn large outlined arrowed block-offset__title--btn">перейти к продуктам</NuxtLink>
             </div>
 
         </div>

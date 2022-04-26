@@ -12,8 +12,8 @@
             </div>
             <div class="footer-col-2">
                 <NuxtLink to="/" class="footer-top__link text6">Главная</NuxtLink>
-                <NuxtLink to="/produkty" class="footer-top__link text6">Наши продукты</NuxtLink>
-                <NuxtLink to="/produkty#order_process" class="footer-top__link text6">Как заказать</NuxtLink>
+                <NuxtLink to="/products" class="footer-top__link text6">Наши продукты</NuxtLink>
+                <NuxtLink to="/products#order_process" class="footer-top__link text6">Как заказать</NuxtLink>
             </div>
             <div class="footer-col-2">
                 <NuxtLink target="_blank" to="/terms" class="footer-top__link text6">Пользовательское соглашение</NuxtLink>
