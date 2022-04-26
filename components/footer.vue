@@ -21,15 +21,15 @@
                 <!-- <a href="#" class="footer-top__link text6">Стать партнером</a>
                 <a href="#" class="footer-top__link text6">О корпорации YUMA</a> -->
             </div>
-            <div class="footer-col-3 only-desktop">
-                <div class="footer-socials">
+            <div class="footer-col-3 hidden-mobile">
+                <!-- <div class="footer-socials">
                     <a class="social-icon-link" href="#">
                         <WhLogo />
                     </a>
                     <a class="social-icon-link" href="#">
                         <TGLogo />
                     </a>
-                </div>
+                </div> -->
             </div>
             <div class="footer-col-3">
                 <a href="mailto:pr@yuma.biz" class="footer-top__link text6">pr@yuma.biz</a>
@@ -45,14 +45,14 @@
             </p>
             <YumaLogo theme="dark" />
 
-            <div class="footer-socials mobile">
+            <!-- <div class="footer-socials mobile">
                 <a class="social-icon-link" href="#">
                     <WhLogo />
                 </a>
                 <a class="social-icon-link" href="#">
                     <TGLogo />
                 </a>
-            </div>
+            </div> -->
         </div>
     </div>
 </footer>
@@ -96,7 +96,6 @@ export default {
             max-width: 218px;
         }
         &__link {
-            margin-bottom: 12px;
             display: block;
 
             transition: color .3s ease;
@@ -108,6 +107,9 @@ export default {
             }
             &:disabled {
                 color: $--main-gray;
+            }
+            &:not(:last-child) {
+                margin-bottom: 12px;
             }
 
             &--phone {
@@ -151,6 +153,14 @@ export default {
         }
         &-3 {
             grid-column: 8/10;
+        }
+        &-2, &-3 {
+            &:nth-child(2n) {
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-end;
+            }
         }
         @media screen and (max-width: 1250px) {
             &-1 {
@@ -196,7 +206,11 @@ export default {
         @media screen and (max-width: $--screen-md-min) {
             &-layout {
                 grid-column-gap: 30px;
-                grid-template-columns: 73px auto 100px;
+                grid-template-columns: auto 100px;
+            }
+            .logo {
+                grid-column: 2/3;
+                grid-row: 1/2;
             }
         }
         @media screen and (max-width: $--screen-sm-min) {
@@ -207,7 +221,9 @@ export default {
                 grid-column-gap: 0px;
             }
             .logo {
-                grid-column: 3/4;
+                grid-column: 1/4;
+                grid-row: 1/2;
+                justify-self: center;
             }
         }
     }
@@ -215,7 +231,7 @@ export default {
         // grid-column: 3/9;
 
         @media screen and (max-width: $--screen-md-min) {
-            grid-column: 2/3;
+            grid-column: 1/2;
         }
         @media screen and (max-width: $--screen-sm-min) {
             grid-column: 1/4;
