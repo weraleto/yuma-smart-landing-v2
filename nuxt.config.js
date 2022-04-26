@@ -3,7 +3,7 @@ export default {
   ssr: true,
   target: 'server',
   head: {
-    title: 'yuma-smart-v2',
+    title: 'YUMA-SMART',
     htmlAttrs: {
       lang: 'ru'
     },
