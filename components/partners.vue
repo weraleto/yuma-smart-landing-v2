@@ -30,6 +30,9 @@ export default {
         this.el = this.$refs.marquee
         this.startAnimation();
     },
+    beforeDestroy(){
+        this.pauseAnimation()
+    },
     computed: {
         randList() {
             const a = [1, 2, 3, 4, 5, 6]

@@ -46,7 +46,7 @@
            <div class="grid-layout block-offset__title--double">
               <h2 class="title2 block-offset__title">оптимальные решения
               <span class="no-word-break">yuma-smart</span></h2>
-              <NuxtLink to="/produkty" class="hidden-mobile btn large outlined arrowed block-offset__title--btn">перейти к продуктам</NuxtLink>
+              <NuxtLink to="/products" class="hidden-mobile btn large outlined arrowed block-offset__title--btn">перейти к продуктам</NuxtLink>
             </div>
           
             <client-only>
@@ -54,7 +54,7 @@
             </client-only>
 
             <div class="only-mobile" style="grid-column: 1/11">
-              <NuxtLink to="/produkty" class="btn large outlined arrowed block-offset__title--btn">перейти к продуктам</NuxtLink>
+              <NuxtLink to="/products" class="btn large outlined arrowed block-offset__title--btn">перейти к продуктам</NuxtLink>
             </div>
 
         </div>
@@ -500,6 +500,7 @@ export default {
 
     .card-item__back {
       animation: fadein .3s ease forwards;
+      border-color: $--main-black;
     }
   }
 

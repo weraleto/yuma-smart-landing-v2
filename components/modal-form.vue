@@ -113,7 +113,10 @@ export default {
     align-items: center;
 
     @media screen and (max-width: $--screen-sm-min) {
-        padding-top: 60px;
+        padding-top: 70px;
+    }
+    @media screen and (max-width: $--screen-xs-min) {
+        align-items: flex-start;
     }
 }
 
@@ -135,6 +138,8 @@ export default {
     }
     &.medium {
         max-width: 670px;
+        padding-top: 12vh;
+        padding-bottom: 12vh;
     }
 
     &__close {
@@ -147,6 +152,7 @@ export default {
 
     &__content {
         width: 100%;
+        display: flex;
 
         .btn {
             margin: auto;
@@ -155,7 +161,7 @@ export default {
         @media screen and (max-width: $--screen-sm-min) {
             max-height: calc(100vh - 180px);
             overflow-y: scroll;
-            height: 100%;
+            height: 100%;   
         }
     }
 
@@ -179,7 +185,8 @@ export default {
     &__thankyou {
         text-align: center;
         position: relative;
-        transform: translate(0, -100%);
+        align-self: center;
+        transform: translate(0, -30%);
 
         .subtitle {
             margin-bottom: 20px;
@@ -194,6 +201,10 @@ export default {
         &.small, &.medium {
             // max-width: calc(80% - 60px);
             margin: 0 30px;
+        }
+        &.medium {
+            padding-top: 54px;
+            padding-bottom: 50px;
         }
         &__close {
             top: 22px;
@@ -210,6 +221,8 @@ export default {
     }
     @media screen and (max-width: $--screen-xs-min) {
         padding: 54px 38px 50px;
+        height: 100%;
+        max-height: 84vh;
     }
     @media screen and (max-width: $--screen-xxs-min) {
         &.small, &.medium {

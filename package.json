@@ -9,10 +9,11 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
+    "aos": "^2.3.4",
     "body-parser": "^1.20.0",
     "core-js": "^3.19.3",
     "dotenv": "^16.0.0",
-    "element-ui": "^2.15.6",
+    "element-ui": "^2.15.8",
     "express": "^4.17.3",
     "maska": "^1.5.0",
     "multiparty": "^4.2.3",

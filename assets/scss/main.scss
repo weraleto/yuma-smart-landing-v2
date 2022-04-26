@@ -167,7 +167,7 @@ body {
     font-size: 1.875rem;
     font-variation-settings: 'wght' 600;
     @media screen and (max-width: $--screen-md-min) {
-        font-size: 1.375rem;
+        font-size: 1.125rem;
     }
 }
 
@@ -293,6 +293,7 @@ input, textarea {
     font-family: 'Raleway', sans-serif;
     padding: 20px;
     font-size: 1rem;
+    font-feature-settings: inherit;
 
     &::placeholder {
         color: $--main-gray-light;
@@ -405,7 +406,6 @@ input[type=checkbox]:checked + .label_checkbox {
 
     @media screen and (max-width: $--screen-md-min) {
         padding-top: 120px;
-        margin-bottom: 30px;
     }
     @media screen and (max-width: $--screen-sm-min) {
         padding-top: 80px;

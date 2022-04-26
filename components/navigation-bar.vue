@@ -6,7 +6,7 @@
                 <div class="navigation-inner" :class="{'opened': mobileMenuOpened}">
                     <div class="navigation-part left">
                         <NuxtLink @click.native="mobileMenuOpened=false" to="/" class="navigation-link__item text5"><span>Главная</span></NuxtLink>
-                        <NuxtLink @click.native="mobileMenuOpened=false" to="/produkty" class="navigation-link__item text5"><span>Наши продукты</span></NuxtLink>
+                        <NuxtLink @click.native="mobileMenuOpened=false" to="/products" class="navigation-link__item text5"><span>Наши продукты</span></NuxtLink>
                     </div>
                     <div class="navigation-part right">
                         <div class="navigation-tel__item text5" v-for="p in cities" :key="p.name">
