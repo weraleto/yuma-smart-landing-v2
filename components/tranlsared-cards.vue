@@ -11,7 +11,7 @@
                 'margin-right: 50px': idx == 2
             }"
         >
-            <div @mouseenter="debounce(idx)" @mouseleave="cardLeave(idx)">
+            <div style="height: 100%" @mouseenter="debounce(idx)" @mouseleave="cardLeave(idx)">
                 <div class="translated-card__item--front">
                     <h5 class="subtitle">{{i.title}}</h5>
                     <div class="translated-card__item--icon">
@@ -76,6 +76,12 @@ export default {
                         slideToClickedSlide: true,
                         centeredSlides: true
                     },
+                    480: {
+                        spaceBetween: 16,
+                        slidesPerView: 1.3,  
+                        slideToClickedSlide: true,
+                        centeredSlides: false
+                    },
                     600: {
                         spaceBetween: 16,
                         slidesPerView: 2,
@@ -139,7 +145,7 @@ export default {
         min-height: 460px;
     }
     @media screen and (max-width: 320px) {
-        min-height: 185vw;
+        min-height: 500px;
     }
 }
 
@@ -221,12 +227,13 @@ export default {
 
 .translated-card__item--front {
     max-width: 340px;
-    @media screen and (max-width: $--screen-sm-min) {
-        flex-grow: 1;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-    }
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-grow: 1;
+    height: 100%;
+    // @media screen and (max-width: $--screen-sm-min) {
+    // }
 }
 
 .translated-card__item--icon {
@@ -273,7 +280,7 @@ export default {
     }
     @media screen and (min-width: $--screen-sm-min) and (max-width: $--screen-md-min) {
         .subtitle {
-            margin-bottom: 5px;
+            margin-bottom: 0;
         }
     }
     @media screen and (max-width: $--screen-md-min) {
@@ -340,6 +347,10 @@ export default {
     }
 
     .translated-card__item--front {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 100%;
         animation: fadein ease-in .4s forwards;
     }
 }

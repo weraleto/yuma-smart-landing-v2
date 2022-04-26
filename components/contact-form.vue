@@ -3,7 +3,7 @@
     <div class="grid-layout container">
         <div class="contact-form__container">
             <div class="contact-form__text">
-                <h3 class="title2">{{title}}</h3>
+                <h3 class="title2" v-html="title"></h3>
                 <h4 class="subtitle">{{subtitle}}</h4>
                 <small v-if="small" class="text6">{{small}}</small>
             </div>
@@ -127,7 +127,7 @@ export default {
         }
 
         @media screen and (max-width: $--screen-sm-min) {
-            max-width: 61.1%;
+            max-width: 75.137%;
             margin-bottom: 30px;
             text-align: center;
         }
