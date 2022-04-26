@@ -1,7 +1,7 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   ssr: true,
-  target: 'static',
+  target: 'server',
   head: {
     title: 'yuma-smart-v2',
     htmlAttrs: {
@@ -18,7 +18,7 @@ export default {
     ]
   },
   serverMiddleware: [
-    '~/api/contact'
+    '~/api/contact.js'
   ],
 
 
