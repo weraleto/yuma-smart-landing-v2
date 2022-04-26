@@ -4,7 +4,7 @@
         <div 
             class="grid-layout order-process__container"
         >
-            <div class="step__number step-1">
+            <div class="step__number step-1" data-aos="fade-up">
                 1
             </div>
             <div class="separator separator-horizontal separator-1"></div>
@@ -12,7 +12,7 @@
         <div 
             class="grid-layout order-process__container border-top-right"
         >
-          <div class="step step-1">
+          <div class="step step-1" data-aos="fade-up">
               <h4 class="subtitle">
                   Получаем заявку и консультируем вас
               </h4>
@@ -25,7 +25,7 @@
         <div 
             class="grid-layout order-process__container border-bottom-right"
         >
-            <div class="step__number step-2">
+            <div class="step__number step-2" data-aos="fade-up">
                 2
             </div>
             <div class="separator separator-horizontal separator-2"></div>
@@ -34,7 +34,7 @@
         <div 
             class="grid-layout order-process__container border-top-left"
         >
-          <div class="step step-2">
+          <div class="step step-2" data-aos="fade-up">
              <h4 class="subtitle">
                   Оформляем официальные документы
               </h4>
@@ -47,7 +47,7 @@
         <div 
             class="grid-layout order-process__container"
         >
-            <div class="step__number step-3">
+            <div class="step__number step-3" data-aos="fade-up">
                 3
             </div>
             <div class="separator separator-horizontal separator-3"></div>
@@ -55,7 +55,7 @@
         <div 
             class="grid-layout order-process__container border-top-right"
         >
-          <div class="step step-3">
+          <div class="step step-3" data-aos="fade-up">
               <h4 class="subtitle">
                   Готовим и брендируем ваши микромаркеты
               </h4>
@@ -67,7 +67,7 @@
         <div 
             class="grid-layout order-process__container border-bottom-right"
         >
-            <div class="step__number step-4">
+            <div class="step__number step-4" data-aos="fade-up">
                 4
             </div>
             <div class="separator separator-horizontal separator-4"></div>
@@ -75,7 +75,7 @@
         <div 
             class="grid-layout order-process__container border-top-left-offset"
         >
-          <div class="step step-4">
+          <div class="step step-4" data-aos="fade-up">
               <h4 class="subtitle">
                   Проводим бесплатное обучение
               </h4>
@@ -88,14 +88,14 @@
         <div 
             class="grid-layout order-process__container"
         >
-            <div class="step__number step-5">
+            <div class="step__number step-5" data-aos="fade-up">
                 5
             </div>
         </div>
         <div 
             class="grid-layout order-process__container"
         >
-          <div class="step step-5">
+          <div class="step step-5" data-aos="fade-up">
               <h4 class="subtitle">
                   Запускаем ваши микромаркеты
               </h4>
@@ -109,17 +109,21 @@
 </template>
 
 <script>
-
+import AOS from 'aos';
 export default {
     data: () => {
         return {
 
         }
     },
+    mounted() {
+        AOS.init()
+    }
 }
 </script>
 
 <style lang="scss" scoped>
+@import 'node_modules/aos/src/sass/aos.scss';
 @import '@/assets/scss/_variables.scss';
 
 .separator {

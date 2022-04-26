@@ -9,6 +9,7 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
+    "aos": "^2.3.4",
     "body-parser": "^1.20.0",
     "core-js": "^3.19.3",
     "dotenv": "^16.0.0",
