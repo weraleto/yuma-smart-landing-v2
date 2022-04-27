@@ -187,6 +187,7 @@ export default {
         position: relative;
         align-self: center;
         transform: translate(0, -30%);
+        width: 100%;
 
         .subtitle {
             margin-bottom: 20px;
