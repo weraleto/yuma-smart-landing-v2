@@ -7,9 +7,6 @@
                 'hovered': hoveredCard == idx, 
                 'inactive': ![activeCard, hoveredCard].includes(idx)
             }"
-            :style="{
-                'margin-right: 50px': idx == 2
-            }"
         >
             <div style="height: 100%" @mouseenter="debounce(idx)" @mouseleave="cardLeave(idx)">
                 <div class="translated-card__item--front">
