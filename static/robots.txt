@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /_nuxt/ 
+Disallow: /static/ 
+Disallow: /terms/
+Disallow: /policy/
+
+Sitemap: https://yuma.biz/sitemap.xml
