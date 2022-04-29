@@ -60,9 +60,8 @@
         </div>
 
         <div class="block-offset grid-layout">
-            <h2 class="title2 block-offset__title">сервис <span class="no-word-break">yuma-smart.</span>
-                продуманный.
-                бесплатный.</h2>
+            <h2 class="title2 block-offset__title"><span class="no-word-break">yuma-smart.</span>
+                Все включено.</h2>
             <div class="block-offset__content text-blocks plain">
                 <div class="text-blocks__col">
                     <div class="text-blocks__item">
@@ -99,7 +98,7 @@
       theme="dark" 
       title="Получите скидку 5%" 
       subtitle="на любое торговое оборудование" 
-      small="Акция действует до 01/05/2022" 
+      small="Акция действует до 01/06/2022" 
       action-button-text="Получить скидку"
     />
         
@@ -171,7 +170,43 @@ export default {
           hid: 'description',
           name: 'description',
           content: 'YUMA-SMART запустит ваши магазины без кассиров и продавцов для торговли едой и напитками. Включены система учета, программа лояльности и промо-акции.'
-        }
+        },
+        {
+          property: 'og:title',
+          content: 'YUMA-SMART',
+          vmid: 'og:title',
+          hid: 'og:title'
+        },
+        {
+          property: 'og:description',
+          content: 'микромаркеты самообслуживания',
+          vmid: 'og:description',
+          hid: 'og:description'
+        },
+        {
+          property: 'og:site_name',
+          content: 'YUMA',
+          vmid: 'og:site_name',
+          hid: 'og:site_name'
+        },
+        {
+          property: 'og:locale',
+          content: 'ru_RU',
+          vmid: 'og:locale',
+          hid: 'og:locale'
+        },
+        {
+          property: 'og:locale:alternate',
+          content: 'en_US',
+          vmid: 'og:locale:alternate',
+          hid: 'og:locale:alternate'
+        },
+        {
+          property: 'og:locale:alternate',
+          content: 'en_US',
+          vmid: 'og:locale:alternate',
+          hid: 'og:locale:alternate'
+        },
       ]
     }
   },
@@ -199,7 +234,7 @@ export default {
         },
         {
           'title': 'Что произойдет, если у покупателя не окажется денег на привязанной карте?',
-          'text': 'Приложение позволяет быстро и просто привязать к нему другое платежное средство (банковскую карту, Apple Pay, Google Pay).'
+          'text': 'Приложение позволяет быстро и просто привязать к нему другое платежное средство.'
         }
       ],
       who_needs_items: [{
@@ -241,7 +276,7 @@ export default {
         {
           'num': 'более 12',
           'small': 'Стран мира, где работает технология YUMA',
-          'back': 'Великобритания, Ирландия, США, Австралия, Швейцария, Нидерланды, Индия, ОАЭ, ЮАР, Белоруссия, Казахстан, Украина, Россия.'
+          'back': 'Великобритания, Ирландия, США, Австралия, Швейцария, Нидерланды, Индия, ОАЭ, ЮАР, Украина, Казахстан, Беларусь, Россия.'
         },
       ],
       descisions: [{

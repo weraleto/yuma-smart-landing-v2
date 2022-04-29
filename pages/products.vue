@@ -110,7 +110,7 @@
             </div>
             <div class="text-blocks__col">
               <div class="text-blocks__item call-to-action">
-                <h3 class="subtitle text-blocks__item-subtitle">Стоимость<br>от 20 тыс. ₽</h3>
+                <h3 class="subtitle text-blocks__item-subtitle">Стоимость<br>20 тыс. ₽</h3>
                 <ApplicationFormTrigger />
               </div>
             </div>
@@ -137,7 +137,7 @@
                   нас.</p>
               </div>
               <div class="text-blocks__item">
-                <h3 class="subtitle text-blocks__item-subtitle">Стоимость<br>от 20 тыс. ₽</h3>
+                <h3 class="subtitle text-blocks__item-subtitle">Стоимость<br>20 тыс. ₽</h3>
                 <ApplicationFormTrigger />
               </div>
             </div>
