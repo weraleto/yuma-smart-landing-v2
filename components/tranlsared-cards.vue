@@ -8,21 +8,31 @@
                 'inactive': ![activeCard, hoveredCard].includes(idx)
             }"
         >
-            <div style="height: 100%" @mouseenter="debounce(idx)" @mouseleave="cardLeave(idx)">
+            <div style="height: 100%" @mouseenter="debounce(idx)" @mouseleave="cardLeave(idx)"
+                itemscope itemtype="http://schema.org/Product"
+            >
                 <div class="translated-card__item--front">
                     <h5 class="subtitle">{{i.title}}</h5>
                     <div class="translated-card__item--icon">
-                        <img :src="require('../assets/img/'+i.img+'.svg')" :alt="i.title">
+                        <img itemprop="image" :src="require('../assets/img/'+i.img+'.svg')" :alt="i.title">
                     </div>
                     <div class="translated-card__item--bottom">
                         <small>Вам подойдет</small>
-                        <p class="subtitle">{{i.name}}<br>{{i.price}}</p>
+                        <p class="subtitle">
+                            <span itemprop="name">{{i.name}}</span>
+                        <br>
+                            <span itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+                            <meta itemprop="price" :content="i.price">
+                            <meta itemprop="priceCurrency" content="RUB">
+                            {{i.price}}
+                            </span>
+                        </p>
 
                         <small>{{i.subtext}}</small>
                     </div>
                 </div>
                 <div class="translated-card__item--overlay">
-                    <div class="translated-card__item--description">
+                    <div class="translated-card__item--description"  itemprop="description">
                         <div v-for="d in i.description" :key="d.title" class="translated-card__item--description-group">
                             <h4 class="subtitle" v-html="d.title">
                             </h4>
