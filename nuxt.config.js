@@ -24,6 +24,10 @@ export default {
         vmid: 'og:image',
         hid: 'og:image'
       },
+      {
+        name: 'yandex-verification',
+        content: '79a60ea038531bcf'
+      }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
