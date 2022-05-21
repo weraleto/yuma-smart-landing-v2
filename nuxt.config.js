@@ -41,6 +41,10 @@ export default {
     '~/api/contact.js'
   ],
 
+  generate: {
+    fallback: '404.html'
+  },
+
 
   server: {
     port: 8880,
