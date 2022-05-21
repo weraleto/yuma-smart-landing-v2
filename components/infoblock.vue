@@ -6,7 +6,7 @@
     </div>
     <a href="" 
         v-if="button_type" 
-        @click.prevent="$store.commit('setShowModal', {key: 'showApplyForm', val: true})" 
+        @click.prevent="dispatchButtonAction" 
         class="infoblock__button btn large" 
         :class="button_type"
     >{{button_text}}</a>
@@ -16,9 +16,26 @@
 <script>
 export default {
     props: {
+        is_button_link: {
+            type: Boolean,
+            default: false
+        },
+        button_page_link: {
+            type: String,
+            default: null
+        },
         button_type: String,
         button_text: String,
         text: String
+    },
+    methods: {
+        dispatchButtonAction() {
+            if (this.is_button_link) {
+                this.$router.push(this.button_page_link)
+                return
+            }
+            this.$store.commit('setShowModal', {key: 'showApplyForm', val: true})
+        }
     }
 
 }
@@ -70,6 +87,8 @@ export default {
     width: max-content;
     padding: 0 36px;
     margin-top: 30px;
+    grid-row: 2/3;
+    grid-column: 3/10;
 
     @media screen and (max-width: $--screen-sm-min) {
         margin-left: 67.5px;
