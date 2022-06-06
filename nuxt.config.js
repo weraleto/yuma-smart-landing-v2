@@ -71,6 +71,18 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
+    [
+      '@nuxtjs/yandex-metrika',
+      {
+        id: '88835026',
+        webvisor: true,
+        clickmap: true,
+        trackLinks:true,
+        accurateTrackBounce:true,
+        webvisor:true,
+        ecommerce:"dataLayer"
+      }
+    ]
   ],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
