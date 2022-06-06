@@ -25,6 +25,12 @@ export default {
         hid: 'og:image'
       },
       {
+        property: 'og:type',
+        content: 'website',
+        vmid: 'og:type',
+        hid: 'og:type'
+      },
+      {
         name: 'yandex-verification',
         content: '79a60ea038531bcf'
       }
