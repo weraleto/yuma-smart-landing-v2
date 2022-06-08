@@ -34,6 +34,45 @@
     
 <main class="main">
     <div class="container pb">
+      <div class="block-offset grid-layout">
+        <div style="grid-column: 1/11">
+            <h2 class="title2 block-offset__title mb3">что такое
+                микромаркеты
+            </h2>
+            <Infoblock text="Микромаркеты YUMA-SMART - это ваши готовые точки продаж, которые будут работать без продавцов и кассиров." />
+        </div>
+            <div class="block-offset__content text-blocks plain">
+                <div class="text-blocks__col">
+                    <div class="text-blocks__item">
+                        <div class="text-blocks__item-icon">
+                          <img src="~assets/img/icon-frige.svg" alt="Application" >
+                        </div>
+                        <p class="text4">Подходящее для вашего ассортимента умное торговое оборудование — холодильники, витрины, кофе-машины и т.д.</p>
+                    </div>
+                    <div class="text-blocks__item">
+                        <div class="text-blocks__item-icon">
+                          <img src="~assets/img/icon-cart.svg" alt="Application" >
+                        </div>
+                        <p class="text4">Микромаркеты легко и быстро запустят автономную торговлю там, где удобно вам и покупателям.</p>
+                    </div>
+                </div>
+                <div class="text-blocks__col">
+                    <div class="text-blocks__item">
+                        <div class="text-blocks__item-icon">
+                          <img src="~assets/img/icon-smart.svg" alt="Application" >
+                        </div>
+                        <p class="text4">Торговое оборудование становится умным благодаря подключенному мини-компьютеру с настроенным программным обеспечением.</p>
+                    </div>
+                    <div class="text-blocks__item">
+                        <div class="text-blocks__item-icon">
+                          <img src="~assets/img/icon-app.svg" alt="Application" >
+                        </div>
+                        <p class="text4">Ваше брендированное мобильное приложение сделает покупки максимально комфортными. А благодаря настройке акций и привилегий их будет всё больше.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="block-offset grid-layout">
             <h2 class="title2 block-offset__title">кому подходит
                 <span class="no-word-break">yuma-smart</span></h2>
