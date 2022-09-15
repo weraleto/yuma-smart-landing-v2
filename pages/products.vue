@@ -26,12 +26,10 @@
               </div>
               <div class="text-blocks__item">
                 <h3 class="subtitle text-blocks__item-subtitle">Холодильники</h3>
-                <p class="text4">Технология YUMA-SMART протестирована
-                  и успешно работает с самыми разными популярными моделями холодильников.
-                  Мы подберем оптимальный для вас вариант.</p>
+                <p class="text4">Технология YUMA-SMART успешно работает с самыми разными популярными моделями холодильных шкафов. Например, с указанными ниже.</p>
               </div>
               <div class="text-blocks__item">
-                <h3 class="subtitle text-blocks__item-subtitle">Стоимость<br>от 90 тыс. ₽</h3>
+                <h3 class="subtitle text-blocks__item-subtitle">Стоимость<br>от 129 000 ₽</h3>
                 <ApplicationFormTrigger />
               </div>
             </div>
@@ -58,9 +56,7 @@
             <div class="text-blocks__col">
               <div class="text-blocks__item">
                 <h3 class="subtitle text-blocks__item-subtitle">Холодильники</h3>
-                <p class="text4">Технология YUMA-SMART протестирована
-                  и успешно работает с самыми разными популярными моделями холодильников.
-                  Мы подберем оптимальный для вас вариант.</p>
+                <p class="text4">Технология YUMA-SMART успешно работает с самыми разными популярными моделями холодильных шкафов. Например, с указанными ниже.</p>
               </div>
               <div class="text-blocks__item">
                 <h3 class="subtitle text-blocks__item-subtitle">Витрины</h3>
@@ -77,7 +73,7 @@
                   единую продуманную конструкцию.</p>
               </div>
               <div class="text-blocks__item call-to-action">
-                <h3 class="subtitle text-blocks__item-subtitle">Стоимость<br>от 90 тыс. ₽</h3>
+                <h3 class="subtitle text-blocks__item-subtitle">Стоимость<br>от 129 000 ₽</h3>
                 <ApplicationFormTrigger />
               </div>
             </div>
@@ -102,15 +98,13 @@
               </div>
               <div class="text-blocks__item">
                 <h3 class="subtitle text-blocks__item-subtitle">Как его установить</h3>
-                <p class="text4">Мы бесплатно устанавливаем и настраиваем модуль управления со всеми его компонентами.
-                  Независимо от того, запускается YUMA-SMART на вашем торговом оборудовании, или вы приобретаете его у
-                  нас.</p>
+                <p class="text4">Технология YUMA-SMART успешно работает с самыми разными популярными моделями холодильных шкафов. Например, с указанными ниже.</p>
               </div>
 
             </div>
             <div class="text-blocks__col">
               <div class="text-blocks__item call-to-action">
-                <h3 class="subtitle text-blocks__item-subtitle">Стоимость<br>20 тыс. ₽</h3>
+                <h3 class="subtitle text-blocks__item-subtitle">Стоимость<br>54 990 ₽</h3>
                 <ApplicationFormTrigger />
               </div>
             </div>
@@ -132,12 +126,10 @@
               </div>
               <div class="text-blocks__item">
                 <h3 class="subtitle text-blocks__item-subtitle">Как его установить</h3>
-                <p class="text4">Мы бесплатно устанавливаем и настраиваем модуль управления со всеми его компонентами.
-                  Независимо от того, запускается YUMA-SMART на вашем торговом оборудовании, или вы приобретаете его у
-                  нас.</p>
+                <p class="text4">Технология YUMA-SMART успешно работает с самыми разными популярными моделями холодильных шкафов. Например, с указанными ниже.</p>
               </div>
               <div class="text-blocks__item">
-                <h3 class="subtitle text-blocks__item-subtitle">Стоимость<br>20 тыс. ₽</h3>
+                <h3 class="subtitle text-blocks__item-subtitle">Стоимость<br>54 990 ₽</h3>
                 <ApplicationFormTrigger />
               </div>
             </div>

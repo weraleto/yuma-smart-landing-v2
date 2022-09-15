@@ -35,7 +35,7 @@ export default {
     },
     computed: {
         randList() {
-            const a = [1, 2, 3, 4, 5, 6]
+            const a = [1, 2, 3, 4, 5, 6, 7]
             return a.concat(a).concat(a)
         }
     },

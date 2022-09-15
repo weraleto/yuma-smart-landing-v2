@@ -3,11 +3,11 @@
     <div class="footer-top">
         <div class="container grid-layout footer-top-container">
             <div class="footer-col-1">
-                <a class="footer-top__link footer-top__link--phone" href="tel:+7 (812) 309 50 32">+7 (812) 309 50 32</a>
+                <a class="footer-top__link footer-top__link--phone" href="tel:+7 (812) 605 98 08">+7 (812) 605 98 08</a>
                 <p class="text6 footer-top__contact-description">Санкт-Петербург, наб. реки Смоленки, 5-7, Технопарк, офис 337, метро Василеостровская</p>
             </div>
             <div class="footer-col-1">
-                <a class="footer-top__link footer-top__link--phone" href="tel:+7 (495) 108 11 78">+7 (495) 108 11 78</a>
+                <!-- <a class="footer-top__link footer-top__link--phone" href="tel:+7 (812) 605 98 08">+7 (812) 605 98 08</a> -->
                 <p class="text6 footer-top__contact-description">Москва, Нововладыкинский проезд, 2с1, метро Владыкино</p>
             </div>
             <div class="footer-col-2">

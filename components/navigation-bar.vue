@@ -9,10 +9,13 @@
                         <NuxtLink @click.native="mobileMenuOpened=false" to="/products" class="navigation-link__item text5"><span>Наши продукты</span></NuxtLink>
                     </div>
                     <div class="navigation-part right">
-                        <div class="navigation-tel__item text5" v-for="p in cities" :key="p.name">
+                        <!-- <div class="navigation-tel__item text5" v-for="p in cities" :key="p.name">
                             <span class="only-desktop">{{p.name}}</span>
                             <div class="hidden-desktop">{{p.nameFull}}</div>
                             <a class="navigation-tel__link text-bold" :href="`tel:${p.phone}`">{{p.phone}}</a>
+                        </div> -->
+                        <div class="navigation-tel__item text5">
+                            <a class="navigation-tel__link text-bold" href="tel:+78126059808">+7 (812) 605 98 08</a>
                         </div>
 
 
@@ -91,6 +94,8 @@ export default {
         &.right {
             grid-column: 4/9;
             padding-left: 2.84vw;
+            gap: 2.84vw;
+            justify-content: flex-end;
 
             @media screen and (min-width: 1025px) and (max-width: 1180px) {
                 grid-column: 3/9;
@@ -217,7 +222,7 @@ export default {
             flex-grow: 1;
             display: flex;
             align-items: flex-end;
-            margin-top: 37px;
+            // margin-top: 37px;
 
             .btn {
                 max-height: 48px;
@@ -242,13 +247,13 @@ export default {
                 margin-top: 5px;
             }
         }
-        &__item {
-            @media screen and (max-width: $--screen-md-min) {
-                &:first-child {
-                    margin-bottom: 20px;
-                }
-            }
-        }
+        // &__item {
+        //     @media screen and (max-width: $--screen-md-min) {
+        //         &:first-child {
+        //             margin-bottom: 20px;
+        //         }
+        //     }
+        // }
     }
 }
 
