@@ -80,8 +80,7 @@
           </div>
         </div>
         <div class="block-offset grid-layout">
-          <h2 class="title2 block-offset__title">Модуль управления
-            <span class="no-word-break">yuma-smart</span></h2>
+          <h2 class="title2 block-offset__title">Модуль управления</h2>
           <div class="block-offset__content offset-sm text-blocks only-mobile plain">
 
             <div class="text-blocks__item text-blocks__icon" style="margin: 0 auto 50px;">
@@ -98,7 +97,7 @@
               </div>
               <div class="text-blocks__item">
                 <h3 class="subtitle text-blocks__item-subtitle">Как его установить</h3>
-                <p class="text4">Технология YUMA-SMART успешно работает с самыми разными популярными моделями холодильных шкафов. Например, с указанными ниже.</p>
+                <p class="text4">Если вы приобретаете торговое оборудование у нас, то мы сами и полностью бесплатно настраиваем модуль управления YUMA-SMARTBOX со всеми его компонентами. В остальных случаях вы получаете готовое коробочное решение, а также полное и бесплатное дистанционное сопровождение наших специалистов.</p>
               </div>
 
             </div>
@@ -126,7 +125,7 @@
               </div>
               <div class="text-blocks__item">
                 <h3 class="subtitle text-blocks__item-subtitle">Как его установить</h3>
-                <p class="text4">Технология YUMA-SMART успешно работает с самыми разными популярными моделями холодильных шкафов. Например, с указанными ниже.</p>
+                <p class="text4">Если вы приобретаете торговое оборудование у нас, то мы сами и полностью бесплатно настраиваем модуль управления YUMA-SMARTBOX со всеми его компонентами. В остальных случаях вы получаете готовое коробочное решение, а также полное и бесплатное дистанционное сопровождение наших специалистов.</p>
               </div>
               <div class="text-blocks__item">
                 <h3 class="subtitle text-blocks__item-subtitle">Стоимость<br>54 990 ₽</h3>
@@ -136,8 +135,7 @@
           </div>
         </div>
         <div class="block-offset grid-layout pb">
-          <h2 class="title2 block-offset__title">Программная платформа
-            <span class="no-word-break">yuma-smart</span></h2>
+          <h2 class="title2 block-offset__title">Программная платформа</h2>
           <div class="block-offset__content text-blocks platform">
             <div class="text-blocks__col">
               <div class="text-blocks__item text-blocks__icon">

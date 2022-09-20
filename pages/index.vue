@@ -340,7 +340,7 @@ export default {
         {
           'title': 'Подключим ваш обычный холодильник',
           'name': 'Модуль и Программа',
-          'price': '43 920 ₽',
+          'price': '54 990 ₽',
           'subtext': '+ 7% от оборота',
           'img': 'Mod+Program',
           'description': [{
@@ -354,9 +354,11 @@ export default {
           ]
         },
         {
-          'title': 'Подключим ваш умный холодильник',
-          'name': 'Программа',
-          'subtext': '7% от оборота',
+          'is_sale': true,
+          'title': 'Обновим ваш умный холодильник',
+          'name': 'Замена модуля и программа',
+          'subtext': '+ 7% от оборота',
+          'price': '43 920 ₽',
           'img': 'Program',
           'description': [{
             'title': 'Платформа <span class="no-word-break">YUMA-SMART</span>',

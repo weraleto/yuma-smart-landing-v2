@@ -11,7 +11,8 @@
             <div style="height: 100%" @mouseenter="debounce(idx)" @mouseleave="cardLeave(idx)"
                 itemscope itemtype="http://schema.org/Product"
             >
-                <div class="translated-card__item--front">
+                <div class="translated-card__item--front" :class="{'sale-active': i.is_sale}">
+                    <div v-show="i.is_sale" class="translated-card__item--sale text5">Спецпредложение</div>
                     <h5 class="subtitle">{{i.title}}</h5>
                     <div class="translated-card__item--icon">
                         <img itemprop="image" :src="require('../assets/img/'+i.img+'.svg')" :alt="i.title">
@@ -168,6 +169,8 @@ export default {
     transition: all .25s ease .2s;
     position: relative;
     padding: 50px 31px 40px;
+    border-radius: calc($--border-radius-default) * 2;
+    overflow: hidden;
 
     &.active,
     &.hovered {
@@ -239,8 +242,20 @@ export default {
     justify-content: center;
     flex-grow: 1;
     height: 100%;
-    // @media screen and (max-width: $--screen-sm-min) {
-    // }
+
+    &.sale-active {
+        margin-top: 30px;
+    }
+}
+.translated-card__item--sale {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: $--yellow-primary;
+    text-transform: uppercase;
+    padding: 10px;
+    font-variation-settings: 'wght' 600;
 }
 
 .translated-card__item--icon {
