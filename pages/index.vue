@@ -361,8 +361,8 @@ export default {
           'price': '43 920 ₽',
           'img': 'Program',
           'description': [{
-            'title': 'Платформа <span class="no-word-break">YUMA-SMART</span>',
-            'text': 'Mобильное приложение для покупателей и полноценная система учета, которыми вы управляете через единый личный кабинет.'
+            // 'title': 'Платформа <span class="no-word-break">YUMA-SMART</span>',
+            'text': 'Мы заменим ваш модуль управления. Вы получите наш YUMA-SMARTBOX и программу со скидкой 20%, т.е. <span class="no-word-break">за 43 920Р.</span> Или мы заполним ваш микромаркет на сумму этой скидки.'
           }]
         }
       ]

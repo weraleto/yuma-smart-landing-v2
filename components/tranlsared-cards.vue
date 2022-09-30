@@ -10,9 +10,10 @@
         >
             <div style="height: 100%" @mouseenter="debounce(idx)" @mouseleave="cardLeave(idx)"
                 itemscope itemtype="http://schema.org/Product"
+                :class="{'sale-active': i.is_sale}"
             >
-                <div class="translated-card__item--front" :class="{'sale-active': i.is_sale}">
-                    <div v-show="i.is_sale" class="translated-card__item--sale text5">Спецпредложение</div>
+                <div v-show="i.is_sale" class="translated-card__item--sale btn">Спецпредложение</div>
+                <div class="translated-card__item--front">
                     <h5 class="subtitle">{{i.title}}</h5>
                     <div class="translated-card__item--icon">
                         <img itemprop="image" :src="require('../assets/img/'+i.img+'.svg')" :alt="i.title">
@@ -37,7 +38,7 @@
                         <div v-for="d in i.description" :key="d.title" class="translated-card__item--description-group">
                             <h4 class="subtitle" v-html="d.title">
                             </h4>
-                            <p>{{d.text}}</p>
+                            <p v-html="d.text"></p>
                         </div>
                     </div>
                     <ApplicationFormTrigger />
@@ -235,6 +236,10 @@ export default {
     }
 }
 
+.sale-active {
+    margin-top: 40px;
+}
+
 .translated-card__item--front {
     max-width: 340px;
     display: flex;
@@ -242,10 +247,6 @@ export default {
     justify-content: center;
     flex-grow: 1;
     height: 100%;
-
-    &.sale-active {
-        margin-top: 30px;
-    }
 }
 .translated-card__item--sale {
     position: absolute;
@@ -253,9 +254,10 @@ export default {
     left: 0;
     right: 0;
     background: $--yellow-primary;
-    text-transform: uppercase;
     padding: 10px;
-    font-variation-settings: 'wght' 600;
+    min-height: 60px;
+    justify-content: center;
+    z-index: 3;
 }
 
 .translated-card__item--icon {
