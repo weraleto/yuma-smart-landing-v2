@@ -217,7 +217,7 @@ export default {
         },
         {
           property: 'og:description',
-          content: 'микромаркеты самообслуживания',
+          content: 'Микромаркеты самообслуживания',
           vmid: 'og:description',
           hid: 'og:description'
         },

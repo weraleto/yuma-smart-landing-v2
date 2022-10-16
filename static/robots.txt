@@ -4,4 +4,4 @@ Disallow: /static/
 Disallow: /terms/
 Disallow: /policy/
 
-Sitemap: https://yuma.biz/sitemap.xml
+Sitemap: https://yuma-smart.ru/sitemap.xml

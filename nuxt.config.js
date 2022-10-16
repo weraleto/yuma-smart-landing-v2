@@ -20,7 +20,7 @@ export default {
       },
       {
         property: 'og:image',
-        content: '//yuma.biz/yuma_logo.png',
+        content: '//yuma-smart.ru/yuma_logo.png',
         vmid: 'og:image',
         hid: 'og:image'
       },
@@ -80,7 +80,7 @@ export default {
     [
       '@nuxtjs/yandex-metrika',
       {
-        id: '88835026',
+        id: '90798219',
         webvisor: true,
         clickmap: true,
         trackLinks:true,
