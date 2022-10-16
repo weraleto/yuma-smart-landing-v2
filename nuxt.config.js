@@ -88,7 +88,10 @@ export default {
         webvisor:true,
         ecommerce:"dataLayer"
       }
-    ]
+    ],
+    ['@nuxtjs/google-analytics', {
+      id: 'G-FNBBLE7K91'
+    }],
   ],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
