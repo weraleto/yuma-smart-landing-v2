@@ -17,23 +17,25 @@
     <main class="main">
       <div class="container pb">
         <div class="block-offset grid-layout">
-          <h2 class="title2 block-offset__title">торговое
-            оборудование</h2>
-          <div class="block-offset__content text-blocks hidden-mobile">
-            <div class="text-blocks__col">
+          <h2 class="title2 block-offset__title">Холодильные
+            шкафы</h2>
+          <!-- <div class="block-offset__content text-blocks hidden-mobile"> -->
+          <div class="block-offset__content text-blocks frige-blocks">
+            <div class="text-blocks__col" v-for="it in $store.state.fridgeCatalog" :key="it.slug">
               <div class="text-blocks__item text-blocks__icon">
-                <img src="../assets/img/fridge.svg" alt="Холодильник">
+                <img :src="require(`../assets/img/fridges/${it.img}`)" alt="Холодильник">
               </div>
               <div class="text-blocks__item">
-                <h3 class="subtitle text-blocks__item-subtitle">Холодильники</h3>
-                <p class="text4">Технология YUMA-SMART успешно работает с самыми разными популярными моделями холодильных шкафов. Например, с указанными ниже.</p>
+                <h3 class="subtitle text-blocks__item-subtitle" v-html="it.name"></h3>
+                <p class="text4">Литраж: {{it.litres}}л</p>
               </div>
               <div class="text-blocks__item">
-                <h3 class="subtitle text-blocks__item-subtitle">Стоимость<br>от 129 000 ₽</h3>
-                <ApplicationFormTrigger />
+                <h3 class="text3 text-bold text-blocks__item-subtitle">Стоимость<br>от {{it.prices[0]}} ₽</h3>
+                <!-- <ApplicationFormTrigger /> -->
+                <nuxt-link class="btn large primary" :to="`/catalog/${it.slug}`">Подробнее</nuxt-link>
               </div>
             </div>
-            <div class="text-blocks__col">
+            <!-- <div class="text-blocks__col">
               <div class="text-blocks__item--long text-blocks__icon">
                 <img src="../assets/img/constr.svg" alt="Конструкция">
               </div>
@@ -47,9 +49,9 @@
                 <p class="text4">Холодильники, витрины, а также кофемашины, микроволновки и другую технику мы соберем в
                   единую продуманную конструкцию.</p>
               </div>
-            </div>
+            </div> -->
           </div>
-          <div class="block-offset__content text-blocks plain only-mobile">
+          <!-- <div class="block-offset__content text-blocks plain only-mobile">
             <div style="margin-bottom: 30px;">
               <img src="../assets/img/equipment-m.svg" alt="Оборудование">
             </div>
@@ -77,7 +79,7 @@
                 <ApplicationFormTrigger />
               </div>
             </div>
-          </div>
+          </div> -->
         </div>
         <div class="block-offset grid-layout">
           <h2 class="title2 block-offset__title">Модуль 
@@ -228,7 +230,18 @@ export default {
 <style lang="scss">
 
 @import '@/assets/scss/_variables.scss';
-
+.frige-blocks {
+  flex-wrap: wrap;
+  .text-blocks__col {
+    margin-bottom: 70px;
+    @media screen and (max-width: 500px) {
+      width: 100%;
+    }
+  }
+  .text-blocks__item:not(:last-child) {
+    margin-bottom: 20px;
+  }
+}
 .text-blocks__item {
   &.call-to-action {
     &.mobile {
