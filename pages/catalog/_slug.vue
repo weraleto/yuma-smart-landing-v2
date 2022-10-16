@@ -65,7 +65,7 @@
                     prop="prop_name"
                     label="Характеристики"
                     class-name="text-bold"
-                    min-width="350"
+                    min-width="250"
                     >
                     </el-table-column>
                     <el-table-column
