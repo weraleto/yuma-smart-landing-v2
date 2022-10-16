@@ -4,17 +4,17 @@
         <div class="container pb item-page">
             <div class="block-offset grid-layout">
             <a href="" @click.prevent="$router.go(-1)" class="link-back"><img src="~assets/img/arrow.svg" alt="Назад"></a>
-            <h1 class="title2 block-offset__title" v-html="currentItem.name"></h1>
+            <h1 class="title2 block-offset__title" v-html="currentItem.name+' '+materialName"></h1>
             <div class="block-offset__content text-blocks only-mobile plain">
 
                 <div class="text-blocks__item text-blocks__icon" style="margin: 0 auto 50px;">
-                <img src="../../assets/img/fridges/smart-m500lw.png" alt="YUMA SMART M500 LW">
+                <img :src="require('../../assets/img/fridges/'+imageName+'.png')" :alt="currentItem.slug">
                 </div>
 
                 <div class="text-blocks__col">
                 <div class="text-blocks__item">
                     <h3 class="subtitle text-blocks__item-subtitle">Литраж: 500л</h3>
-                    <p class="text4">
+                    <p class="text4" v-if="!currentItem.is_frost">
                         <el-radio-group v-model="material">
                         <el-radio :label="0">белый</el-radio>
                         <el-radio :label="1">нерж. сталь</el-radio>
@@ -31,14 +31,14 @@
             <div class="block-offset__content text-blocks hidden-mobile">
                 <div class="text-blocks__col">
                 <div class="text-blocks__item text-blocks__icon" v-if="currentItem.img">
-                    <img :src="require('../../assets/img/fridges/'+currentItem.img)" :alt="currentItem.slug">
+                    <img :src="require('../../assets/img/fridges/'+imageName+'.png')" :alt="currentItem.slug">
                 </div>
 
                 </div>
                 <div class="text-blocks__col">
                 <div class="text-blocks__item">
                     <h3 class="subtitle text-blocks__item-subtitle">Литраж: {{currentItem.litres}}л</h3>
-                    <p>
+                    <p v-if="!currentItem.is_frost">
                         <el-radio-group v-model="material">
                         <el-radio :label="0">белый</el-radio>
                         <el-radio :label="1">нерж. сталь</el-radio>
@@ -105,13 +105,23 @@ export default {
         currentItem() {
             const slug = this.$route.params.slug
             let data = this.$store.state.fridgeCatalog.reduce((prev, next) => {
-            if (next.slug == slug) {
-                return next
+                if (next.slug == slug) {
+                    return next
+                }
+                return prev
+            }, {})
+                return data
+        },
+        materialName() {
+            if (this.currentItem.is_frost) {
+                return 'LS'
             }
-            return prev
-        }, {})
-            return data
+            return this.material == 0 ? 'LW' : 'LS'
+        },
+        imageName() {
+            return this.currentItem.img + this.materialName.toLowerCase()
         }
+
     }
 }
 </script>

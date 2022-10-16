@@ -23,7 +23,7 @@
           <div class="block-offset__content text-blocks frige-blocks">
             <div class="text-blocks__col" v-for="it in $store.state.fridgeCatalog" :key="it.slug">
               <div class="text-blocks__item text-blocks__icon">
-                <img :src="require(`../assets/img/fridges/${it.img}`)" alt="Холодильник">
+                <img :src="require(`../assets/img/fridges/${it.img}${it.is_frost ? 'ls' : 'lw'}.png`)" alt="Холодильник">
               </div>
               <div class="text-blocks__item">
                 <h3 class="subtitle text-blocks__item-subtitle" v-html="it.name"></h3>
