@@ -17,8 +17,8 @@
     <main class="main">
       <div class="container pb">
         <div class="block-offset grid-layout">
-          <h2 class="title2 block-offset__title">Холодильные
-            шкафы</h2>
+          <h2 class="title2 block-offset__title">Торговое
+            оборудование</h2>
           <!-- <div class="block-offset__content text-blocks hidden-mobile"> -->
           <div class="block-offset__content text-blocks frige-blocks">
             <div class="text-blocks__col" v-for="it in $store.state.fridgeCatalog" :key="it.slug">
