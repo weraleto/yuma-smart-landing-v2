@@ -252,7 +252,7 @@ export const state = () => ({
             name: 'Yuma Smart<br>Y700 Frost',
             litres: '700',
             is_frost: true,
-            prices: ['209 000'],
+            prices: ['179 000', '209 000'],
             features: [
                 {
                 prop_name: 'Литраж, л',

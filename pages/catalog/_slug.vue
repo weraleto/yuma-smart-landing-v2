@@ -14,7 +14,7 @@
                 <div class="text-blocks__col">
                 <div class="text-blocks__item">
                     <h3 class="subtitle text-blocks__item-subtitle">Литраж: 500л</h3>
-                    <p class="text4" v-if="!currentItem.is_frost">
+                    <p>
                         <el-radio-group v-model="material">
                         <el-radio :label="0">белый</el-radio>
                         <el-radio :label="1">нерж. сталь</el-radio>
@@ -38,7 +38,7 @@
                 <div class="text-blocks__col">
                 <div class="text-blocks__item">
                     <h3 class="subtitle text-blocks__item-subtitle">Литраж: {{currentItem.litres}}л</h3>
-                    <p v-if="!currentItem.is_frost">
+                    <p>
                         <el-radio-group v-model="material">
                         <el-radio :label="0">белый</el-radio>
                         <el-radio :label="1">нерж. сталь</el-radio>
@@ -113,13 +113,14 @@ export default {
                 return data
         },
         materialName() {
-            if (this.currentItem.is_frost) {
-                return 'LS'
-            }
             return this.material == 0 ? 'LW' : 'LS'
         },
         imageName() {
-            return this.currentItem.img + this.materialName.toLowerCase()
+            let materialName = this.materialName
+            if (this.currentItem.is_frost) {
+                materialName = 'LS'
+            }
+            return this.currentItem.img + materialName.toLowerCase()
         }
 
     }
