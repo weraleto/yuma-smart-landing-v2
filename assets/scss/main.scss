@@ -33,7 +33,7 @@ a {
 
 html,
 body {
-    font-family: 'Raleway', sans-serif;
+    font-family: 'Onest', sans-serif;
     font-size: 16px;
     font-weight: 400;
     line-height: 1.2;
@@ -135,7 +135,8 @@ body {
     // font-size: 6.04vw;
     font-size: 87px; 
     text-transform: uppercase;
-    font-variation-settings: 'wght' 600;
+    // font-variation-settings: 'wght' 600;
+    font-weight: 600;
 
     @media screen and (max-width: $--screen-lg-min) {
         font-size: 5.84vw;
@@ -152,7 +153,8 @@ body {
     font-weight: 600;
     font-size: 4rem;
     text-transform: uppercase;
-    font-variation-settings: 'wght' 600;
+    // font-variation-settings: 'wght' 600;
+    font-weight: 600;
 
     @media screen and (max-width: $--screen-md-min) {
         font-size: 5.85vw;
@@ -165,7 +167,8 @@ body {
 .subtitle {
     font-weight: 700;
     font-size: 1.875rem;
-    font-variation-settings: 'wght' 600;
+    // font-variation-settings: 'wght' 600;
+    font-weight: 600;
     @media screen and (max-width: $--screen-md-min) {
         font-size: 1.125rem;
     }
@@ -185,11 +188,13 @@ body {
 .text6 {
     font-size: .875rem;
     font-weight: 500;
-    font-variation-settings: 'wght' 500;
+    // font-variation-settings: 'wght' 500;
+    font-weight: 500;
 }
 
 .text-bold {
-    font-variation-settings: 'wght' 600;
+    // font-variation-settings: 'wght' 600;
+    font-weight: 600;
 }
 
 .no-word-break {
@@ -197,8 +202,9 @@ body {
 }
 
 .btn {
-    font-family: 'Raleway';
-    font-variation-settings: 'wght' 600;
+    font-family: 'Onest';
+    // font-variation-settings: 'wght' 600;
+    font-weight: 600;
     text-transform: uppercase;
     font-size: 1rem;
     text-align: center;
@@ -290,7 +296,7 @@ input, textarea {
     border-radius: 10px;
     border: 2px solid transparent;
     color: $--main-black;
-    font-family: 'Raleway', sans-serif;
+    font-family: 'Onest', sans-serif;
     padding: 20px;
     font-size: 1rem;
     font-feature-settings: inherit;
