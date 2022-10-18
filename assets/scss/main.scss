@@ -131,7 +131,6 @@ body {
 }
 
 .title1 {
-    font-weight: 600;
     // font-size: 6.04vw;
     font-size: 87px; 
     text-transform: uppercase;
@@ -150,11 +149,10 @@ body {
 }
 
 .title2 {
-    font-weight: 600;
+    font-weight: 500;
     font-size: 4rem;
     text-transform: uppercase;
     // font-variation-settings: 'wght' 600;
-    font-weight: 600;
 
     @media screen and (max-width: $--screen-md-min) {
         font-size: 5.85vw;
@@ -165,10 +163,9 @@ body {
 }
 
 .subtitle {
-    font-weight: 700;
     font-size: 1.875rem;
     // font-variation-settings: 'wght' 600;
-    font-weight: 600;
+    font-weight: 500;
     @media screen and (max-width: $--screen-md-min) {
         font-size: 1.125rem;
     }
@@ -194,7 +191,7 @@ body {
 
 .text-bold {
     // font-variation-settings: 'wght' 600;
-    font-weight: 600;
+    font-weight: 500;
 }
 
 .no-word-break {
@@ -204,7 +201,7 @@ body {
 .btn {
     font-family: 'Onest';
     // font-variation-settings: 'wght' 600;
-    font-weight: 600;
+    font-weight: 500;
     text-transform: uppercase;
     font-size: 1rem;
     text-align: center;

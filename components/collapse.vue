@@ -79,7 +79,8 @@ export default {
         justify-content: space-between;
         padding: 20px 21.25% 20px 0;
         font-size: 1.875rem;
-        font-variation-settings: "wght" 600;
+        // font-variation-settings: "wght" 600;
+        font-weight: 500;
         height: auto;
         line-height: 1.2;
         position: relative;
@@ -153,7 +154,8 @@ export default {
             &--num {
                 font-size: 4.375rem;
                 line-height: 1;
-                font-variation-settings: 'wght' 900;
+                // font-variation-settings: 'wght' 900;
+                font-weight: 900;
                 margin-right: 20px;
             }
 
