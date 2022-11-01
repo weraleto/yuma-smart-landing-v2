@@ -7,7 +7,10 @@
                 <h4 class="subtitle">{{subtitle}}</h4>
                 <small v-if="small" class="text6">{{small}}</small>
             </div>
-            <form action="#" class="contact-form__form" :class="{'hidden': formSubmitted}">
+            <form class="contact-form__form" style="width: 100%">
+                <script data-b24-form="inline/22/0205z8" data-skip-moving="true">(function(w,d,u){var s=d.createElement('script');s.async=true;s.src=u+'?'+(Date.now()/180000|0);var h=d.getElementsByTagName('script')[0];h.parentNode.insertBefore(s,h);})(window,document,'https://cdn-ru.bitrix24.ru/b16224776/crm/form/loader_22.js');</script>
+            </form>
+            <!-- <form action="#" class="contact-form__form" :class="{'hidden': formSubmitted}">
                 <div class="contact-form__form-group">
                     <label class="contact-form__label text6" for="">Ваше Имя</label>
                     <input v-model="form.name" 
@@ -49,7 +52,7 @@
                     :class="theme == 'dark' ? 'primary' : 'outlined'"
                     @click.prevent="submitForm"
                 >{{actionButtonText}}</button>
-            </form>
+            </form> -->
             <div v-if="formSubmitted" class="contact-form__thankyou">
                 <div class="contact-form__thankyou--close"
                     @click="formSubmitted=false"
@@ -90,6 +93,7 @@ export default {
 <style lang="scss" >
 
 @import '@/assets/scss/_variables.scss';
+@import '@/assets/scss/_bitrix-form.scss';
 
 .contact-form {
     padding: 100px 0;
