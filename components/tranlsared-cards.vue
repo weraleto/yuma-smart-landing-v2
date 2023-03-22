@@ -238,7 +238,6 @@ export default {
 
 .sale-active {
     margin-top: 40px;
-    border-radius: calc($--border-radius-default) * 2 calc($--border-radius-default) * 2 0 0;
 }
 
 .translated-card__item--front {

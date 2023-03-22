@@ -3,12 +3,13 @@
     <div class="grid-layout container">
         <div class="contact-form__container">
             <div class="contact-form__text">
-                <h3 class="title2" v-html="title"></h3>
-                <h4 class="subtitle">{{subtitle}}</h4>
+                <h3 class="title1" v-html="title"></h3>
+                <h4 class="subtitle only-desktop">{{subtitle}}</h4>
+                <h4 class="text5 hidden-desktop">{{subtitle}}</h4>
                 <small v-if="small" class="text6">{{small}}</small>
             </div>
-            <form class="contact-form__form" style="width: 100%">
-                <script data-b24-form="inline/22/0205z8" data-skip-moving="true">(function(w,d,u){var s=d.createElement('script');s.async=true;s.src=u+'?'+(Date.now()/180000|0);var h=d.getElementsByTagName('script')[0];h.parentNode.insertBefore(s,h);})(window,document,'https://cdn-ru.bitrix24.ru/b16224776/crm/form/loader_22.js');</script>
+            <form class="contact-form__form">
+                <script data-b24-form="inline/20/julahc" data-skip-moving="true">(function(w,d,u){var s=d.createElement('script');s.async=true;s.src=u+'?'+(Date.now()/180000|0);var h=d.getElementsByTagName('script')[0];h.parentNode.insertBefore(s,h);})(window,document,'https://cdn-ru.bitrix24.ru/b16224776/crm/form/loader_20.js');</script>
             </form>
             <!-- <form action="#" class="contact-form__form" :class="{'hidden': formSubmitted}">
                 <div class="contact-form__form-group">
@@ -41,17 +42,17 @@
                         {{formValidation.phone.errorMessage}}
                     </small>
                 </div>
-                <div class="contact-form__form-group">
-                    <div class="label_checkbox text6">
+                <button type="submit" class="btn large text4" 
+                    :class="theme == 'dark' ? 'primary' : 'black'"
+                    @click.prevent="submitForm"
+                >{{actionButtonText}}</button>
+                <div class="contact-form__form-group policy-argreement">
+                    <div class="text6">
                         <div>
-                            Заполняя форму, я соглашаюсь с <NuxtLink to="/policy" target="_blank">политикой конфиденциальности</NuxtLink>.
+                            Заполняя форму, вы соглашаетесь с <NuxtLink to="/policy" target="_blank">политикой конфиденциальности</NuxtLink>.
                         </div>
                     </div>
                 </div>
-                <button type="submit" class="btn large" 
-                    :class="theme == 'dark' ? 'primary' : 'outlined'"
-                    @click.prevent="submitForm"
-                >{{actionButtonText}}</button>
             </form> -->
             <div v-if="formSubmitted" class="contact-form__thankyou">
                 <div class="contact-form__thankyou--close"
@@ -93,10 +94,14 @@ export default {
 <style lang="scss" >
 
 @import '@/assets/scss/_variables.scss';
-@import '@/assets/scss/_bitrix-form.scss';
 
 .contact-form {
-    padding: 100px 0;
+    padding: 120px 0 170px;
+
+    background: url('~assets/img/left-plane.svg'), url('~assets/img/right-plane.svg');
+    background-position: 0 calc(100% - 115px), 100% 0;
+    background-repeat: no-repeat;
+    background-size: 50% auto, auto auto;
 
     &.submitted {
         padding: 89px 0;
@@ -104,13 +109,14 @@ export default {
 
     &__container {
         position: relative;
-        grid-column: 3/9;
+        grid-column: 2/12;
         display: flex;
         justify-content: space-between;
         align-items: center;
+        // align-items: center;
         
-        @media screen and (max-width: 1180px) {
-            grid-column: 2/10;
+        @media screen and (max-width: $--screen-md-min) {
+            grid-column: 1/13;
         }
         @media screen and (max-width: $--screen-sm-min) {
             grid-column: 1/6;
@@ -120,29 +126,53 @@ export default {
     }
 
     &__text {
-        max-width: 50%;
 
         h3 {
-            margin-bottom: 20px;
+            margin-bottom: 28px;
+            line-height: 1.5;
+            @media screen and (max-width: $--screen-sm-min) {
+                margin-bottom: 24px;
+            }
         }
         small {
             display: block;
             margin-top: 10px;
         }
 
+        @media screen and (min-width: calc($--screen-sm-min + 1px)) {
+            padding-right: 39px;
+        }
+
         @media screen and (max-width: $--screen-sm-min) {
-            max-width: 75.137%;
-            margin-bottom: 30px;
+            // max-width: 75.137%;
+            margin-bottom: 50px;
             text-align: center;
         }
     }
 
     &__form {
-        max-width: 33.333%;
+        max-width: 30%;
+        // max-width: 33.333%;
         width: 100%;
 
         &.hidden {
             opacity: 0;
+        }
+
+        &-group {
+            a {
+                text-decoration: underline;
+            }
+            &.policy-argreement {
+                margin-top: 12px;
+                @media screen and (max-width: $--screen-sm-min) {
+                    text-align: center;
+                }
+            }
+            & + button {
+                margin-top: 13px;
+                min-width: 100%;
+            }
         }
 
         @media screen and (max-width: $--screen-md-min) {
@@ -150,7 +180,7 @@ export default {
         }
 
         @media screen and (max-width: $--screen-sm-min) {
-            max-width: 268px;
+            max-width: 290px;
             margin: auto;
         }
     }
@@ -195,9 +225,14 @@ export default {
                 margin-bottom: 10px;
             }
         }
+        @media screen and (max-width: $--screen-lg-min) {
+            transform: translate(9.20vw, 0);
+        }
         @media screen and (max-width: $--screen-md-min) {
             height: 100%;
-            width: 35vw;
+            width: 30vw;
+            transform: translate(3.20vw, 0);
+            padding: 30px 45px;
         }
         @media screen and (max-width: $--screen-sm-min) {
             height: 279.391px;
@@ -224,11 +259,16 @@ export default {
         color: $--main-white;
     }
 
+    @media screen and (max-width: 1440px) {
+        background-size: 61.25% auto, auto auto;
+    }
     @media screen and (max-width: $--screen-md-min) {
-        padding: 58px 0;
+        padding: 60px 0 120px;
+        background-position: 0 calc(100% - 60px), 100% -50px;
     }
     @media screen and (max-width: $--screen-sm-min) {
-        padding: 53px 0;
+        background: none;
+        padding: 60px 0;
     }
 }
 </style>

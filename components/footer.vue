@@ -2,38 +2,40 @@
   <footer class="footer">
     <div class="footer-top">
         <div class="container grid-layout footer-top-container">
-            <div class="footer-col-1">
-                <a class="footer-top__link footer-top__link--phone" href="tel:+7 (812) 605 98 08">+7 (812) 605 98 08</a>
-                <p class="text6 footer-top__contact-description">Санкт-Петербург, наб. реки Смоленки, 5-7, Технопарк, офис 337, метро Василеостровская</p>
+            <div class="footer-col-0">
+                <YumaLogo theme="dark" />
+                <p class="hidden-desktop subtitle" style="margin-top: 24px">Мы работаем по всей России</p>
             </div>
-            <div class="footer-col-1">
-                <!-- <a class="footer-top__link footer-top__link--phone" href="tel:+7 (812) 605 98 08">+7 (812) 605 98 08</a> -->
-                <p class="text6 footer-top__contact-description">Москва, Нововладыкинский проезд, 2с1, метро Владыкино</p>
-            </div>
-            <div class="footer-col-2">
-                <NuxtLink to="/" class="footer-top__link text6">Главная</NuxtLink>
-                <NuxtLink to="/products" class="footer-top__link text6">Наши продукты</NuxtLink>
-                <NuxtLink to="/products#order_process" class="footer-top__link text6">Как заказать</NuxtLink>
-            </div>
-            <div class="footer-col-2">
-                <NuxtLink target="_blank" to="/terms" class="footer-top__link text6">Пользовательское соглашение</NuxtLink>
-                <NuxtLink target="_blank" to="/policy" class="footer-top__link text6">Политика конфиденциальности</NuxtLink>
-                <!-- <a href="#" class="footer-top__link text6">Стать партнером</a>
-                <a href="#" class="footer-top__link text6">О корпорации YUMA</a> -->
-            </div>
-            <div class="footer-col-3 hidden-mobile">
-                <!-- <div class="footer-socials">
-                    <a class="social-icon-link" href="#">
-                        <WhLogo />
-                    </a>
-                    <a class="social-icon-link" href="#">
-                        <TGLogo />
-                    </a>
-                </div> -->
-            </div>
-            <div class="footer-col-3">
+            <div class="footer-col-0 emails hidden-desktop">
                 <a href="mailto:pr@yuma.biz" class="footer-top__link text6">pr@yuma.biz</a>
                 <a href="mailto:sales@yuma.biz" class="footer-top__link text6">sales@yuma.biz</a>
+            </div>
+            <div class="footer-col-1 subtitle only-desktop">
+                <p style="margin-bottom: 32px">Мы работаем по всей России</p>
+
+                <a href="mailto:pr@yuma.biz" class="footer-top__link text6">pr@yuma.biz</a>
+                <a href="mailto:sales@yuma.biz" class="footer-top__link text6">sales@yuma.biz</a>
+
+            </div>
+            <div class="footer-col-1 links">
+                <NuxtLink target="_blank" to="/public-offer" class="footer-top__link text6">Публичная оферта</NuxtLink>
+                <NuxtLink target="_blank" to="/terms" class="footer-top__link text6">Пользовательское соглашение</NuxtLink>
+                <NuxtLink target="_blank" to="/policy" class="footer-top__link text6">Политика конфиденциальности</NuxtLink>
+            </div>
+            <div class="footer-col-2">
+                <p class="text4" style="margin-bottom: 8px">YUMA-POS в Санкт-Петербурге</p>
+                <p class="text6 footer-top__contact-description text6">Наб. реки Смоленки, 5-7, Технопарк, офис 337, ст.м. Василеостровская</p>
+                <a class="footer-top__link footer-top__link--phone title3" href="tel:+7 (812) 309 50 32">+7 (812) 309 50 32</a>
+            </div>
+            <div class="footer-col-2 smart">
+                <p class="text4" style="margin-bottom: 8px">YUMA-SMART</p>
+                <p class="text6 footer-top__contact-description text6"></p>
+                <a class="footer-top__link footer-top__link--phone title3" href="tel:+7 (812) 605 98 08">+7 (812) 605 98 08</a>
+            </div>
+            <div class="footer-col-3">
+                <p class="text4" style="margin-bottom: 8px">YUMA-POS в Москве</p>
+                <p class="text6 footer-top__contact-description text6">Нововладыкинский проезд, 2 стр. 2, ст.м. Владыкино</p>
+                <a class="footer-top__link footer-top__link--phone title3" href="tel:+7 (495) 108 11 78">+7 (495) 108 11 78</a>
             </div>
         </div>
     </div>
@@ -43,7 +45,6 @@
             <p class="footer-disclaimer text6">
                 <span>Сайт носит исключительно ознакомительный характер и не является публичной офертой.</span>
             </p>
-            <YumaLogo theme="dark" />
 
             <!-- <div class="footer-socials mobile">
                 <a class="social-icon-link" href="#">
@@ -85,15 +86,19 @@ export default {
     flex: 0 0 auto;
 
     &-top {
-        padding: 110px 0;
+        padding: 151px 0;
 
         &-container {
             grid-auto-flow: column;
-            grid-row-gap: 50px;
+            grid-row-gap: 10px;
+            grid-column-gap: 40px;
         }
 
         &__contact-description {
-            max-width: 218px;
+            max-width: 290px;
+            color: $--gray-medium-dark;
+            font-size: 14px;
+            margin: 8px 0;
         }
         &__link {
             display: block;
@@ -105,130 +110,110 @@ export default {
             &:active {
                 color: $--yellow-pressed;
             }
-            &:disabled {
-                color: $--main-gray;
-            }
             &:not(:last-child) {
-                margin-bottom: 12px;
+                margin-bottom: 16px;
             }
 
-            &--phone {
-                font-size: 20px;
-                font-variation-settings: 'wght' 700;
-            }
         }
 
+        @media screen and (min-width: calc($--screen-sm-min + 1px)) and (max-width: $--screen-md-min) {
+            text-align: center;
+            &__contact-description, .logo {
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
         @media screen and (max-width: $--screen-md-min) {
             padding: 80px 0;
+            &-container {
+                grid-row-gap: 52px;
+            }            
         }
         @media screen and (max-width: $--screen-sm-min) {
             padding: 50px 0 40px;
-            &-container {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: space-between;
-                text-align: center;
-                grid-row-gap: 40px;
-            }
-            &__contact-description {
-                margin: auto;
-            }
+            
             &__link {
                 margin-bottom: 10px;
-                &--phone {
-                    display: block;
-                    max-width: 218px;
-                    margin-left: auto;
-                    margin-right: auto;
-                }
+                // &--phone {
+                //     display: block;
+                //     max-width: 218px;
+                //     margin-left: auto;
+                //     margin-right: auto;
+                // }
             }
         }
     }
     &-col {
+
+        &-0 {
+            grid-column: 1/3;
+        }
+
         &-1 {
-            grid-column: 3/5;
+            grid-column: 3/7;
         }
+
         &-2 {
-            grid-column: 6/8;
+            grid-column: 7/10;
         }
+
         &-3 {
-            grid-column: 8/10;
+            grid-column: 10/13;
         }
+
         &-2, &-3 {
-            &:nth-child(2n) {
-                height: 100%;
-                display: flex;
-                flex-direction: column;
-                justify-content: flex-end;
-            }
-        }
-        @media screen and (max-width: 1250px) {
-            &-1 {
-                grid-column: 2/5;
-            }
-            &-2 {
-                grid-column: 5/8;
-            }
-            &-3 {
-                grid-column: 8/11;
+            &:not(:last-child) {
+                margin-bottom: 34px;
             }
         }
         @media screen and (max-width: $--screen-md-min) {
-            &-1 {
-                grid-column: 2/5;
+            &-0, &-1, &-2, &-3 {
+                grid-column: 1/13;
+            } 
+
+            &-2.smart {
+                grid-row: 4/5;
             }
-            &-2 {
-                grid-column: 6/9;
+
+            &-0.emails {
+                grid-row: 5/6;
+                
             }
-            &-3 {
-                grid-column: 9/11;
+            &-1.links {
+                grid-row: 6/7;
+            }
+            
+
+            &-2, &-3 {
+                &:not(:last-child) {
+                    margin-bottom: 0;
+                }
             }
         }
         @media screen and (max-width: $--screen-sm-min) {
-            &-1, &-2, &-3 {
-                width: 100%;
-                &:first-of-type {
-                    margin-bottom: 10px;
-                }
-            }
-            &-1 {
-                text-align: left;
-            }
+            &-0, &-1, &-2, &-3 {
+                grid-column: 1/6;
+            } 
         }
     }
     &-bottom {
         border-top: 2px solid $--main-gray-light;
 
         &-layout {
-            grid-template-columns: auto 100px;
+            grid-template-columns: auto;
             align-items: center;
+            padding-top: 23px;
+            padding-bottom: 23px;
         }
         @media screen and (max-width: $--screen-md-min) {
             &-layout {
-                grid-column-gap: 30px;
-                grid-template-columns: auto 100px;
-            }
-            .logo {
-                grid-column: 2/3;
-                grid-row: 1/2;
-            }
-        }
-        @media screen and (max-width: $--screen-sm-min) {
-            padding-top: 20px;
-            padding-bottom: 17px;
-            &-layout {
-                grid-row-gap: 15px;
-                grid-column-gap: 0px;
-            }
-            .logo {
-                grid-column: 1/4;
-                grid-row: 1/2;
-                justify-self: center;
+                grid-template-columns: auto;
             }
         }
     }
     &-disclaimer {
-        // grid-column: 3/9;
+        color: $--gray-medium-dark;
+        font-size: 12px;
 
         @media screen and (max-width: $--screen-md-min) {
             grid-column: 1/2;
@@ -236,7 +221,6 @@ export default {
         @media screen and (max-width: $--screen-sm-min) {
             grid-column: 1/4;
             grid-row: 2/3;
-            text-align: center;
         }
     }
     &-socials {

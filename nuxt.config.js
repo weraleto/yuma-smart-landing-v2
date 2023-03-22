@@ -14,13 +14,16 @@ export default {
       { name: 'format-detection', content: 'telephone=no' },
       {
         property: 'og:title',
-        content: 'YUMA-SMART',
+        content: 'YUMA-POS – система автоматизации для ресторана, кафе, доставки еды',
         vmid: 'og:title',
         hid: 'og:title'
       },
+      { hid: 'og:description', property: 'og:description', vmid: 'og:description',
+        content: '' 
+      },
       {
         property: 'og:image',
-        content: '//yuma-smart.ru/yuma_logo.png',
+        content: '//yuma.biz/yuma_logo.png',
         vmid: 'og:image',
         hid: 'og:image'
       },
@@ -31,9 +34,23 @@ export default {
         hid: 'og:type'
       },
       {
-        name: 'yandex-verification',
-        content: '79a60ea038531bcf'
-      }
+        property: 'og:site_name',
+        content: 'YUMA-SMART',
+        vmid: 'og:site_name',
+        hid: 'og:site_name'
+      },
+      {
+        property: 'og:locale',
+        content: 'ru_RU',
+        vmid: 'og:locale',
+        hid: 'og:locale'
+      },
+      {
+        property: 'og:locale:alternate',
+        content: 'en_US',
+        vmid: 'og:locale:alternate',
+        hid: 'og:locale:alternate'
+      },
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
@@ -41,6 +58,9 @@ export default {
       { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png' },
       { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon-16x16.png' },
       { rel: 'manifest', href: '/site.webmanifest' },
+    ],
+    script: [
+      { innerHTML: `(function(w,d,u){var s=d.createElement('script');s.async=true;s.src=u+'?'+(Date.now()/60000|0);var h=d.getElementsByTagName('script')[0];h.parentNode.insertBefore(s,h);})(window,document,'https://cdn-ru.bitrix24.ru/b16224776/crm/site_button/loader_2_3yeodk.js');`, body: true }
     ]
   },
   serverMiddleware: [
@@ -53,7 +73,7 @@ export default {
 
 
   server: {
-    port: 8880,
+    port: 8882,
     host: '0.0.0.0',
     timing: false
   },
@@ -65,11 +85,12 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    '@/plugins/element-ui'
+    '@/plugins/element-ui',
+    '@/plugins/lightGallery.client.js',
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
-  components: true,
+  components: false,
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
@@ -77,10 +98,11 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
+    'nuxt-lazy-load',
     [
       '@nuxtjs/yandex-metrika',
       {
-        id: '88835026',
+        id: '90798219',
         webvisor: true,
         clickmap: true,
         trackLinks:true,
@@ -90,7 +112,7 @@ export default {
       }
     ],
     ['@nuxtjs/google-analytics', {
-      id: 'G-FNBBLE7K91'
+      id: 'G-YCDRYLNREC'
     }],
   ],
 

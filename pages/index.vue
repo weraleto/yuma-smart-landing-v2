@@ -1,586 +1,544 @@
 <template>
-  <div>
-    <header class="header">
-      <div class="container grid-layout">
-        <div class="yuma-smart">
-          <YumaSmart />
-        </div>
-        <div class="hidden-desktop header__title">
-          <h1 class="subtitle ">Микромаркеты с вашим мобильным приложением для покупателей</h1>
-        </div>
-        <div class="header__container">
-          <div class="header__text hidden-mobile">
-            <h1 class="subtitle only-desktop">Микромаркеты с вашим мобильным приложением для покупателей</h1>
-            <p class="text4">Начните продавать свежую еду и напитки без персонала.
-              Комфорт для посетителей.
-              Прибыль для вас.
-            </p>
-            <a href="" 
-                  @click.prevent="$store.commit('setShowModal', {key: 'showApplyForm', val: true})" 
-                  class="infoblock__button btn large primary" 
-              >Начать</a>
+  <div id="smart" @click="handleLayoutClick">
+    <ProductsHeader
+      title="YUMA-SMART"
+      subtitle="Микромаркеты с вашим мобильным приложением для покупателей"
+      button-text="Начать"
+      :button-subtext="['Начните продавать свежую еду и напитки без персонала.', 'Комфорт для посетителей. Прибыль для вас.']"
+      picture-alignment="center"
+    >
+      <div class="smart-header__banner">
+        <div class="smart-header__banner--container">
+          <div class="smart-header__banner--pic">
+            <picture data-not-lazy>
+              <source media="(min-width:1400px)" srcset="@/assets/img/smart/banner-p2x.png" data-not-lazy>
+              <source media="(min-width:500px)" srcset="@/assets/img/smart/banner-p.png" data-not-lazy>
+              <source media="(min-width:0px)" srcset="@/assets/img/smart/banner-m.png" data-not-lazy>
+              <img src="@/assets/img/smart/banner-p.png" alt="Баннер микромаркеты" data-not-lazy>
+            </picture>
           </div>
-          <div class="header__text only-mobile">
-            <Infoblock text="Начните продавать свежую еду и напитки без персонала.</br>Комфорт для посетителей.</br>Прибыль для вас." button_type="primary" button_text="Начать" />
-          </div>
-          <div class="header__pic">
-            <img src="~assets/img/prod_pic.svg" alt="Product picture" >
+          <div class="smart-header__banner--smartphone desktop">
+            <video src="@/static/video.mp4" 
+              poster="@/static/video-poster.jpg"
+              autoplay="autoplay" loop="loop" muted="true" defaultMuted playsinline
+            ></video>
           </div>
         </div>
       </div>
+      <div class="smart-header__banner--smartphone mobile">
+        <video src="@/static/video.mp4" 
+          poster="@/static/video-poster.jpg"
+          autoplay="autoplay" loop="loop" muted="true" defaultMuted playsinline
+        ></video>
+      </div>
+    </ProductsHeader>
 
-    </header>
-    
-    
-<main class="main">
-    <!-- <div class="container pb"> -->
-    <div class="container pb-small">
-      <div class="block-offset grid-layout">
-        <div style="grid-column: 1/11">
-            <h2 class="title2 block-offset__title mb3">что такое
-                микромаркеты
-            </h2>
-            <Infoblock text="Микромаркеты YUMA-SMART - это ваши готовые точки продаж, которые будут работать без продавцов и кассиров." />
-        </div>
-            <div class="block-offset__content text-blocks plain">
-                <div class="text-blocks__col">
-                    <div class="text-blocks__item">
-                        <div class="text-blocks__item-icon">
-                          <img src="~assets/img/icon-frige.svg" alt="Application" >
-                        </div>
-                        <p class="text4">Подходящее для вашего ассортимента умное торговое оборудование — холодильники, витрины, кофе-машины и т.д.</p>
-                    </div>
-                    <div class="text-blocks__item">
-                        <div class="text-blocks__item-icon">
-                          <img src="~assets/img/icon-cart.svg" alt="Application" >
-                        </div>
-                        <p class="text4">Микромаркеты легко и быстро запустят автономную торговлю там, где удобно вам и покупателям.</p>
-                    </div>
-                </div>
-                <div class="text-blocks__col">
-                    <div class="text-blocks__item">
-                        <div class="text-blocks__item-icon">
-                          <img src="~assets/img/icon-smart.svg" alt="Application" >
-                        </div>
-                        <p class="text4">Торговое оборудование становится умным благодаря подключенному мини-компьютеру с настроенным программным обеспечением.</p>
-                    </div>
-                    <div class="text-blocks__item">
-                        <div class="text-blocks__item-icon">
-                          <img src="~assets/img/icon-app.svg" alt="Application" >
-                        </div>
-                        <p class="text4">Ваше брендированное мобильное приложение сделает покупки максимально комфортными. А благодаря настройке акций и привилегий их будет всё больше.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <main>
+      <div class="container">
 
-        <div class="block-offset grid-layout">
-            <h2 class="title2 block-offset__title">кому подходит
-                <span class="no-word-break">yuma-smart</span></h2>
-            <div class="block-offset__content">
-              <Collapse extra_class="small" :data="who_needs_items" :active_default="0" />
-            </div>
-        </div>
-
-        <div class="block-offset grid-layout block-offset-products">
-           <div class="grid-layout block-offset__title--double">
-              <h2 class="title2 block-offset__title">оптимальные решения
-              <span class="no-word-break">yuma-smart</span></h2>
-              <NuxtLink to="/products" class="hidden-mobile btn large outlined arrowed block-offset__title--btn">перейти к продуктам</NuxtLink>
-            </div>
-          
-            <client-only>
-              <CardsTranslated :data="descisions" />
-            </client-only>
-
-            <div class="only-mobile" style="grid-column: 1/11">
-              <NuxtLink to="/products" class="btn large outlined arrowed block-offset__title--btn">перейти к продуктам</NuxtLink>
-            </div>
-
-        </div>
-
-        <div class="block-offset grid-layout">
-            <h2 class="title2 block-offset__title"><span class="no-word-break">yuma-smart.</span>
-                Все включено.</h2>
-            <div class="block-offset__content text-blocks plain">
-                <div class="text-blocks__col">
-                    <div class="text-blocks__item">
-                        <h3 class="subtitle text-blocks__item-subtitle">Мобильное приложение под вашим брендом</h3>
-                        <p class="text4">С вашей собственной маркетинговой платформой: аналитикой покупательских
-                            предпочтений, функциями таргетированной рекламы, системой лояльности с баллами и другими
-                            гибкими настройками. Всё включено.</p>
-                    </div>
-                    <div class="text-blocks__item">
-                        <h3 class="subtitle text-blocks__item-subtitle">Техподдержка 24/7. Выезд в день обращения</h3>
-                        <p class="text4">Мы решаем любые вопросы по торговому оборудованию и ПО, которые возникают у
-                            владельцев микромаркетов и покупателей. Дистанционно или с оперативным выездом.</p>
-                    </div>
-                </div>
-                <div class="text-blocks__col">
-                    <div class="text-blocks__item">
-                        <h3 class="subtitle text-blocks__item-subtitle">Учет, склад, инвентаризация</h3>
-                        <p class="text4">В полном объеме и с управлением через ваш единый личный кабинет. Полноценный
-                            учет, инвентаризации и все функции управления складом и заказами, актуальные для сферы
-                            общественного питания.</p>
-                    </div>
-                    <div class="text-blocks__item">
-                        <h3 class="subtitle text-blocks__item-subtitle">Оптимальное решение задач</h3>
-                        <p class="text4">Эквайринг, брендирование торгового оборудования - мы сделаем всё, что вам потребуется. Вы получите полноценный микромаркет, оформленный в вашем стиле и полностью готовый к работе.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>    
-    <!-- <LeadForm 
-      theme="dark" 
-      title="Получите скидку 5%" 
-      subtitle="на любое торговое оборудование" 
-      small="Акция действует до 01/06/2022" 
-      action-button-text="Получить скидку"
-    /> -->
-        
-
-    <div class="container pb-small">
-        <div class="block-offset grid-layout">
-            <h2 class="title2 block-offset__title">Ответы на
-                вопросы бизнеса</h2>
-            <div class="block-offset__content">
-              <Collapse :data="faq" extra_class="faq-item" />
-            </div>
-        </div>
-        <div class="block-offset grid-layout">
-            <h2 class="title2 block-offset__title">надежность
-                ТЕХНОЛОГИИ YUMA</h2>
-            <div class="block-offset__content">
-                <div class="flip-card__items card-items">
-                  <div v-for="(item, idx) in reliability" :key="idx" class="card flip-card card-item" 
-                    :style="`top: ${ -(41 * idx) }px`"
-                  >
-                      <div class="flip-card-inner card-item__inner">
-                          <div class="flip-card-front card-item__front">
-                              <small>{{item.small}}</small>
-                              <h4 class="title2">{{item.num}}</h4>
-                          </div>
-                          <div class="flip-card-back card-item__back">
-                              <p>{{item.back}}</p>
-                          </div>
-                      </div>
+      <!-- что такое микромаркеты -->
+        <section class="micromarket">
+          <div class="micromarket__heading">
+            <h3 class="title1">
+              что такое микромаркеты
+            </h3>
+            <p class="subtitle">YUMA-SMART – это удобные точки продаж, которые мы полностью подготовим к работе по нашей технологии. Они состоят из трех компонентов.</p>
+          </div>
+          <!-- <div class="micromarket__cards" ref="cardItems"> -->
+          <div class="micromarket__cards">
+            <div class="micromarket__cards--item card" v-for="(c, idx) in cards" :key="idx"
+              @click="activeCard = activeCard ? null : idx"
+              @mouseenter="handleCardMouseEnter(idx)" 
+              @mouseleave="handleCardMouseLeave" 
+              :class="{'active': activeCard == idx}"
+            >
+              <div class="micromarket__cards--item__inner">
+                  <div class="micromarket__cards--item__front">
+                      <h4 class="title2" v-html="c.title"></h4>
                   </div>
-                </div>
+                  <div class="micromarket__cards--item__back card-item__back">
+                      <p class="text5">{{ c.description }}</p>
+                  </div>
+              </div>
             </div>
-        </div>
+          </div>
+        </section>
 
+        <!-- кому подходит yuma-smart -->
+        <section class="block-offset grid-layout for-clients">
+          <h2 class="title1 block-offset__title">Кому подходит <span class="no-word-break">YUMA-SMART</span></h2>
+            <div class="tabs-wrapper">
+              <el-tabs v-model="activeName" :id="id">
+                  <el-tab-pane :label="tab.label" :name="String(i)" v-for="(tab, i) in yumaSmartClients" :key="tab.label">
+                    <div class="for-clients__item--picture">
+                      <picture>
+                        <source media="(min-width:768px)" :srcset="require('@/assets/img/smart/'+tab.img)">
+                        <source media="(min-width:0px)" :srcset="require('@/assets/img/smart/0.5'+tab.img)">
+                        <img :src="require('@/assets/img/smart/'+tab.img)" alt="yuma pos" >
+                      </picture>
+                    </div>
+                    <p class="text4 for-clients__item--text">{{tab.text}}</p>
+                    <div class="for-clients__item--steps">
+                      <div class="for-clients__item--steps__item" v-for="(it, i) in tab.steps" :key="i">
+                        <span>{{i + 1}}</span><p class="text6">{{it}}</p>
+                      </div>
+                    </div>
+                  </el-tab-pane>
+              </el-tabs>
+            </div>
+        </section>
 
-    </div>
-    <div class="block-offset grid-layout pt0 pb">
-        <h2 class="title2 container block-offset__title">партнеры <span class="no-word-break">yuma</span>
-            в России</h2>
-        <Partners />
-    </div>
-    <LeadForm theme="light" title="начнем? это легко" subtitle="Расскажем. Подключим. Обучим." />
-</main>
+        <!-- оптимальные решения yuma-smart -->
+        <section class="block-offset cata-preview">
+          <h2 class="title1 block-offset__title">Оптимальные решения <span class="no-word-break">YUMA-SMART</span></h2>
+          <div class="cata-preview__container">
+            <nuxt-link :to="{name: 'slug', params: {slug: it.slug}}" class="cata-preview__item" v-for="(it, i) in yumaSmartTariffs" :key="it.n">
+              <h4 class="cata-preview__item--title subtitle">Тариф №{{ it.n }}</h4>
+              <h5 class="text6">{{it.subtitle}}</h5>
+              <div class="cata-preview__item--img">
+                <img :src="require('/assets/img/smart/tarif-'+(i + 1)+'.jpg')" :alt="`Тариф №${it.n}. ${it.subtitle}`">
+              </div>
+              <div>
+                <h4 class="subtitle-bold">{{ it.price || it.cata_price }}</h4>
+                <span class="text5">+ 7% от оборота</span>
+              </div>
+            </nuxt-link>
+          </div>
+        </section>
+
+        <!-- YUMA-smart. все включено. -->
+        <section class="block-offset all-in grid-layout">
+          <h2 class="title1 block-offset__title">YUMA-smart. Все включено.</h2>
+          <div class="block-offset__content all-in__container text-blocks plain">
+            <div class="text-blocks__col">
+              <div class="text-blocks__item">
+                <h3 class="subtitle-bold text-blocks__item-subtitle">Мобильное приложение под вашим брендом</h3>
+                <p class="text6">С вашей собственной маркетинговой платформой: аналитикой покупательских предпочтений, функциями таргетированной рекламы, системой лояльности с баллами и другими гибкими настройками. 
+                </p>
+              </div>
+              <div class="text-blocks__item">
+                <h3 class="subtitle-bold text-blocks__item-subtitle">Учет, склад, инвентаризация</h3>
+                <p class="text6">В полном объеме и с управлением через ваш единый личный кабинет. Полноценный учет, инвентаризации и все функции управления складом и заказами, актуальные для сферы общественного питания.</p>
+              </div>
+            </div>
+            <div class="text-blocks__col">
+              <div class="text-blocks__item">
+                <h3 class="subtitle-bold text-blocks__item-subtitle">Техподдержка 24/7. <br>
+                  Выезд в день обращения
+                </h3>
+                <p class="text6">Мы решаем любые вопросы по торговому оборудованию и ПО, которые возникают у владельцев микромаркетов и покупателей. Дистанционно или с оперативным выездом.</p>
+              </div>
+              <div class="text-blocks__item">
+                <h3 class="subtitle-bold text-blocks__item-subtitle">Оптимальное решение задач</h3>
+                <p class="text6">Эквайринг, брендирование торгового оборудования - мы сделаем всё, что вам потребуется. Вы получите полноценный микромаркет, оформленный в вашем стиле и полностью готовый к работе.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+        
+        <!-- FAQ -->
+        <section class="faq-section">
+          <h3 class="title1">Ответы на вопросы бизнеса</h3>
+          <div class="faq-section__content">
+            <Collapse :data="faq" />
+          </div>
+        </section>
+      </div>
+
+      <!-- Форма -->
+      <LeadForm theme="light" title="НАЧНЕМ? ЭТО ЛЕГКО"
+        subtitle="Расскажем. Подключим. Обучим." />
+    </main>
   </div>
 </template>
 
 <script>
-import Infoblock from '@/components/infoblock'
-import LeadForm from '@/components/contact-form'
-import Collapse from '@/components/collapse'
-import CardsTranslated from '@/components/tranlsared-cards'
-import Partners from '@/components/partners'
-import YumaSmart from '@/components/svg/yuma-smart'
-export default {
-  name: 'IndexPage',
-  components: {
-    Infoblock,
-    YumaSmart,
-    LeadForm,
-    Collapse,
-    Partners,
-    CardsTranslated
-  },
-  head() {
-    return {
-      title: 'Микромаркеты самообслуживания с мобильным приложением для покупателей',
-      meta: [
-        {
-          hid: 'description',
-          name: 'description',
-          content: 'YUMA-SMART запустит ваши магазины без кассиров и продавцов для торговли едой и напитками. Включены система учета, программа лояльности и промо-акции.'
-        },
-        {
-          property: 'og:title',
-          content: 'YUMA-SMART',
-          vmid: 'og:title',
-          hid: 'og:title'
-        },
-        {
-          property: 'og:description',
-          content: 'Микромаркеты самообслуживания',
-          vmid: 'og:description',
-          hid: 'og:description'
-        },
-        {
-          property: 'og:site_name',
-          content: 'YUMA',
-          vmid: 'og:site_name',
-          hid: 'og:site_name'
-        },
-        {
-          property: 'og:locale',
-          content: 'ru_RU',
-          vmid: 'og:locale',
-          hid: 'og:locale'
-        },
-        {
-          property: 'og:locale:alternate',
-          content: 'en_US',
-          vmid: 'og:locale:alternate',
-          hid: 'og:locale:alternate'
-        },
-        {
-          property: 'og:locale:alternate',
-          content: 'en_US',
-          vmid: 'og:locale:alternate',
-          hid: 'og:locale:alternate'
-        },
-      ]
-    }
-  },
-  data: () => {
-    return {
-      faq: [{
-          'title': 'Что с эквайрингом и проведением платежей?',
-          'text': 'YUMA-SMART — полностью готовое решение со всем необходимым для продаж. Всё, что вам нужно — место для установки, доступ к мобильному интернету и электричеству.'
-        },
-        {
-          'title': 'Как я могу быть уверен, что с торговым оборудованием все в порядке?',
-          'text': 'Приобретаемое у нас торговое оборудование оснащено датчиками контроля температуры, положения дверей и т.д. Все статусы, важные для его нормальной работы, вы будете видеть в своем личном кабинете.'
-        },
-        {
-          'title': 'Что если покупатель не сможет открыть холодильник?',
-          'text': 'При возникновении любых вопросов по работе оборудования или ПО покупатель 24/7 сможет обратиться к нам на линию поддержки, и мы решим любой его вопрос.'
-        },
-        {
-          'title': 'Захочет ли покупатель скачать мобильное приложение?',
-          'text': 'Микромаркеты YUMA-SMART — удобное решение для постоянных покупателей. А благодаря вашему приложению они получат доступ к акциям и привилегиям (баллы и др.), которые вы решите запустить. Им это действительно понравится. Лучшее доказательство — количество скачиваний приложений наших клиентов.'
-        },
-        {
-          'title': 'Что будет, если недобросовестный покупатель возьмет товаров больше, чем оплатит?',
-          'text': 'Взять товар бесконтрольно невозможно. Каждый ваш покупатель идентифицируется через мобильное приложение по номеру телефона и банковской карте. Как только он открывает дверь, начинается видеозапись микромаркета. '
-        },
-        {
-          'title': 'Что произойдет, если у покупателя не окажется денег на привязанной карте?',
-          'text': 'Приложение позволяет быстро и просто привязать к нему другое платежное средство.'
-        }
-      ],
-      who_needs_items: [{
-          'title': 'Производителям готовой еды',
-          'text': 'У вас уютное кафе, ресторанная сеть, суши-бар или иное кулинарное производство?',
-          'steps': ['Автоматизируем продажу блюд "навынос".', 'Запустим магазины без кассиров и с мобильным приложением.', 'Привлекайте больше постоянных гостей, настраивая акции.']
-        },
-        {
-          'title': 'Торговым предприятиям',
-          'text': 'У вас розничный магазин, целая торговая сеть или другой формат ритейла?',
-          'steps': ['Организуем  новые точки продаж 24/7 в шаговой доступности.', 'Это будут магазины будущего без продавцов и кассиров.', 'Запускайте акции прямо в мобильном приложении для покупателей.']
-        },
-        {
-          'title': 'Организациям в сфере отдыха и досуга',
-          'text': 'У вас отель, гостиница, хостел, вы занимаетесь массовыми мероприятиями или другим направлением, где актуально кормить посетителей?',
-          'steps': ['Обеспечим круглосуточную автоматизированную зону питания для ваших гостей.', 'Запустим ваше брендированное мобильное приложение.', 'Повышайте лояльность посетителей, используя акции и привилегии.']
-        },
-        {
-          'title': 'У вас другая сфера?',
-          'text': 'Офисный центр, спортивный комплекс, учебное заведение, административное здание или иное предприятие, в котором требуется организация питания?',
-          'steps': ['Подключим микромаркеты самообслуживания со свежей готовой едой.', 'Создадим ваше мобильное приложение с акциями и программами лояльности', 'Привлекайте покупателей и постоянно увеличивайте ваш доход.']
-        },
-      ],
-      reliability: [{
-          'num': '1 миллион',
-          'small': 'Скачиваний мобильных приложений наших клиентов',
-          'back': 'Мы запускаем мобильные приложения, которыми покупатели действительно активно пользуются.'
-        },
-        {
-          'num': '150 тысяч',
-          'small': 'Операций покупок у наших клиентов каждый день',
-          'back': 'Мы работаем на платформе Яндекс.Облако, способной стабильно и без перебоев поддерживать постоянно высокую нагрузку.'
-        },
-        {
-          'num': '3 ТЫСЯЧИ',
-          'small': 'Автоматизированных заведений по всей России',
-          'back': 'На платформе YUMA успешно работают предприятия сферы общественного питания всех типов, форматов и масштабов.'
-        },
-        {
-          'num': 'более 12',
-          'small': 'Стран мира, где работает технология YUMA',
-          'back': 'Великобритания, Ирландия, США, Австралия, Швейцария, Нидерланды, Индия, ОАЭ, ЮАР, Украина, Казахстан, Беларусь, Россия.'
-        },
-      ],
-      descisions: [
-        {
-          'is_sale': true,
-          'title': 'Обновим ваш умный холодильник',
-          'name': 'Замена модуля и программа',
-          'subtext': '+ 7% от оборота',
-          'price': '43 920 ₽',
-          'img': 'Program',
-          'description': [{
-            // 'title': 'Платформа <span class="no-word-break">YUMA-SMART</span>',
-            'text': 'Мы заменим ваш модуль управления. Вы получите наш YUMA-SMARTBOX и программу со скидкой 20%, т.е. <span class="no-word-break">за 43 920Р.</span> Или мы заполним ваш микромаркет на сумму этой скидки.'
-          }]
-        },
-        {
-          'title': 'Подключим ваш обычный холодильник',
-          'name': 'Модуль и Программа',
-          'price': '54 990 ₽',
-          'subtext': '+ 7% от оборота',
-          'img': 'Mod+Program',
-          'description': [{
-              'title': 'Модуль управления',
-              'text': 'Мини-компьютер, который превратит ваше торговое оборудование в умный микромаркет'
-            },
-            {
-              'title': 'Платформа <span class="no-word-break">YUMA-SMART</span>',
-              'text': 'Mобильное приложение для покупателей и полноценная система учета, которыми вы управляете через единый личный кабинет.'
-            }
-          ]
-        },
-        {
-          'title': 'Решение под ключ',
-          'name': 'Готовый микромаркет',
-          'price': 'от 129 000 ₽',
-          'subtext': '+ 7% от оборота',
-          'img': 'Micromarket',
-          'description': [{
-              'title': 'Торговое оборудование',
-              'text': 'Холодильник, витрина и другие варианты на ваш выбор.'
-            },
-            {
-              'title': 'Модуль управления',
-              'text': 'Мини-компьютер, который превратит ваше торговое оборудование в умный микромаркет'
-            },
-            {
-              'title': 'Платформа <span class="no-word-break">YUMA-SMART</span>',
-              'text': 'Mобильное приложение для покупателей и полноценная система учета, которыми вы управляете через единый личный кабинет.'
-            }
-          ]
-        }
+  import { tabsMixin, cardMixin } from '@/mixins/mixins'
+  import { yumaSmartFAQ, yumaSmartTargetAudience, yumaSmartTariffs } from '@/assets/dataContent.js'
+  import Collapse from '@/components/collapse'
+  import ProductsHeader from '@/components/products-header'
+  import LeadForm from '@/components/contact-form'
+  export default {
+    name: 'YumaSmartPage',
+    props: {
+      id: {
+        type: String,
+        default: 'smart_tabs'
+      }
+    },
+    components: {
+      Collapse,
+      ProductsHeader,
+      LeadForm
+    },
+    mixins: [tabsMixin, cardMixin],
+    head() {
+      return {
+        meta: [
+          {
+            property: 'og:site_name',
+            content: '',
+            vmid: 'og:site_name',
+            hid: 'og:site_name'
+          },
+          {
+            property: 'og:locale',
+            content: 'ru_RU',
+            vmid: 'og:locale',
+            hid: 'og:locale'
+          },
+          {
+            property: 'og:locale:alternate',
+            content: 'en_US',
+            vmid: 'og:locale:alternate',
+            hid: 'og:locale:alternate'
+          },
+        ]
+      }
+    },
+    data: () => {
+      return {
+        faq: yumaSmartFAQ,
+        yumaSmartClients: yumaSmartTargetAudience,
+        yumaSmartTariffs,
+        cards: [
+          {title: 'торговое оборудование', description: 'Холодильник, витрина и другие варианты на ваш выбор. Мы можем предложить наши модели, или установить все необходимое на ваше торговое оборудование.'},
+          {title: ' Модуль yuma<br>smart-box', description: 'Модуль управления YUMA-smartbox — это мини-компьютер, который превратит торговое оборудование в умный микромаркет.'},
+          {title: 'программная платформа', description: 'Программная платформа — это мобильное приложение для покупателей и полноценная система учёта, которыми удобно управлять в едином личном кабинете.'},
+        ],
         
-      ]
-    }
-  },
-  methods: {
-    getCardTranslate(idx) {
-      return idx * -39
-    }
+      }
+    },
   }
-}
 </script>
 
 <style lang="scss">
+  $--products-text-block-row-gap: 62px;
 
-@import '@/assets/scss/_variables.scss';
+  @import '@/assets/scss/_variables';
+  @import '@/assets/scss/_mixins';
+  @import '@/assets/scss/components/block-offset';
+  @import '@/assets/scss/components/tabs';
 
-.yuma-smart {
-  grid-column: 1/7;
-  margin-bottom: 30px;
+  #smart {
 
-  svg {
+    @media screen and (max-width: $--screen-sm-min) {
+      .header__promo--text {
+        p {
+          display: inline;
+        }
+      }
+    }
+  }
+
+  .header__top {
+    overflow: visible;
+
+    @media screen and (max-width: $--screen-xs-min) {
+      flex-direction: column;
+      max-height: unset;
+    }
+  }
+
+  .header__container {
+    @media screen and (max-width: $--screen-xs-min) {
+      padding-bottom: 151px;
+    }
+  }
+
+  .smart-header__banner {
+    background: url('@/assets/img/smart/banner.png') no-repeat center center;
+    min-height: 579px;
+    max-height: 579px;
     width: 100%;
-    height: auto;
-  }
-
-  @media screen and (max-width: $--screen-md-min) {
-    grid-column: 1/11;
-      margin-bottom: 16px;
-  }
-  @media screen and (max-width: $--screen-xxs-min) {
-      margin-bottom: 20px;
-  }
-}
-
-.header {
-
-  .subtitle {
-    font-size: 1.875rem;
-  }
-
-  &__container {
-    grid-column: 1/11;
-    display: flex;
-  }
-  &__text {
-    width: 40%;
-
-    p {
-      margin: 20px 0 40px;
-    }
-    .btn {
-      max-width: 134px;
-    }
-  }
-  &__pic {
-    padding-left: 43px;
-  }
-
-  @media screen and (max-width: $--screen-md-min) {
-
-    &__title {
-      grid-column: 1/7;
-      margin-bottom: 10px;
-    }
-  }
-
-  @media screen and (max-width: $--screen-sm-min) {
-    padding-top: 80px;
-    &__container {
-      flex-direction: column-reverse;
-    }
-    &__title {
-      grid-column: 1/5;
-      margin-bottom: 20px;
-    }
-    &__text {
-      width: 100%;
-      margin-top: 30px;
-    }
-    &__pic {
-      padding-left: 0px;
-    }
-  }
-  @media screen and (max-width: $--screen-xs-min) {
-    &__title {
-      grid-column: 1/6;
-    }
-  }
-}
-
-
-
-.flip-card__items {
-  display: grid;
-  grid-auto-flow: column;
-  grid-template-columns: repeat(8, 1fr);
-
-  @media screen and (max-width: $--screen-md-min) {
-    grid-template-columns: repeat(9, 1fr);
-  }
-}
-
-.card-item {
-  height: 300px;
-  background-color: transparent;
-  border-radius: $--border-radius-default;
-  width: 100%;
-  position: relative;
-  transition: all .3s ease;
-
-  cursor: pointer;
-
-  @media screen and (max-width: $--screen-md-min) {
-    height: 25vw;
-  }
-  @media screen and (max-width: $--screen-sm-min) {
-    height: 35vw;
-  }
-  @media screen and (max-width: $--screen-xs-min) {
-    position: static;
-    margin-bottom: 10px;
-    height: calc(91.4vw * 0.55);
-  }
-
-  &:nth-child(2n-1) {
-    grid-column: 1/5;
-
-    @media screen and (max-width: $--screen-md-min) {
-      grid-column: 1/6;
-    }
-    @media screen and (max-width: $--screen-sm-min) {
-      grid-column: 1/7;
-    }
-    @media screen and (max-width: $--screen-xs-min) {
-      grid-column: 1/10;
-    }
-  }
-
-  &:nth-child(2n) {
-    grid-column: 4/8;
-
-    @media screen and (max-width: $--screen-md-min) {
-      grid-column: 5/10;
-    }
-    @media screen and (max-width: $--screen-sm-min) {
-      grid-column: 4/10;
-    }
-    @media screen and (max-width: $--screen-xs-min) {
-      grid-column: 1/10;
-    }
-  }
-
-  &__inner {
+    background-size: cover;
     position: relative;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-  }
 
-  &__front,
-  &__back {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: $--border-radius-default;
-    padding: 10px;
-  }
+    &--container {
+      max-width: 941px;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translate(-50%, 0);
+    }
+    &--pic {
+      width: 90.43%;
+      height: 111.39%;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      z-index: 5;
+      img, picture {
+        object-fit: unset;
+        height: 100%;
+      }
+    }
+    &--smartphone {
+      position: absolute;
+      height: 110.53%;
+      width: 32.10%;
+      border-radius: 40px;
+      bottom: 0;
+      right: 0;
+      z-index: 6;
+      transform: translate(0, 4.81%);
+      overflow: hidden;
+      background-color: #fff;
+      
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: url('@/assets/img/smart/smartphone.png') no-repeat center center;
+        background-size: 100% 100%;
+      }
 
-  &__front {
-    background-color: $--main-white;
-  }
+      video {
+        position: absolute;
+        top: -3px;
+        left: 50%;
+        width: 95%;
+        height: 95%;
+        transform: translate(-50%, 0);
+      }
+      &.mobile {
+        display: none;
+      }
+      @media screen and (max-width: $--screen-xs-min) {
+        &.desktop {
+          display: none;
+        }
+      }
+    }
+    @media screen and (max-width: 941px) {
+      min-height: 61.53vw;
+      max-height: 61.53vw;
+      &--smartphone {
+        right: 16px;
+        border-radius: 4.25vw;
 
-  &__back {
-    top: -2px;
-    bottom: -2px;
-    left: -2px;
-    right: -2px;
-    opacity: 0;
-    background-color: $--yellow-primary;
-    border: 2px solid $--main-gray;
-    p {
-      max-width: 394px;
-      margin: auto;
+        video {
+          top: -0.3vw;
+        }
+      }
+    }
+    @media screen and (max-width: $--screen-xs-min) {
+      background: url('@/assets/img/smart/banner-bg-mob.png') no-repeat center center;
+      background-size: cover;
+      min-height: 120.8vw;
+      max-height: 120.8vw;
+
+      &--container {
+        left: 0;
+        transform: none;
+      }
+      &--pic {
+        width: 100%;
+        height: 111.39%;
+      }
+      &--smartphone {
+        width: 210px;
+        height: 442px;
+        min-height: 442px;
+        transform: none;
+        margin: 32px 0 0;
+        right: 0;
+        &.mobile {
+          border-radius: 29px;
+          display: block;
+          position: relative;
+        }
+
+        video {
+          top: -.5vw;
+        }
+      }
     }
   }
 
-  small {
-    position: absolute;
-    top: 20px;
-    left: 10px;
-    right: 10px;
-    text-align: center;
-    font-size: inherit;
+  .all-in__container {
+    margin-top: 30px;
+  }
 
-    @media screen and (max-width: $--screen-md-min) {
-      font-size: .875rem;
+  .micromarket {
+    margin-top: 100px;
+    &__heading {
+      text-align: center;
+      max-width: 842px;
+      margin: 0 auto;
+
+      h3 {
+        margin-bottom: 16px;
+      }
+
+      @media screen and (max-width: $--screen-sm-min) {
+        .subtitle {
+          font-size: 18px;
+          font-weight: 500;
+        }
+      }
+    }
+    &__cards {
+      display: flex;
+      gap: 40px;
+      margin-top: 92px;
+
+      &--item {
+        width: 100%;
+        min-height: 266px;
+        position: relative;
+
+        @include cardTranslate($colorHover: white);
+
+        &__inner {
+          position: static;
+        }
+      }
+
+      @media screen and (max-width: $--screen-md-min) {
+        gap: 20px;
+      }
+
+      @media screen and (min-width: 661px) and (max-width: $--screen-md-min) {
+        .title2 {
+          font-size: 22px;
+        }
+        .text5 {
+          font-size: 15px;
+        }
+      }
+      @media screen and (max-width: $--screen-sm-min) {
+        margin-top: 32px;
+      }
+      @media screen and (max-width: 660px) {
+        flex-direction: column;
+        gap: 16px;
+        &--item {
+          min-height: 220px;
+        }
+      }
+    }
+
+    @media screen and (max-width: $--screen-sm-min) {
+      margin-top: 60px;
     }
   }
 
-  &:hover {
-    z-index: 2;
+  .for-clients {
+    &__item {
+      &--picture {
+        width: 100%;
 
-    .card-item__back {
-      animation: fadein .3s ease forwards;
-      border-color: $--main-black;
+        img, picture {
+          border-radius: 12px;
+          @extend %objectFitCover;
+        }
+
+        @media screen and (max-width: $--screen-sm-min) {
+          height: 48vw;
+        }
+        @media screen and (max-width: $--screen-xs-min) {
+          height: 193px;
+        }
+      }
+      &--text {
+        margin: 32px 0;
+        max-width: 779px;
+      }
+      &--steps {
+        display: flex;
+        gap: 40px;
+        &__item {
+          display: flex;
+          align-items: center;
+          gap: 20px;
+          flex: 1 1 33%;        
+        }
+        span {
+          @extend %stepNumber;
+          display: inline-block;
+          min-width: 48px;
+          text-align: center;
+        }
+
+        @media screen and (max-width: $--screen-sm-min) {
+          gap: 0px; 
+          flex-direction: column;
+        }
+      }
     }
   }
 
-}
+  .cata-preview {
+    &__container {
+      margin-top: 52px;
+      display: flex;
+      gap: 40px;
+      width: 100%;
+    }
+    &__item {
+      @extend %cardArrowTopRight;
+      @extend %cardShadow;
+      width: 100%;
+      padding: 32px 24px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
 
+      &--title {
+        margin-bottom: 12px;
+      }
+
+      &--img {
+        margin: 24px 0;
+        flex: 1;
+        img {
+          height: 276px;
+          object-fit: contain;
+        }
+      }
+    }
+
+    @media screen and (min-width: 671px) and (max-width: $--screen-sm-min) {
+      &__item {
+        &--img {
+          img {
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+      }
+    }
+
+    @media screen and (max-width: $--screen-sm-min) {
+      &__container {
+        gap: 20px;
+      }
+      &__item {
+        &--img {
+          margin: 8px 0;
+        }
+      }
+    }
+    @media screen and (max-width: 670px) {
+      &__container {
+        flex-direction: column;
+      }
+    }
+  }
+
+  .faq-section {
+    padding-bottom: 150px;
+    &__content {
+      margin-top: 52px;;
+      @media screen and (max-width: $--screen-sm-min) {
+        margin-top: 24px;
+      }
+    }
+  }
 </style>

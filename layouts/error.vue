@@ -21,12 +21,16 @@
 </template>
 
 <script>
+import {layoutMixin} from '@/mixins/mixins'
 export default {
     name: 'Error',
     head: {
         title: 'Ошибка'
     },
-
+    mixins: [layoutMixin],
+    mounted() {
+        this.loadScript()
+    }
 }
 </script>
 
@@ -35,7 +39,6 @@ export default {
 @import '@/assets/scss/_variables.scss';
 
 .error-main {
-    margin-top: 72px;
     min-height: 650px;
     background: url('~assets/img/404_bg.jpg') no-repeat center center;
     background-size: cover;
@@ -47,12 +50,10 @@ export default {
     }
 
     @media screen and (max-width: $--screen-md-min) {
-        margin-top: 50px;
         padding-top: 70px;
     }
 
     @media screen and (max-width: $--screen-sm-min) {
-        padding-top: 30px;
         min-height: 80vh;
         padding-bottom: 10vh;
     }

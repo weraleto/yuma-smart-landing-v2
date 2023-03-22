@@ -1,4 +1,6 @@
 import { Message } from 'element-ui';
+import ElTabs from 'element-ui/lib/tabs'
+import ElTabPane from 'element-ui/lib/tab-pane'
 
 export const formMixin = {
     data: () => {
@@ -85,5 +87,105 @@ export const formMixin = {
                 phone: {result: true, errorMessage: ''},
             }
         }
+    }
+}
+
+export const tabsMixin = {
+    props: {
+        id: String,
+    },
+    data: () => {
+        return {
+            activeName: '0',
+            timer: null,
+        }
+    },
+    components: {
+        ElTabs,
+        ElTabPane
+    },
+    mounted() {
+        let navEl = document.querySelector(`#${this.id} .el-tabs__nav-scroll`)
+        navEl.addEventListener('touchmove', this.handleTabScroll)
+    },
+    methods: {
+        debounce(timeout = 100, callback){
+            if(this.timer){
+                clearTimeout(this.timer)
+            }
+            this.timer = setTimeout(callback, timeout)
+        },
+        handleTabScroll(e) {
+            const target = document.querySelector(`#${this.id} .el-tabs__nav-scroll`)
+            let el = target.querySelector('.el-tabs__nav')
+            let tr = el.style.transform.replace("translateX(", "").replace(")", "")
+            if (target.scrollLeft == 0 && parseInt(tr) != 0) {
+                this.debounce(150, function(){
+                    el.style.transform = "translateX(0px)"
+                })
+            }
+        },
+    }
+}
+
+export const popoverMixin = {
+    data: () => {
+        return {
+            activeEl: null,
+            visibleEl: null,
+            contentVisible: false,
+            params: []
+        }
+    },
+    methods: {
+        setElProperty(el, prop, val, units='') {
+            el.style[prop] = `${val}${units}`
+        }
+    },
+    computed: {
+        activeElData() {
+            if (this.activeEl) {
+                return this.data[this.activeEl]
+            }
+            return {}
+        }
+    },
+}
+
+export const layoutMixin = {
+    methods: {
+        loadScript() {
+            let script = document.createElement('script')
+            script.innerHTML = "(function(w,d,u){var s=d.createElement('script');s.async=true;s.src=u+'?'+(Date.now()/60000|0);var h=d.getElementsByTagName('script')[0];h.parentNode.insertBefore(s,h);})(window,document,'https://cdn-ru.bitrix24.ru/b16224776/crm/site_button/loader_2_3yeodk.js');"
+            document.body.appendChild(script)
+        }
+    }
+}
+
+export const cardMixin = {
+    data() {
+        return {
+            activeCard: null,
+            timer: null
+        }
+    },
+    methods: {
+      handleLayoutClick(e) {
+        if (!this.$refs.cardItems) {
+            return
+        }
+        if (!this.$refs.cardItems.contains(e.target)) {
+          this.activeCard = null
+        }
+      },
+      handleCardMouseEnter(idx) {
+        clearTimeout(this.timer); 
+        this.activeCard=idx
+      },
+      handleCardMouseLeave() {
+        this.timer = setTimeout(() => {
+            this.activeCard = null
+        }, 1000)
+      }
     }
 }

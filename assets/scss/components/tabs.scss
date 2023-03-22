@@ -1,0 +1,84 @@
+@import "../mixins";
+@import "../variables";
+
+$--border-color-light: $--gray-medium;
+
+@import "~element-ui/packages/theme-chalk/src/tabs";
+@import "~element-ui/packages/theme-chalk/src/tab-pane";
+
+
+.tabs-wrapper {
+    grid-column: 1/13;
+}
+
+.el-tabs__active-bar {
+    background-color: $--main-black;
+    height: 3px;
+
+    &::before,
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        background-color: $--main-black;
+        width: 24px;
+    }
+
+    &::before {
+        right: 100%;
+    }
+
+    &::after {
+        left: 100%;
+    }
+}
+
+.el-tabs__nav-wrap::after {
+    height: 1px;
+}
+
+.el-tabs__nav-scroll {
+    overflow-x: scroll;
+
+    &::-webkit-scrollbar {
+        width: 0;
+        height: 0;
+        opacity: 0;
+    }
+}
+
+.el-tabs__item {
+    height: 52px;
+    line-height: 52px;
+    font-weight: 400;
+    font-size: 18px;
+    padding-left: 24px;
+    padding-right: 24px;
+
+    &.is-active {
+        color: $--main-black;
+        font-weight: 500;
+    }
+
+    &:hover {
+        color: $--main-black;
+    }
+}
+
+.el-tabs--top .el-tabs__item.is-top:nth-child(2) {
+    padding-left: 24px;
+}
+
+
+.el-tabs__nav-wrap.is-scrollable {
+    padding: 0;
+}
+
+.el-tabs__content {
+    margin-top: 40px;
+
+    @media screen and (max-width: $--screen-sm-min) {
+        margin-top: 20px;
+    }
+}
