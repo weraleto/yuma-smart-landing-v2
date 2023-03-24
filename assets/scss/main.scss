@@ -1,5 +1,6 @@
 @import 'fonts';
 @import 'variables';
+@import 'mixins';
 
 
 @keyframes fadein {
@@ -34,7 +35,7 @@ a {
 html,
 body {
     font-family: 'Onest', sans-serif;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 400;
     line-height: 1.2;
 
@@ -70,13 +71,13 @@ body {
     }
 }
 .hidden-desktop {
-    @media screen and (min-width: 1025px) {
-        display: none;
+    @media screen and (min-width: calc($--screen-md-min + 1px)) {
+        display: none !important;
     }
 }
 .only-desktop {
     @media screen and (max-width: $--screen-md-min) {
-        display: none;
+        display: none !important;
     }
 }
 
@@ -87,35 +88,59 @@ body {
     left: 0;
     right: 0;
     z-index: 9996;
-    background-color: $--main-black;
+    background-color: rgba(#2A2A2A, .9);
     opacity: 0.9;
-
-    @media screen and (max-width: $--screen-sm-min) {
-        top: 48px;
-    }
 }
 
 .container {
-    max-width: 1340px;
-    margin: 0 auto;
-    width: 100%;
+    @include container;
+    max-width: $--container-width-default;
 
-    @media screen and (max-width: $--screen-lg-min) {
-        padding-left: 50px;
-        padding-right: 50px;
+    &--large {
+        @include container;
+        max-width: $--container-width-long;
+    }
+}
+
+section, .section {
+    padding-top: 50px;
+    padding-bottom: 100px;
+    &.pt-large {
+        padding-top: 120px;
+    }
+    &-title {
+        max-width: 50%;
+
+        p {
+            margin-top: 16px;
+        }
+
+        @media screen and (max-width: $--screen-md-min) {
+            max-width: 71%;
+        }
+        @media screen and (max-width: $--screen-sm-min) {
+            max-width: 100%;
+        }
+    }
+    &-subtitle {
+        @media screen and (max-width: $--screen-lg-min) {
+            font-size: 18px;
+        }
+        @media screen and (max-width: 330px) {
+            font-size: 16px;
+        }
     }
     @media screen and (max-width: $--screen-sm-min) {
-        padding-left: 30px;
-        padding-right: 30px;
-    }
-    @media screen and (max-width: $--screen-xxs-min) {
-        padding-left: 16px;
-        padding-right: 16px;
+        padding-top: 12px;
+        padding-bottom: 68px;
+        &.pt-large {
+            padding-top: 84px;
+        }
     }
 }
 
 .bar {
-    min-height: 70px;
+    min-height: 64px;
     display: flex;
     align-items: center;
 
@@ -131,66 +156,53 @@ body {
 }
 
 .title1 {
-    // font-size: 6.04vw;
-    font-size: 87px; 
+    font-weight: 500;
+    font-size: 40px; 
     text-transform: uppercase;
-    // font-variation-settings: 'wght' 600;
-    font-weight: 600;
 
-    @media screen and (max-width: $--screen-lg-min) {
-        font-size: 5.84vw;
-    }
-    @media screen and (max-width: $--screen-md-min) {
-        font-size: 6.25vw;
-    }
     @media screen and (max-width: $--screen-sm-min) {
-        font-size: 9.6vw;
+        font-size: 28px;
+        line-height: 40px;
     }
 }
 
 .title2 {
     font-weight: 500;
-    font-size: 4rem;
+    font-size: 28px;
+    line-height: 40px;
     text-transform: uppercase;
-    // font-variation-settings: 'wght' 600;
-
-    @media screen and (max-width: $--screen-md-min) {
-        font-size: 5.85vw;
-    }
-    @media screen and (max-width: $--screen-sm-min) {
-        font-size: 8vw;
-    }
+}
+.title3 {
+    font-weight: 500;
+    font-size: 24px;
+    text-transform: uppercase;
 }
 
 .subtitle {
-    font-size: 1.875rem;
-    // font-variation-settings: 'wght' 600;
+    font-weight: 400;
+    font-size: 22px;
+}
+
+.subtitle-bold {
+    @extend .subtitle;
     font-weight: 500;
-    @media screen and (max-width: $--screen-md-min) {
-        font-size: 1.125rem;
-    }
 }
 
 .text4 {
-    font-size: 1.125rem;
-    @media screen and (max-width: $--screen-md-min) {
-        font-size: 1rem;
-    }
+    font-size: 18px;
+    font-weight: 500;
 }
 
 .text5 {
-    font-size: 1rem;
+    font-weight: 400;
+    font-size: 18px;
 }
 
 .text6 {
-    font-size: .875rem;
-    font-weight: 500;
-    // font-variation-settings: 'wght' 500;
-    font-weight: 500;
+    @include text6;
 }
 
 .text-bold {
-    // font-variation-settings: 'wght' 600;
     font-weight: 500;
 }
 
@@ -200,10 +212,9 @@ body {
 
 .btn {
     font-family: 'Onest';
-    // font-variation-settings: 'wght' 600;
     font-weight: 500;
     text-transform: uppercase;
-    font-size: 1rem;
+    // font-size: 1rem;
     text-align: center;
     cursor: pointer;
     font-feature-settings: 'pnum' on, 'lnum' on;
@@ -238,6 +249,7 @@ body {
         border: none;
         border-radius: $--border-radius-default;
         justify-content: center;
+        color: $--main-black;
 
         &:hover {
             background: $--yellow-hover;
@@ -253,18 +265,39 @@ body {
         }
     }
 
-    &.outlined {
-        background: $--main-white;
-        border: 2px solid $--main-gray;
+    &.black {
+        background: $--main-black;
+        color: white;
+        border: none;
         border-radius: $--border-radius-default;
         justify-content: center;
 
         &:hover {
-            border-color: $--main-black;
+            background: $--black-hover;
         }
 
         &:active {
-            border-color: $--main-black;
+            background: $--main-black;
+        }
+
+        &:disabled,
+        &.disabled {
+            background: $--black-disabled;
+        }
+    }
+
+    &.outlined {
+        background: $--main-white;
+        border: 1px solid $--main-black;
+        border-radius: $--border-radius-default;
+        justify-content: center;
+
+        &:hover {
+            border-width: 2px;
+        }
+
+        &:active {
+            // border-color: $--main-black;
             background: $--yellow-pressed;
         }
 
@@ -286,6 +319,12 @@ body {
             margin-left: 21.5px;
         }
     }
+
+    &.subtitle {
+        @media screen and (max-width: $--screen-sm-min) {
+            font-size: 18px;
+        }
+    }
 }
 
 input, textarea {
@@ -294,8 +333,8 @@ input, textarea {
     border: 2px solid transparent;
     color: $--main-black;
     font-family: 'Onest', sans-serif;
-    padding: 20px;
-    font-size: 1rem;
+    padding: 12.5px 20px;
+    font-size: 15px;
     font-feature-settings: inherit;
 
     &::placeholder {
@@ -372,10 +411,10 @@ input[type=checkbox]:checked + .label_checkbox {
 
 .grid-layout {
     display: grid;
-    grid-template-columns: repeat(10, 1fr);
+    grid-template-columns: repeat(12, 1fr);
 
     @media screen and (max-width: $--screen-sm-min) {
-        &:not(.footer-bottom-layout) {
+        &:not(.footer-bottom-layout):not(.sys-components__container):not(.sertification__container) {
             grid-template-columns: repeat(5, 1fr);
         }
     }
@@ -408,94 +447,9 @@ input[type=checkbox]:checked + .label_checkbox {
 }
 
 
-.header {
-    padding-top: 170px;
-
-    @media screen and (max-width: $--screen-md-min) {
-        padding-top: 120px;
-    }
-    @media screen and (max-width: $--screen-sm-min) {
-        padding-top: 80px;
-    }
-}
-
-
-
-.block-offset {
-    padding-top: 150px;
-    grid-row-gap: 70px;
-
-    &.block-offset-products {
-        grid-row-gap: 112px;
-    }
-    
-    &__title {
-        white-space: pre-line;
-        grid-column: 1/11;
-        &--double {
-            grid-column: 1/11;
-            position: relative;
-        }
-        &--btn {
-            position: absolute;
-            bottom: 0;
-            right: 0;
-        }
-    }
-    
-    &__content {
-        grid-column: 3/11;
-        grid-row: 2/3;
-
-        &.offset-sm {
-            grid-column: 2/11;
-        }
-    }
-
-    @media screen and (max-width: $--screen-md-min) {
-        padding-top: 70px;
-        grid-row-gap: 8vw;
-
-        &__content {
-            grid-column: 2/11;
-            &.offset-sm {
-                grid-column: 1/11;
-            }
-        }
-
-        &__title {
-            &--btn {
-                bottom: unset;
-                top: 100%;
-                transform: translate(0, -12px);
-            }
-        }
-    }
-
-    @media screen and (max-width: $--screen-sm-min) {
-        &.block-offset-products {
-            grid-row-gap: 30px;
-        }
-
-        &__content, 
-        &__content.offset-sm {
-            grid-column: 1/6;
-        }
-
-        &__title {
-            &--btn {
-                position: static;
-                transform: none;
-                margin: auto;
-            }
-        }
-    }
-    
-}
-
 .card {
     border-radius: calc($--border-radius-default * 2);
-    border: 2px solid $--main-gray;
+    border: 1px solid $--gray-medium-dark;
 }
 
 .title-ladder {
@@ -509,11 +463,11 @@ input[type=checkbox]:checked + .label_checkbox {
     }
     
     span:first-of-type {
-        grid-column: 2/11;
+        grid-column: 2/13;
     }
     
     span:last-of-type {
-        grid-column: 3/11;
+        grid-column: 3/13;
     }
 
     
@@ -535,6 +489,7 @@ input[type=checkbox]:checked + .label_checkbox {
 .text-blocks {
     display: flex;
     justify-content: space-between;
+    flex-direction: column;
 
     @media screen and (max-width: $--screen-md-min) {
         &.plain {
@@ -550,7 +505,6 @@ input[type=checkbox]:checked + .label_checkbox {
                 }
             }
             .text-blocks__item {
-                max-width: 44.444%;
                 width: 100%;
                 
                 &:not(:last-child) {
@@ -560,41 +514,47 @@ input[type=checkbox]:checked + .label_checkbox {
         }
     }
     @media screen and (max-width: $--screen-xs-min) {
-        &.platform {
+        .text-blocks__col {
             flex-direction: column;
-            .text-blocks__col {
-                width: 100%;
+            gap: 32px;
+        }
+        .text-blocks__item {
+            grid-column: 1/5;
+            margin-bottom: 0;
+            width: 100%;
+            max-width: 100%;
+            padding-right: 0;
+            &:nth-child(2) {
+                grid-column: 2/6;
             }
         }
-        &.plain, &.platform {
-
+        &.plain.ladder-xs-enabled {
             .text-blocks__col {
-                flex-wrap: wrap;
-
-                &:not(:last-child) {
-                    margin-bottom: 30px;
-                }
-            }
-            .text-blocks__item {
-                max-width: 100%;
-                
-                &:not(:last-child) {
-                    margin-bottom: 30px;
-                }
+                display: grid;
+                grid-template-columns: repeat(5, 1fr);
             }
         }
     }
 }
 
 .text-blocks__col {
-    width: 50%;
+    width: 100%;
+    display: flex;
+    &:not(:last-child) {
+        margin-bottom: 76px;
+    }
+
 }
 
 .text-blocks__item {
-    max-width: 75%;
+    max-width: 50%;
+    padding-right: 12.5%;
 
     &-subtitle {
         margin-bottom: 20px;
+        @media screen and (max-width: $--screen-xs-min) {
+            margin-bottom: 16px;
+        }
     }
 
     &-icon {
@@ -602,14 +562,12 @@ input[type=checkbox]:checked + .label_checkbox {
         margin-bottom: 10px;
     }
 
-    &, &--long {
-    
-        &:not(:last-child) {
-            margin-bottom: 70px;
+    &-step {
+        @extend %stepNumber;
+        margin-bottom: 15px;
 
-            @media screen and (max-width: $--screen-md-min) {
-                margin-bottom: 50px;
-            }
+        @media screen and (max-width: $--screen-sm-min) {
+            font-size: 50px;
         }
     }
 
@@ -618,29 +576,13 @@ input[type=checkbox]:checked + .label_checkbox {
         position: relative;
         left: -1.91791%;
     }
+
+    @media screen and (max-width: $--screen-md-min) {
+        padding-right: 40px;
+    }
+
 }
 
-
-
-// .text-blocks__icon {
-//     .icon-xs {
-//         max-width: 85%;
-
-//         @media screen and (max-width: $--screen-xs-min) {
-//             max-width: unset;
-//         }
-//     }  
-//     .icon-xl {
-//         min-width: 112%;
-//         position: relative;
-//         left: -12%;
-
-//         @media screen and (max-width: $--screen-xs-min) {
-//             position: static;
-//             min-width: unset;
-//         }
-//     }
-// } 
 
 .text-page-block {
     &:not(:last-child) {
@@ -657,4 +599,12 @@ input[type=checkbox]:checked + .label_checkbox {
 li {
     list-style-position: inside;
     margin: .5em 0 .5em 1em;
+}
+
+.light-gallery__modal {
+    z-index: 10001 !important;
+}
+
+.light-gallery__prev, .light-gallery__next {
+    display: none !important;
 }

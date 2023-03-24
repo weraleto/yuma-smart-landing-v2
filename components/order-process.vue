@@ -272,8 +272,7 @@ export default {
     &__number {
         font-size: 4.375rem;
         line-height: 1;
-        // font-variation-settings: 'wght' 900;
-        font-weight: 900;
+        font-variation-settings: 'wght' 900;
         padding-bottom: 10px;
     }
 

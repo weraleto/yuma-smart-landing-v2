@@ -1,5 +1,5 @@
 <template>
-    <el-collapse v-model="activeItem" class="collapsible__blocks" accordion>
+    <el-collapse v-model="activeItem" class="collapsible__blocks" :accordion="accordion">
         <el-collapse-item
             v-for="(item, idx) in data" :key="idx"
             class="collapsible__item"
@@ -10,16 +10,16 @@
             <div class="collapsible__item--content">
                 <div class="collapsible__item--content__inner">
                     <div class="collapsible__item--content__text">
-                        <p class="text4">{{item.text}}</p>
-                    </div>
-                    <div v-if="item.steps" class="collapsible__item--content__steps">
-                        <div v-for="(step, idx1) in item.steps" :key="step" class="collapsible__item--content__step">
-                            <div class="collapsible__item--content__step--num">
-                                {{idx1 + 1}}
+                        <p class="text6" :class="{'price-text-bottom-margin': item.prices}" v-html="item.text"></p>
+
+                        <div v-if="item.prices" class="collapsible__item--price">
+                            <div class="collapsible__item--price__line text6" v-for="p in item.prices" :key="p.label+p.price">
+                                <p>{{p.label}}</p>
+                                <div class="collapsible__item--price__el">
+                                    <span class="text4 no-word-break">{{p.price}}</span>
+                                    <span v-if="p.price_comment" v-html="p.price_comment"></span>
+                                </div>
                             </div>
-                            <p class="collapsible__item--content__step--text text5">
-                                {{step}}
-                            </p>
                         </div>
                     </div>
                 </div>
@@ -42,6 +42,10 @@ export default {
         active_default: {
             type: Number,
             default: undefined
+        },
+        accordion: {
+            type: Boolean,
+            default: true
         }
     },
     data: () => {
@@ -57,32 +61,33 @@ export default {
 </script>
 
 <style lang="scss">
+@import '@/assets/scss/_variables.scss';
+$--collapse-header-background-color: unset;
+$--collapse-content-background-color: unset;
+$--collapse-border-color: transparent;
+$--color-primary: $--main-black;
+$--collapse-header-font-size: 22px;
+$--collapse-header-height: 1.2;
+
 @import "~element-ui/packages/theme-chalk/src/collapse";
 @import "~element-ui/packages/theme-chalk/src/collapse-item";
-@import '@/assets/scss/_variables.scss';
 
 .el-collapse {
     border: none;
 }
 
 .collapsible__item {
-    border-bottom: 2px solid;
-
-    &.small {
-        .el-collapse-item__header {
-            padding: 10px 21.25% 10px 0;
-        }
-    }
+    margin-bottom: 32px;
+    padding-bottom: 20px;
+    border-radius: 12px;
+    background-color: $--gray-medium-light;
 
     .el-collapse-item__header {
         display: flex;
         justify-content: space-between;
-        padding: 20px 21.25% 20px 0;
-        font-size: 1.875rem;
-        // font-variation-settings: "wght" 600;
-        font-weight: 500;
+        padding: 40px 80px 20px 40px;
+        font-weight: 400;
         height: auto;
-        line-height: 1.2;
         position: relative;
         &::after {
             content: '';
@@ -91,8 +96,8 @@ export default {
             height: 19px;
             background: url('../assets/img/arrow.svg') no-repeat center center;
             background-size: cover;
-            right: 0;
-            top: 20px;
+            right: 40px;
+            top: 40px;
             transition: transform .3s ease;
         }
         &.is-active {
@@ -101,78 +106,68 @@ export default {
             }
         }
 
-        @media screen and (max-width: $--screen-md-min) {
-            padding: 10px 21.25% 10px 0;
-            font-size: 1.375rem;
-            &::after {
-                top: 10px;
-            }
-        }
+
     }
     .el-collapse-item__content {
         line-height: 1.2;
-        padding-bottom: 0;
+        padding: 0 40px 20px;
+
+        .price-text-bottom-margin {
+            margin-bottom: 32px;
+        }
     }
 
-    &--content {
-
-        &__text {
-            max-width: 62.5%;
-            @media screen and (max-width: $--screen-md-min) {
-                max-width: 77.777%;
-            }
-            @media screen and (max-width: $--screen-sm-min) {
-                max-width: 80%;
-            }
-        }
-
-        &__inner {
-            padding-bottom: 20px;
-        }
-
-        &__steps {
+    &--price {
+        padding-top: 32px;
+        border-top: 1px solid $--main-black;
+        &__line {
             display: flex;
-            justify-content: space-between;
-            margin-top: 30px;
-            padding-bottom: 8px;
-
-            @media screen and (max-width: $--screen-md-min) {
-                margin-top: 23px;
-            }
-            @media screen and (max-width: $--screen-sm-min) {
-                flex-direction: column;
-                margin-top: 20px;
-            }
-        }
-
-        &__step {
             width: 100%;
-            max-width: 25%;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 1em;
+
+            &:not(:last-child) {
+                margin-bottom: 24px;
+            }
+            & > *{
+                max-width: 50%;
+            }
+        }
+
+        &__el {
             display: flex;
+            flex-wrap: wrap;
             align-items: center;
+            text-align: right;
+            justify-content: flex-end;
+            gap: 0;
+        }
+    }
 
-            &--num {
-                font-size: 4.375rem;
-                line-height: 1;
-                // font-variation-settings: 'wght' 900;
-                font-weight: 900;
-                margin-right: 20px;
+    @media screen and (max-width: $--screen-sm-min) {
+        padding-bottom: 4px;
+        margin-bottom: 12px;
+
+        .el-collapse-item__header {
+            padding: 28px 35px 24px 16px;
+            font-size: 18px;
+            &::after {
+                right: 16px;
+                top: 28px;
             }
+        }
+        .el-collapse-item__content {
+            padding: 0 16px 24px;
+        }
 
-            @media screen and (max-width: $--screen-md-min) {
-                max-width: 33.333%;
-                padding-right: 10px;
-            }
-            @media screen and (max-width: $--screen-sm-min) {
-                max-width: 100%;
-                padding: 0 10vw;
-
+        &--price {
+            &__line {
                 &:not(:last-child) {
-                    margin-bottom: 20px;
+                    margin-bottom: 30px;
                 }
             }
         }
-
     }
 }
 

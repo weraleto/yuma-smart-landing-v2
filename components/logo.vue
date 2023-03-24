@@ -1,7 +1,7 @@
 <template>
     <div class="logo">
         <a href="/">
-            <img :src="require('../assets/img/logo-'+theme+'.svg')" alt="">
+            <img :src="require('../assets/img/logo-'+theme+'.svg')" alt="" data-not-lazy>
         </a>
     </div>
 </template>

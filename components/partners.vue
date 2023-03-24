@@ -8,7 +8,7 @@
             @mouseleave="startAnimation"
         >
             <div class="partners-gallery__item " v-for="(i, idx) in randList" :key="idx">
-                <img :src="require('../assets/img/partners/p-'+i+'.svg')" alt="">
+                <img :src="require(`@/assets/img/${directoryName}/p-${i}.${fileFormat}`)" alt="" data-not-lazy>
             </div>
         </div>
 
@@ -17,12 +17,20 @@
 
 <script>
 export default {
+    props: {
+        directoryName: String,
+        length: Number,
+        fileFormat: {
+            type: String,
+            default: 'png'
+        }
+    },
     data: () => {
         return {
-            speedX: -1,
+            speedX: -0.5,
             positionX: 0,
             isPaused: false,
-            defaultPadding: 70,
+            defaultPadding: 60,
             el: null
         }
     },
@@ -35,7 +43,7 @@ export default {
     },
     computed: {
         randList() {
-            const a = [1, 2, 3, 4, 5, 6, 7]
+            const a = Array.from(Array(this.length), (_, index) => index + 1);
             return a.concat(a).concat(a)
         }
     },
@@ -81,17 +89,17 @@ export default {
 .partners-gallery {
   display: flex;
   align-items: center;
+  gap: 60px;
 
   &__wrapper {
-    grid-column: 1/11;
+    grid-column: 1/13;
     overflow: hidden;
     white-space: nowrap;
   }
 
   &__item {
-    flex: 1 0 200px;
+    flex: 1 0 auto;
     max-width: 200px;
-    margin-right: 70px;
   }
 }
 </style>

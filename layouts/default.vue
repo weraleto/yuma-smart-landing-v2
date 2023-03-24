@@ -1,26 +1,28 @@
 <template>
   <div class="app">
-    <Navbar />
-    <nuxt />
-    <Footer />
+    <Navbar ref="navbar" />
 
-    <FormModal 
+    <div @click="handleLayoutClick">
+        <nuxt />
+        <Footer />
+    </div>
+
+    <!-- <FormModal 
         form-action="contact"
         action-button-text="Заказать звонок"
         v-if="$store.state.showContactForm"
-        @close="$store.commit('setShowModal', {key: 'showContactForm', val: false})" />
+        @close="$store.commit('setShowModal', {key: 'showContactForm', val: false})" /> -->
     <FormModal 
         form-action="application"
-        form-size="medium"
         action-button-text="Отправить заявку"
-        :show-textarea="true"
+        :show-textarea="false"
         v-if="$store.state.showApplyForm"
         @close="$store.commit('setShowModal', {key: 'showApplyForm', val: false})" />
 
 
-    <div class="up-button" @click="scrollToTop" v-if="showUpButton">
+    <!-- <div class="up-button" @click="scrollToTop" v-if="showUpButton">
         <img src="~assets/img/arrow.svg" alt="Наверх страницы">
-    </div>
+    </div> -->
   </div>
   
 </template>
@@ -30,56 +32,52 @@ import Navbar from '@/components/navigation-bar'
 import Footer from '@/components/footer'
 import FormModal from '@/components/modal-form'
 import {mapState} from 'vuex'
+import {layoutMixin} from '@/mixins/mixins'
 export default {
     components: {Navbar, Footer, FormModal},
+    mixins: [layoutMixin],
     data: () => {
         return {
-            showUpButton: false,
+            // showUpButton: false,
             lastScrollTop: 0
         }
-    },
-    mounted() {
-        let ctx = this
-        window.addEventListener('scroll', function(){
-            let st = window.pageYOffset; 
-            ctx.showUpButton = window.pageYOffset > 5450 && st < this.lastScrollTop
-            this.lastScrollTop = st <= 0 ? 0 : st;
-        }, false)
     },
     computed: {
         ...mapState([
             'showContactForm',
-            'showApplyForm'
+            'showApplyForm',
+            'otherModalsOpened'
         ]),
         isModalOpened() {
-            return this.showContactForm || this.showApplyForm
+            return this.showContactForm || this.showApplyForm || this.otherModalsOpened
         }
     },
     methods: {
         scrollToTop() {
             window.scrollTo(0, 0)
+        },
+        handleLayoutClick() {
+            this.$refs.navbar.closeAllDropdowns()
         }
     },
-    watch: {
-        isModalOpened(val) {
-            if (val) {
-                document.body.classList.add('body-scroll-lock')
-            } else {
-                document.body.classList.remove('body-scroll-lock')
-            }
-        }
-    }
 
 }
 </script>
 
 <style lang="scss" >
 @import "~element-ui/packages/theme-chalk/src/message";
-@import '@/assets/scss/_variables.scss';
+@import '@/assets/scss/_variables';
 
 .app {
     display: flex;
     flex-direction: column;
+    overflow-x: hidden;
+    max-width: 100vw;
+    margin-top: 64px;
+
+    @media screen and (max-width: $--screen-sm-min) {
+        margin-top: 50px;
+    }
 }
 
 .el-message.el-message--error {

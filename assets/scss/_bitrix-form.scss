@@ -38,6 +38,7 @@
     font-family: 'Onest';
     font-weight: 500;
     text-transform: uppercase;
+    // font-size: 1rem;
     text-align: center;
     cursor: pointer;
     font-feature-settings: 'pnum' on, 'lnum' on;
@@ -48,18 +49,18 @@
 
     transition: all .3s ease;
 
-    background: $--yellow-primary !important;
+    background: $--yellow-primary;
     border: none;
     border-radius: $--border-radius-default !important;
     justify-content: center;
     color: $--main-black;
 
     &:hover {
-        background: $--yellow-hover !important;
+        background: $--yellow-hover;
     }
 
     &:active {
-        background: $--yellow-pressed !important;
+        background: $--yellow-pressed;
     }
 
     &:disabled,
@@ -79,26 +80,23 @@
     }
 
     .b24-form-btn {
-        background: $--main-white;
-        border: 2px solid $--main-gray;
+        background: $--main-black;
+        color: white;
+        border: none;
         border-radius: $--border-radius-default;
         justify-content: center;
-        color: $--main-black !important;
 
         &:hover {
-            border-color: $--main-black !important;
-            background: $--main-white;
+            background: $--black-hover;
         }
 
         &:active {
-            border-color: $--main-black;
-            background: $--yellow-pressed;
+            background: $--main-black;
         }
 
         &:disabled,
         &.disabled {
-            background: #E4E4E4;
-            border-color: #E4E4E4;
+            background: $--black-disabled;
         }
     }
 }
