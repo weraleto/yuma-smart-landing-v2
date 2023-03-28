@@ -49,23 +49,9 @@
                     <img class="navigation-mobile-close" @click="mobileMenuOpened=false" src="../assets/img/cross.svg" alt="Закрыть меню">
 
                     <h3 class="subtitle" style="margin-bottom: 7.34vh">Мы работаем по всей России</h3>
-                    <div style="margin-bottom: 7.34vh">
+                    <div>
                         <h3 class="contact-description">YUMA-SMART</h3>
                         <a class="text4" href="tel:+7 (812) 309 50 32">+7 (812) 309 50 32</a>
-                    </div>
-                    <div style="margin-bottom: 7.34vh">
-                        <h3 class="contact-description">YUMA-POS в Санкт-Петербурге</h3>
-                        <p class="text6" style="margin-bottom: 12px">
-                            Наб. реки Смоленки, 5-7, Технопарк, офис 337, ст. м. Василеостровская
-                        </p>
-                        <a class="text4" href="tel:+7 (812) 309 50 32">+7 (812) 309 50 32</a>
-                    </div>
-                    <div>
-                        <h3 class="contact-description">YUMA-POS в Москве</h3>
-                        <p class="text6" style="margin-bottom: 12px">
-                            Нововладыкинский проезд, 2 стр. 2, ст. м. Владыкино
-                        </p>
-                        <a class="text4" href="tel:+7 (495) 108 11 78">+7 (495) 108 11 78</a>
                     </div>
                 </div>
 

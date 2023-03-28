@@ -22,21 +22,21 @@
                 <NuxtLink target="_blank" to="/terms" class="footer-top__link text6">Пользовательское соглашение</NuxtLink>
                 <NuxtLink target="_blank" to="/policy" class="footer-top__link text6">Политика конфиденциальности</NuxtLink>
             </div>
-            <div class="footer-col-2">
+            <!-- <div class="footer-col-2">
                 <p class="text4" style="margin-bottom: 8px">YUMA-POS в Санкт-Петербурге</p>
                 <p class="text6 footer-top__contact-description text6">Наб. реки Смоленки, 5-7, Технопарк, офис 337, ст.м. Василеостровская</p>
                 <a class="footer-top__link footer-top__link--phone title3" href="tel:+7 (812) 309 50 32">+7 (812) 309 50 32</a>
-            </div>
-            <div class="footer-col-2 smart">
+            </div> -->
+            <div class="footer-col-2">
                 <p class="text4" style="margin-bottom: 8px">YUMA-SMART</p>
                 <p class="text6 footer-top__contact-description text6"></p>
                 <a class="footer-top__link footer-top__link--phone title3" href="tel:+7 (812) 605 98 08">+7 (812) 605 98 08</a>
             </div>
-            <div class="footer-col-3">
+            <!-- <div class="footer-col-3">
                 <p class="text4" style="margin-bottom: 8px">YUMA-POS в Москве</p>
                 <p class="text6 footer-top__contact-description text6">Нововладыкинский проезд, 2 стр. 2, ст.м. Владыкино</p>
                 <a class="footer-top__link footer-top__link--phone title3" href="tel:+7 (495) 108 11 78">+7 (495) 108 11 78</a>
-            </div>
+            </div> -->
         </div>
     </div>
     <div class="footer-bottom bar">
@@ -171,9 +171,9 @@ export default {
                 grid-column: 1/13;
             } 
 
-            &-2.smart {
-                grid-row: 4/5;
-            }
+            // &-2.smart {
+            //     grid-row: 4/5;
+            // }
 
             &-0.emails {
                 grid-row: 5/6;
