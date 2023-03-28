@@ -16,17 +16,9 @@
         </div>
         <div class="dropdown__items">
             <template v-if="showContacts">
-                <div style="margin-bottom: 24px" class="dropdown__item">
+                <div class="dropdown__item">
                     <h3 class="dropdown__items--description no-word-break" style="margin-bottom: 12px">YUMA-SMART</h3>
                     <a class="text4" href="tel:+7 (812) 605-98-08">+7 (812) 605-98-08</a>
-                </div>
-                <div style="margin-bottom: 24px" class="dropdown__item">
-                    <h3 class="dropdown__items--description no-word-break" style="margin-bottom: 12px">YUMA-POS в Санкт-Петербурге</h3>
-                    <a class="text4" href="tel:+7 (812) 309 50 32">+7 (812) 309 50 32</a>
-                </div>
-                <div class="dropdown__item">
-                    <h3 class="dropdown__items--description no-word-break" style="margin-bottom: 12px">YUMA-POS в Москве</h3>
-                    <a class="text4" href="tel:+7 (495) 108 11 78">+7 (495) 108 11 78</a>
                 </div>
             </template>
             <template v-else>
