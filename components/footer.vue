@@ -134,13 +134,12 @@ export default {
             
             &__link {
                 margin-bottom: 10px;
-                &--phone {
-                    color: white
+                // &--phone {
                 //     display: block;
                 //     max-width: 218px;
                 //     margin-left: auto;
                 //     margin-right: auto;
-                }
+                // }
             }
         }
     }
