@@ -9,7 +9,7 @@
                 <small v-if="small" class="text6">{{small}}</small>
             </div>
             <form class="contact-form__form">
-                <script data-b24-form="inline/20/julahc" data-skip-moving="true">(function(w,d,u){var s=d.createElement('script');s.async=true;s.src=u+'?'+(Date.now()/180000|0);var h=d.getElementsByTagName('script')[0];h.parentNode.insertBefore(s,h);})(window,document,'https://cdn-ru.bitrix24.ru/b16224776/crm/form/loader_20.js');</script>
+                <script data-b24-form="inline/22/0205z8" data-skip-moving="true">(function(w,d,u){var s=d.createElement('script');s.async=true;s.src=u+'?'+(Date.now()/180000|0);var h=d.getElementsByTagName('script')[0];h.parentNode.insertBefore(s,h);})(window,document,'https://cdn-ru.bitrix24.ru/b16224776/crm/form/loader_22.js');</script>
             </form>
             <!-- <form action="#" class="contact-form__form" :class="{'hidden': formSubmitted}">
                 <div class="contact-form__form-group">

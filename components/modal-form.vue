@@ -7,7 +7,7 @@
             </div>
             <div class="form-modal__content" :style="formSubmitted ? 'overflow: visible' : ''">
                 <form style="width: 100%">
-                    <script data-b24-form="inline/20/julahc" data-skip-moving="true">(function(w,d,u){var s=d.createElement('script');s.async=true;s.src=u+'?'+(Date.now()/180000|0);var h=d.getElementsByTagName('script')[0];h.parentNode.insertBefore(s,h);})(window,document,'https://cdn-ru.bitrix24.ru/b16224776/crm/form/loader_20.js');</script>
+                    <script data-b24-form="inline/22/0205z8" data-skip-moving="true">(function(w,d,u){var s=d.createElement('script');s.async=true;s.src=u+'?'+(Date.now()/180000|0);var h=d.getElementsByTagName('script')[0];h.parentNode.insertBefore(s,h);})(window,document,'https://cdn-ru.bitrix24.ru/b16224776/crm/form/loader_22.js');</script>
                 </form>
                 <!-- <form action="" v-if="!formSubmitted">
                     <div class="contact-form__form-group form-modal__form-group">
