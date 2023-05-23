@@ -7,7 +7,11 @@
                 </div>
                 <YumaLogo />
                 <div class="navigation-inner right" :class="{'opened': mobileMenuOpened && activePopup=='menu'}">
-                    <img class="navigation-mobile-close" @click="mobileMenuOpened=false" src="../assets/img/cross.svg" alt="Закрыть меню">
+                    <div class="navigation-mobile-close">
+                        <img @click="mobileMenuOpened=false" src="../assets/img/cross.svg" alt="Закрыть меню">
+                    </div>
+                    <YumaLogo custom-class="navigation-inner__logo only-mobile" />
+
                     <div class="navigation-part left">
                         <template v-for="(it, idx) in navItems">
                             <template v-if="it.is_dropdown">
@@ -28,30 +32,38 @@
                                 <a :href="it.path" 
                                     :key="idx"
                                     class="navigation-link__item"
-                                    :class="{'active': $route.path == it.path}"
+                                    :class="{'active': $route.path == it.path, 'external dark': it.external}"
                                     :target="it.external ? '_blank': '_self'"
                                 ><span>{{it.title}}</span></a>
                             </template>
                         </template>
                     </div>
-                <!-- <div class="navigation-part right">
-                        <div class="navigation-btn"> -->
-                            <!-- <a href="#" 
-                                @click.prevent="mobileMenuOpened=false; $store.commit('setShowModal', {key: 'showContactForm', val: true})"
-                            class="btn medium outlined">связаться с нами</a> -->
-                            <!-- <a href="#" 
-                                @click.prevent class="btn medium outlined">Войти</a>
-                        </div>
-                    </div> -->
+                    <div class="navigation-part contact only-desktop phone-hover">
+                        <a href="tel:+7 (812) 605-98-08">+7 (812) 605-98-08</a>
+                    </div>
 
                 </div>
                 <div class="navigation-inner left only-mobile" :class="{'opened': mobileMenuOpened && activePopup=='contacts'}">
                     <img class="navigation-mobile-close" @click="mobileMenuOpened=false" src="../assets/img/cross.svg" alt="Закрыть меню">
 
-                    <h3 class="subtitle" style="margin-bottom: 7.34vh">Мы работаем по всей России</h3>
+                    <YumaLogo custom-class="navigation-inner__logo" />
+
+                    <div style="margin: 6.32vh 0 5.95vh">
+                        <a class="subtitle phone-hover" href="tel:+7 (812) 605-98-08">+7 (812) 605-98-08</a>
+                        <h3 style="margin-top: 10px" class="contact-description">Мы работаем по всей России</h3>
+                    </div>
+                    <div style="margin-bottom: 5.95vh">
+                        <h3 class="text5">YUMA-SMART в Санкт-Петербурге</h3>
+                        <p class="contact-description" style="margin-top: 8px">
+                            Выборгская набережная, д. 61, БЦ&nbsp;«АКВАТОРИЯ», 3 этаж, офис 303
+                        </p>
+                        
+                    </div>
                     <div>
-                        <h3 class="contact-description">YUMA-SMART</h3>
-                        <a class="text4" href="tel:+7 (812) 309 50 32">+7 (812) 309 50 32</a>
+                        <h3 class="text5">YUMA-SMART в Москве</h3>
+                        <p class="contact-description" style="margin-top: 8px">
+                            Нововладыкинский проезд, 2 стр. 2, ст.&nbsp;м.&nbsp;Владыкино
+                        </p>
                     </div>
                 </div>
 
@@ -75,27 +87,31 @@ export default {
             activePopup: 'menu',
             navItems: [
                 {
-                    is_dropdown: true,
+                    is_dropdown: false,
                     title: 'YUMA-SMART',
-                    description: 'Микромаркеты самообслуживания',
-                    items: [{path: '/', name: 'О решении YUMA-SMART'}, {path: '/tariff3-integrated-micromarkets', name: 'Готовые микромаркеты'}]
+                    path: '/'
                 },
                 {
                     is_dropdown: false,
-                    title: 'О нас',
-                    path: '/about'
+                    title: 'Готовые микромаркеты',
+                    path: '/tariff3-integrated-micromarkets'
+                },
+                // {
+                //     is_dropdown: false,
+                //     title: 'О компании',
+                //     path: '/about'
+                // },
+                {
+                    is_dropdown: false,
+                    external: true,
+                    title: 'YUMA-POS',
+                    path: 'https://yumapos.ru/'
                 },
                 {
                     is_dropdown: false,
                     external: true,
                     title: 'Техподдержка',
                     path: 'https://support.yumapos.ru/'
-                },
-                {
-                    is_dropdown: true,
-                    title: 'Контакты',
-                    showContacts: true,
-                    class: 'hidden-mobile'
                 },
             ],
             dropdownStatuses: {}
@@ -155,11 +171,18 @@ export default {
     }
 
     &-mobile-close {
-        width: 20px;
-        height: 20px;
         position: absolute;
-        right: 17px;
-        top: 20px;
+        width: 38px;
+        height: 38px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        right: 8px;
+        top: calc(8.18vh - 9px);
+        img {
+            width: 20px;
+            height: 20px;
+        }
         @media screen and (min-width: calc($--screen-xs-min + 1px)) {
             display: none;
         }
@@ -189,9 +212,18 @@ export default {
             flex-shrink: 1;
             max-width: 123px;
         }
+        &.contact {
+            flex-shrink: 1;
+            max-width: 138px;
+        }
+        @media screen and (max-width: 1200px) {
+            &.left {
+                gap: 30px;
+            }
+        }
         @media screen and (max-width: $--screen-md-min) {
             &.left {
-                gap: 3.90vw;
+                gap: 3.9vw;
             }
         }
         @media screen and (max-width: $--screen-sm-min) {
@@ -222,9 +254,13 @@ export default {
 
         .contact-description {
             margin-bottom: 20px; 
-            font-size: 13px; 
+            font-size: 14px; 
             color: $--gray-medium-dark; 
             font-weight: 400
+        }
+
+        &__logo {
+            width: 95px;
         }
 
         @media screen and (max-width: $--screen-sm-min) {
@@ -276,9 +312,10 @@ export default {
                 right: 0;
                 top: 0;
                 border-radius: 0;
+                gap: 6.69vh;
             }
             min-height: 100vh;
-            padding-top: 10vh;
+            padding-top: 8.18vh;
         }
         @media screen and (max-width: $--screen-xxs-min) {
             .subtitle {
@@ -302,20 +339,22 @@ export default {
                 content: '';
                 position: absolute;
                 display: block;
-                height: 3px;
+                height: 2px;
                 background-color: $--main-black;
                 bottom: 0;
                 left: 0;
                 right: 0;
-                transform: translate(0, 8px);
+                transform: translate(0, 7px);
                 opacity: 0;
                 transition: opacity .3s ease;
             }
         }
 
         &:hover, &.nuxt-link-exact-active {
-            span::after {
-                opacity: 1;
+            &:not(.external) {
+                span::after {
+                    opacity: 1;
+                }
             }
         }
         &:active, &.nuxt-link-exact-active, &.active {
@@ -326,15 +365,28 @@ export default {
 
         @media screen and (max-width: $--screen-sm-min) {
             min-height: unset;
-            margin-bottom: 20px;
+            margin-bottom: 8px;
             font-size: 18px;
         }
     }
 
     &-burger {
-        width: 24px;
-        height: 24px;
+        width: 50px;
+        height: 50px;
+        align-items: center;
 
+        &:last-of-type {
+            justify-content: flex-end;
+        }
+
+        img {
+            width: 24px;
+            height: 24px;
+        }
+
+        @media screen and (max-width: $--screen-sm-min) {
+            display: flex !important;
+        }
         @media screen and (max-width: $--screen-xxs-min) {
             margin-right: 0;
         }
@@ -345,14 +397,11 @@ export default {
         .btn {
             font-size: 18px;
         }
-        // @media screen and (min-width: $--screen-md-min) {
-        //     max-width: 123px;
-        // }
+
         @media screen and (max-width: $--screen-sm-min) {
             flex-grow: 1;
             display: flex;
             align-items: flex-end;
-            // margin-top: 37px;
 
             .btn {
                 max-height: 48px;

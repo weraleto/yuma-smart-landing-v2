@@ -1,5 +1,5 @@
 <template>
-    <div class="logo">
+    <div :class="customClass">
         <a href="/">
             <img :src="require('../assets/img/logo-'+theme+'.svg')" alt="" data-not-lazy>
         </a>
@@ -12,6 +12,10 @@ export default {
         theme: {
             type: String,
             default: 'light'
+        }, 
+        customClass: {
+            type: String,
+            default: 'logo'
         }
     }
 
