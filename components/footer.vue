@@ -6,19 +6,15 @@
                 <YumaLogo theme="dark" />
                 <div class="footer-description">
                     <div class="phone-hover">
-                        <a href="tel:+7 (812) 605-98-08" class="subtitle">+7 (812) 605-98-08</a>
+                        <a href="tel:+7 (812) 214-17-70" class="subtitle">+7 (812) 214-17-70</a>
                     </div>
                     <p class="text4">Мы работаем по всей России</p>
                 </div>
             </div>
             
             <div class="footer-col-1">
-                <p class="text4" style="margin-bottom: 8px">YUMA-SMART в Санкт-Петербурге</p>
+                <p class="text4" style="margin-bottom: 8px">YUMA Smart в Санкт-Петербурге</p>
                 <p class="text6 footer-top__contact-description text6">Выборгская набережная, д. 61, БЦ&nbsp;«АКВАТОРИЯ», 3 этаж, офис 303</p>
-            </div>
-            <div class="footer-col-1">
-                <p class="text4" style="margin-bottom: 8px">YUMA-SMART в Москве</p>
-                <p class="text6 footer-top__contact-description text6">Нововладыкинский проезд, 2 стр. 2, ст.&nbsp;м.&nbsp;Владыкино</p>
             </div>
 
             <div class="footer-col-2">

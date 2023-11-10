@@ -1,7 +1,7 @@
 <template>
   <div id="smart" @click="handleLayoutClick">
     <ProductsHeader
-      title="YUMA-SMART"
+      title="YUMA Smart"
       subtitle="Микромаркеты с вашим мобильным приложением для покупателей"
       button-text="Начать"
       :button-subtext="['Начните продавать свежую еду и напитки без персонала.', 'Комфорт для посетителей. Прибыль для вас.']"
@@ -42,7 +42,7 @@
             <h3 class="title1">
               что такое микромаркеты
             </h3>
-            <p class="subtitle">YUMA-SMART – это удобные точки продаж, которые мы полностью подготовим к работе по нашей технологии. Они состоят из трех компонентов.</p>
+            <p class="subtitle">YUMA Smart – это удобные точки продаж, которые мы полностью подготовим к работе по нашей технологии. Они состоят из трех компонентов.</p>
           </div>
           <!-- <div class="micromarket__cards" ref="cardItems"> -->
           <div class="micromarket__cards">
@@ -64,9 +64,9 @@
           </div>
         </section>
 
-        <!-- кому подходит yuma-smart -->
+        <!-- кому подходит YUMA Smart -->
         <section class="block-offset grid-layout for-clients">
-          <h2 class="title1 block-offset__title">Кому подходит <span class="no-word-break">YUMA-SMART</span></h2>
+          <h2 class="title1 block-offset__title">Кому подходит <span class="no-word-break">YUMA Smart</span></h2>
             <div class="tabs-wrapper">
               <el-tabs v-model="activeName" :id="id">
                   <el-tab-pane :label="tab.label" :name="String(i)" v-for="(tab, i) in yumaSmartClients" :key="tab.label">
@@ -88,9 +88,9 @@
             </div>
         </section>
 
-        <!-- оптимальные решения yuma-smart -->
+        <!-- оптимальные решения YUMA Smart -->
         <section class="block-offset cata-preview">
-          <h2 class="title1 block-offset__title">Оптимальные решения <span class="no-word-break">YUMA-SMART</span></h2>
+          <h2 class="title1 block-offset__title">Оптимальные решения <span class="no-word-break">YUMA Smart</span></h2>
           <div class="cata-preview__container">
             <nuxt-link :to="{name: 'slug', params: {slug: it.slug}}" class="cata-preview__item" v-for="(it, i) in yumaSmartTariffs" :key="it.n">
               <h4 class="cata-preview__item--title subtitle">Тариф №{{ it.n }}</h4>
@@ -106,9 +106,9 @@
           </div>
         </section>
 
-        <!-- YUMA-smart. все включено. -->
+        <!-- YUMA Smart. все включено. -->
         <section class="block-offset all-in grid-layout">
-          <h2 class="title1 block-offset__title">YUMA-smart. Все включено.</h2>
+          <h2 class="title1 block-offset__title">YUMA Smart. Все включено.</h2>
           <div class="block-offset__content all-in__container text-blocks plain">
             <div class="text-blocks__col">
               <div class="text-blocks__item">

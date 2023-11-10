@@ -252,7 +252,7 @@
 export default {
     head() {
         return {
-            title: "Политика конфиденциальности - YUMA-SMART"
+            title: "Политика конфиденциальности - YUMA Smart"
         }
     }
 }

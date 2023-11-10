@@ -481,7 +481,7 @@ __________________/___________________/
 export default {
     head() {
         return {
-            title: "Публичная оферта - YUMA-SMART"
+            title: "Публичная оферта - YUMA Smart"
         }
     }
 }

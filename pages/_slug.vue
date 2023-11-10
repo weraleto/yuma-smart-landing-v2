@@ -4,7 +4,7 @@
     <div class="container">
       <Breadcrumbs
         :links="[
-          {name: 'YUMA-SMART', to: {name: 'index'}}, 
+          {name: 'YUMA Smart', to: {name: 'index'}}, 
           {name: tariffData.name, to: {name: 'yuma-smart-slug', params: {slug: tariffData.slug}}}
           ]"
       ></Breadcrumbs>

@@ -39,7 +39,7 @@
                         </template>
                     </div>
                     <div class="navigation-part contact only-desktop phone-hover">
-                        <a href="tel:+7 (812) 605-98-08">+7 (812) 605-98-08</a>
+                        <a href="tel:+7 (812) 214-17-70">+7 (812) 214-17-70</a>
                     </div>
 
                 </div>
@@ -49,20 +49,13 @@
                     <YumaLogo custom-class="navigation-inner__logo" />
 
                     <div style="margin: 6.32vh 0 5.95vh">
-                        <a class="subtitle phone-hover" href="tel:+7 (812) 605-98-08">+7 (812) 605-98-08</a>
+                        <a class="subtitle phone-hover" href="tel:+7 (812) 214-17-70">+7 (812) 214-17-70</a>
                         <h3 style="margin-top: 10px" class="contact-description">Мы работаем по всей России</h3>
                     </div>
                     <div style="margin-bottom: 5.95vh">
-                        <h3 class="text5">YUMA-SMART в Санкт-Петербурге</h3>
+                        <h3 class="text5">YUMA Smart в Санкт-Петербурге</h3>
                         <p class="contact-description" style="margin-top: 8px">
                             Выборгская набережная, д. 61, БЦ&nbsp;«АКВАТОРИЯ», 3 этаж, офис 303
-                        </p>
-                        
-                    </div>
-                    <div>
-                        <h3 class="text5">YUMA-SMART в Москве</h3>
-                        <p class="contact-description" style="margin-top: 8px">
-                            Нововладыкинский проезд, 2 стр. 2, ст.&nbsp;м.&nbsp;Владыкино
                         </p>
                     </div>
                 </div>
@@ -88,7 +81,7 @@ export default {
             navItems: [
                 {
                     is_dropdown: false,
-                    title: 'YUMA-SMART',
+                    title: 'YUMA Smart',
                     path: '/'
                 },
                 {

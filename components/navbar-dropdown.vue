@@ -17,8 +17,8 @@
         <div class="dropdown__items">
             <template v-if="showContacts">
                 <div class="dropdown__item">
-                    <h3 class="dropdown__items--description no-word-break" style="margin-bottom: 12px">YUMA-SMART</h3>
-                    <a class="text4" href="tel:+7 (812) 605-98-08">+7 (812) 605-98-08</a>
+                    <h3 class="dropdown__items--description no-word-break" style="margin-bottom: 12px">YUMA Smart</h3>
+                    <a class="text4" href="tel:+7 (812) 214-17-70">+7 (812) 214-17-70</a>
                 </div>
             </template>
             <template v-else>

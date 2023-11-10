@@ -3,7 +3,7 @@
     <div class="container pb item-page">
       <Breadcrumbs
         :links="[
-          {name: 'YUMA-SMART', to: {name: 'yuma-smart'}}, 
+          {name: 'YUMA Smart', to: {name: 'yuma-smart'}}, 
           {name: 'Тариф №3 Готовый микромаркет', to: {name: 'yuma-smart-slug', params: {slug: 'tariff3-integrated-micromarkets'}}},
           {name: itemData.name, to: {name: 'yuma-smart-integrated-micromarkets-slug', params: {slug: itemData.slug}}}
           ]"
@@ -109,7 +109,7 @@ export default {
     popoverData() {
       return `<div class="text4">В комплекте с оборудованием вы получите:</div>
       <ul>
-        <li>Программная платформа YUMA-SMART</li>
+        <li>Программная платформа YUMA Smart</li>
         <li>Модуль управления YUMA-smartbox</li>
         <li>Сопутствующие компоненты (видеокамера, подсветка, электронный замок и все необходимые датчики, полностью подключенные и готовые к работе)</li>
         <li>Брендирование боковых стен и светового короба - по вашему желанию</li>

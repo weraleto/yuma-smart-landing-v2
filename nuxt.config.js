@@ -3,7 +3,7 @@ export default {
   ssr: true,
   target: 'server',
   head: {
-    title: 'YUMA-SMART',
+    title: 'YUMA Smart',
     htmlAttrs: {
       lang: 'ru'
     },
@@ -35,7 +35,7 @@ export default {
       },
       {
         property: 'og:site_name',
-        content: 'YUMA-SMART',
+        content: 'YUMA Smart',
         vmid: 'og:site_name',
         hid: 'og:site_name'
       },
@@ -123,7 +123,7 @@ export default {
     [
       '@nuxtjs/yandex-metrika',
       {
-        id: '90798219',
+        id: '95462382',
         webvisor: true,
         clickmap: true,
         trackLinks:true,

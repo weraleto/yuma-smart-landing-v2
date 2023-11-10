@@ -554,7 +554,7 @@
 export default {
     head() {
         return {
-            title: "Пользовательское соглашение - YUMA-SMART"
+            title: "Пользовательское соглашение - YUMA Smart"
         }
     }
 
